@@ -1,0 +1,15 @@
+{
+  "block.sib_energy_craft.energy_generator": "Генератор энергии",
+  "container.energy_generator": "Генератор энергии",
+  "stat.sib_energy_craft.interact_with_generator": "Использований генератора энергии",
+
+  "container.extractor": "Экстрактор",
+  "block.sib_energy_craft.extractor": "Экстрактор",
+  "stat.sib_energy_craft.interact_with_extractor": "Использований экстрактора",
+
+  "attribute.name.sib_energy_craft.charge": "Заряд: %d ЕЭ",
+  "attribute.name.sib_energy_craft.output_eu": "Выход: %d ЕЭ/т",
+
+  "energy.out.text": "Выход: %d ЕЭ/т",
+  "energy.range.text": "%d/%d ЕЭ"
+}

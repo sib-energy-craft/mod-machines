@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "TBT",
+    "TCT"
+  ],
+  "key": {
+    "T": {
+      "item": "sib_energy_craft:tree_tap"
+    },
+    "B": {
+      "item": "sib_energy_craft:base_machine_body"
+    },
+    "C": {
+      "item": "sib_energy_craft:energy_circuit"
+    }
+  },
+  "result": {
+    "item": "sib_energy_craft:extractor"
+  }
+}

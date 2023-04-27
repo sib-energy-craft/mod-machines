@@ -1,0 +1,22 @@
+{
+  "type": "sib_energy_craft:crafting_shaped_charged",
+  "pattern": [
+    " B ",
+    "PPP",
+    " F "
+  ],
+  "key": {
+    "B": {
+      "item": "sib_energy_craft:rechargeable_battery"
+    },
+    "P": {
+      "item": "sib_energy_craft:iron_plate"
+    },
+    "F": {
+      "item": "sib_energy_craft:iron_furnace"
+    }
+  },
+  "result": {
+    "item": "sib_energy_craft:energy_generator"
+  }
+}
