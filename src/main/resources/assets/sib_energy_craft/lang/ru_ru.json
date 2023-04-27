@@ -14,6 +14,8 @@
   "block.sib_energy_craft.iron_furnace": "Железная печь",
   "container.iron_furnace": "Железная печь",
 
+  "block.sib_energy_craft.base_machine_body": "Базовый корпус машины",
+
   "attribute.name.sib_energy_craft.charge": "Заряд: %d ЕЭ",
   "attribute.name.sib_energy_craft.output_eu": "Выход: %d ЕЭ/т",
 

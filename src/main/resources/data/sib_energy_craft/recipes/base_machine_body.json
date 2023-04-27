@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "###",
+    "# #",
+    "###"
+  ],
+  "key": {
+    "#": {
+      "item": "sib_energy_craft:iron_plate"
+    }
+  },
+  "result": {
+    "item": "sib_energy_craft:base_machine_body"
+  }
+}
