@@ -13,8 +13,8 @@ import org.jetbrains.annotations.NotNull;
 import java.awt.*;
 
 /**
+ * @since 0.0.1
  * @author sibmaks
- * Created at 21-05-2022
  */
 public class EnergyGeneratorScreen extends HandledScreen<EnergyGeneratorScreenHandler> {
     private static final Identifier TEXTURE = Identifiers.of("textures/gui/container/energy_generator.png");
@@ -48,7 +48,7 @@ public class EnergyGeneratorScreen extends HandledScreen<EnergyGeneratorScreenHa
             Text charging = Text.translatable("energy.range.text", charge, maxCharge);
             this.renderTooltip(matrices, charging, mouseX, mouseY);
         }
-        Text output = Text.translatable("energy.out.text", this.handler.getEnergyPacketSize());
+        var output = Text.translatable("energy.out.text", this.handler.getEnergyPacketSize());
         this.textRenderer.draw(matrices, output, i + 81, j + 58, Color.GRAY.getRGB());
     }
 

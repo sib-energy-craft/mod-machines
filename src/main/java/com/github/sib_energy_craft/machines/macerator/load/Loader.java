@@ -10,10 +10,8 @@ import static com.github.sib_energy_craft.sec_utils.load.LoadUtils.load;
  * @since 0.0.1
  * @author sibmaks
  */
-@Slf4j
 public class Loader implements ModInitializer {
     @Override
-    @SneakyThrows
     public void onInitialize() {
         var classLoader = getClass().getClassLoader();
         load(classLoader, "mod-machines-macerator", Loader.class.getPackageName());

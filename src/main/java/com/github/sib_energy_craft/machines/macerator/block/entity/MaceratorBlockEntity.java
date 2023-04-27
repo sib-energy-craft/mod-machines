@@ -11,24 +11,34 @@ import net.minecraft.screen.ScreenHandler;
 import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.text.Text;
 import net.minecraft.util.math.BlockPos;
+import org.jetbrains.annotations.NotNull;
 
+/**
+ * @since 0.0.1
+ * @author sibmaks
+ */
 public class MaceratorBlockEntity extends AbstractMaceratorBlockEntity {
-    public MaceratorBlockEntity(BlockPos pos, BlockState state, AbstractMaceratorBlock block) {
+    public MaceratorBlockEntity(@NotNull BlockPos pos,
+                                @NotNull BlockState state,
+                                @NotNull AbstractMaceratorBlock block) {
         super(Entities.MACERATOR, pos, state, RecipeTypes.MACERATING, block);
     }
 
+    @NotNull
     @Override
     protected Text getContainerName() {
         return Text.translatable("container.macerator");
     }
 
+    @NotNull
     @Override
-    protected ScreenHandler createScreenHandler(int syncId, PlayerInventory playerInventory) {
+    protected ScreenHandler createScreenHandler(int syncId, @NotNull PlayerInventory playerInventory) {
         return new MaceratorScreenHandler(syncId, playerInventory, this, this.propertyMap);
     }
 
     @Override
-    public void writeScreenOpeningData(ServerPlayerEntity player, PacketByteBuf buf) {
+    public void writeScreenOpeningData(@NotNull ServerPlayerEntity player,
+                                       @NotNull PacketByteBuf buf) {
         buf.writeBlockPos(pos);
     }
 

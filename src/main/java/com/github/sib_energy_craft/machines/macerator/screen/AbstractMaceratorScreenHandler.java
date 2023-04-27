@@ -20,8 +20,8 @@ import net.minecraft.world.World;
 import org.jetbrains.annotations.NotNull;
 
 /**
+ * @since 0.0.1
  * @author sibmaks
- * Created at 21-05-2022
  */
 public abstract class AbstractMaceratorScreenHandler extends ScreenHandler {
     private final Inventory inventory;

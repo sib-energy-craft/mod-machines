@@ -18,44 +18,54 @@ import net.minecraft.util.BlockMirror;
 import net.minecraft.util.BlockRotation;
 import net.minecraft.util.math.Direction;
 import net.minecraft.world.World;
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 /**
+ * @since 0.0.1
  * @author sibmaks
- * Created at 21-05-2022
  */
 public abstract class AbstractMaceratorBlock extends AbstractEnergyMachineBlock {
     public static final DirectionProperty FACING = HorizontalFacingBlock.FACING;
 
-    protected AbstractMaceratorBlock(AbstractBlock.Settings settings, EnergyLevel energyLevel, int maxCharge) {
+    protected AbstractMaceratorBlock(@NotNull AbstractBlock.Settings settings,
+                                     @NotNull EnergyLevel energyLevel,
+                                     int maxCharge) {
         super(settings, energyLevel, maxCharge);
         this.setDefaultState(getDefaultState().with(FACING, Direction.NORTH));
     }
 
+    @NotNull
     @Override
-    public BlockState getPlacementState(ItemPlacementContext ctx) {
+    public BlockState getPlacementState(@NotNull ItemPlacementContext ctx) {
         return this.getDefaultState().with(FACING, ctx.getHorizontalPlayerFacing().getOpposite());
     }
 
+    @NotNull
     @Override
-    public BlockState rotate(BlockState state, BlockRotation rotation) {
+    public BlockState rotate(@NotNull BlockState state,
+                             @NotNull BlockRotation rotation) {
         return state.with(FACING, rotation.rotate(state.get(FACING)));
     }
 
+    @NotNull
     @Override
-    public BlockState mirror(BlockState state, BlockMirror mirror) {
+    public BlockState mirror(@NotNull BlockState state,
+                             @NotNull BlockMirror mirror) {
         return state.rotate(mirror.getRotation(state.get(FACING)));
     }
 
     @Override
-    protected void appendProperties(StateManager.Builder<Block, BlockState> builder) {
+    protected void appendProperties(@NotNull StateManager.Builder<Block, BlockState> builder) {
         super.appendProperties(builder);
         builder.add(FACING);
     }
 
     @Nullable
-    protected static <T extends BlockEntity> BlockEntityTicker<T> checkType(World world, BlockEntityType<T> givenType,
-                                                                            BlockEntityType<? extends AbstractMaceratorBlockEntity> expectedType) {
+    protected static <T extends BlockEntity, E extends AbstractMaceratorBlockEntity> BlockEntityTicker<T> checkType(
+            @NotNull World world,
+            @NotNull BlockEntityType<T> givenType,
+            @NotNull BlockEntityType<E> expectedType) {
         return world.isClient ? null : AbstractMaceratorBlock.checkType(givenType, expectedType,
                 AbstractEnergyMachineBlockEntity::simpleCookingTick);
     }

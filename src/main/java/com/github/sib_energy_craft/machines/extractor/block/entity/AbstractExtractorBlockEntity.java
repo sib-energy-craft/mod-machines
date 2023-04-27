@@ -1,6 +1,7 @@
 package com.github.sib_energy_craft.machines.extractor.block.entity;
 
 import com.github.sib_energy_craft.energy_api.consumer.EnergyConsumer;
+import com.github.sib_energy_craft.energy_api.items.ChargeableItem;
 import com.github.sib_energy_craft.machines.block.entity.AbstractEnergyMachineBlockEntity;
 import com.github.sib_energy_craft.machines.extractor.block.AbstractExtractorBlock;
 import com.github.sib_energy_craft.machines.extractor.tag.ExtractorTags;
@@ -39,6 +40,13 @@ public abstract class AbstractExtractorBlockEntity extends AbstractEnergyMachine
     public boolean isValid(int slot, @NotNull ItemStack stack) {
         if(slot == SOURCE_SLOT) {
             return ExtractorTags.isUsedInExtractor(stack);
+        }
+        if(slot == CHARGE_SLOT) {
+            var item = stack.getItem();
+            if(item instanceof ChargeableItem chargeableItem) {
+                return chargeableItem.hasEnergy(stack);
+            }
+            return false;
         }
         return super.isValid(slot, stack);
     }

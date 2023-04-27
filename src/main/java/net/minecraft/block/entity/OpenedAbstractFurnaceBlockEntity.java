@@ -11,41 +11,43 @@ import net.minecraft.registry.DynamicRegistryManager;
 import net.minecraft.util.collection.DefaultedList;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 /**
+ * @since 0.0.1
  * @author sibmaks
- * Created at 22-12-2022
  */
 public abstract class OpenedAbstractFurnaceBlockEntity extends AbstractFurnaceBlockEntity {
     protected final RecipeManager.MatchGetter<Inventory, ? extends AbstractCookingRecipe> matchGetter;
 
-    protected OpenedAbstractFurnaceBlockEntity(BlockEntityType<?> blockEntityType,
-                                               BlockPos pos,
-                                               BlockState state,
-                                               RecipeType<? extends AbstractCookingRecipe> recipeType) {
+    protected OpenedAbstractFurnaceBlockEntity(@NotNull BlockEntityType<?> blockEntityType,
+                                               @NotNull BlockPos pos,
+                                               @NotNull BlockState state,
+                                               @NotNull RecipeType<? extends AbstractCookingRecipe> recipeType) {
         super(blockEntityType, pos, state, recipeType);
         this.matchGetter = RecipeManager.createCachedMatchGetter(recipeType);
     }
 
-    protected static int getCookTime(World world, OpenedAbstractFurnaceBlockEntity furnace) {
+    protected static int getCookTime(@NotNull World world,
+                                     @NotNull OpenedAbstractFurnaceBlockEntity furnace) {
         return furnace.matchGetter.getFirstMatch(furnace, world)
                 .map(AbstractCookingRecipe::getCookTime)
                 .orElse(200);
     }
 
-    protected static boolean craftRecipe(DynamicRegistryManager dynamicRegistryManager,
+    protected static boolean craftRecipe(@NotNull DynamicRegistryManager dynamicRegistryManager,
                                          @Nullable Recipe<?> recipe,
-                                         DefaultedList<ItemStack> slots,
+                                         @NotNull DefaultedList<ItemStack> slots,
                                          int count,
                                          int sourceSlotIndex,
                                          int outputSlotIndex) {
         if (recipe == null || !canAcceptRecipeOutput(dynamicRegistryManager, recipe, slots, count, sourceSlotIndex, outputSlotIndex)) {
             return false;
         }
-        ItemStack sourceSlot = slots.get(sourceSlotIndex);
-        ItemStack recipeStack = recipe.getOutput(dynamicRegistryManager);
-        ItemStack outputStack = slots.get(outputSlotIndex);
+        var sourceSlot = slots.get(sourceSlotIndex);
+        var recipeStack = recipe.getOutput(dynamicRegistryManager);
+        var outputStack = slots.get(outputSlotIndex);
         if (outputStack.isEmpty()) {
             slots.set(outputSlotIndex, recipeStack.copy());
         } else if (outputStack.isOf(recipeStack.getItem())) {
@@ -55,20 +57,20 @@ public abstract class OpenedAbstractFurnaceBlockEntity extends AbstractFurnaceBl
         return true;
     }
 
-    protected static boolean canAcceptRecipeOutput(DynamicRegistryManager dynamicRegistryManager,
+    protected static boolean canAcceptRecipeOutput(@NotNull DynamicRegistryManager dynamicRegistryManager,
                                                    @Nullable Recipe<?> recipe,
-                                                   DefaultedList<ItemStack> slots,
+                                                   @NotNull DefaultedList<ItemStack> slots,
                                                    int count,
                                                    int sourceSlotIndex,
                                                    int outputSlotIndex) {
         if (slots.get(sourceSlotIndex).isEmpty() || recipe == null) {
             return false;
         }
-        ItemStack outputStack = recipe.getOutput(dynamicRegistryManager);
+        var outputStack = recipe.getOutput(dynamicRegistryManager);
         if (outputStack.isEmpty()) {
             return false;
         }
-        ItemStack outputSlotStack = slots.get(outputSlotIndex);
+        var outputSlotStack = slots.get(outputSlotIndex);
         if (outputSlotStack.isEmpty()) {
             return true;
         }

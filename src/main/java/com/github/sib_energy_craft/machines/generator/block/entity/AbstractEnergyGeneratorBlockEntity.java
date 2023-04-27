@@ -255,6 +255,13 @@ public abstract class AbstractEnergyGeneratorBlockEntity extends LockableContain
             return AbstractEnergyGeneratorBlockEntity.canUseAsFuel(stack) || stack.isOf(Items.BUCKET) && 
                     !itemStack.isOf(Items.BUCKET);
         }
+        if(slot == CHARGE_SLOT_INDEX) {
+            var item = stack.getItem();
+            if(item instanceof ChargeableItem chargeableItem) {
+                return chargeableItem.hasFreeSpace(stack);
+            }
+            return false;
+        }
         return true;
     }
 
