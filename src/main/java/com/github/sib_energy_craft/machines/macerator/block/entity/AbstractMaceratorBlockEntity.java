@@ -1,7 +1,6 @@
 package com.github.sib_energy_craft.machines.macerator.block.entity;
 
 import com.github.sib_energy_craft.energy_api.consumer.EnergyConsumer;
-import com.github.sib_energy_craft.energy_api.items.ChargeableItem;
 import com.github.sib_energy_craft.machines.block.entity.AbstractEnergyMachineBlockEntity;
 import com.github.sib_energy_craft.machines.macerator.block.AbstractMaceratorBlock;
 import com.github.sib_energy_craft.machines.macerator.tag.MaceratorTags;
@@ -40,13 +39,6 @@ public abstract class AbstractMaceratorBlockEntity extends AbstractEnergyMachine
     public boolean isValid(int slot, @NotNull ItemStack stack) {
         if(slot == SOURCE_SLOT) {
             return MaceratorTags.isUsedInMacerator(stack);
-        }
-        if(slot == CHARGE_SLOT) {
-            var item = stack.getItem();
-            if(item instanceof ChargeableItem chargeableItem) {
-                return chargeableItem.hasEnergy(stack);
-            }
-            return false;
         }
         return super.isValid(slot, stack);
     }

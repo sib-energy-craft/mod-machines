@@ -11,6 +11,10 @@
   "block.sib_energy_craft.macerator": "Мацератор",
   "stat.sib_energy_craft.interact_with_macerator": "Использований мацератора",
 
+  "container.compressor": "Компрессор",
+  "block.sib_energy_craft.compressor": "Компрессор",
+  "stat.sib_energy_craft.interact_with_compressor": "Использований компрессора",
+
   "block.sib_energy_craft.iron_furnace": "Железная печь",
   "container.iron_furnace": "Железная печь",
 

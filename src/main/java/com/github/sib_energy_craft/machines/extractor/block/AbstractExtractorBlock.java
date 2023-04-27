@@ -63,11 +63,10 @@ public abstract class AbstractExtractorBlock extends AbstractEnergyMachineBlock 
     }
 
     @Nullable
-    protected static <
-            T extends BlockEntity,
-            E extends AbstractExtractorBlockEntity> BlockEntityTicker<T> checkType(@NotNull World world,
-                                                                                   @NotNull BlockEntityType<T> givenType,
-                                                                                   @NotNull BlockEntityType<E> expectedType) {
+    protected static <T extends BlockEntity, E extends AbstractExtractorBlockEntity> BlockEntityTicker<T> checkType(
+            @NotNull World world,
+            @NotNull BlockEntityType<T> givenType,
+            @NotNull BlockEntityType<E> expectedType) {
         return world.isClient ? null : AbstractExtractorBlock.checkType(givenType, expectedType,
                 AbstractEnergyMachineBlockEntity::simpleCookingTick);
     }

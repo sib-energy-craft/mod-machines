@@ -1,5 +1,6 @@
 {
   "type": "sib_energy_craft:crafting_shaped_charged",
+  "category": "decorations",
   "pattern": [
     "B",
     "M",

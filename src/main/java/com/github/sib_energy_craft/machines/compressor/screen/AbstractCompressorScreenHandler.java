@@ -1,7 +1,7 @@
-package com.github.sib_energy_craft.machines.macerator.screen;
+package com.github.sib_energy_craft.machines.compressor.screen;
 
 import com.github.sib_energy_craft.energy_api.tags.CoreTags;
-import com.github.sib_energy_craft.machines.macerator.tag.MaceratorTags;
+import com.github.sib_energy_craft.machines.compressor.tag.CompressorTags;
 import com.github.sib_energy_craft.machines.screen.slot.AbstractEnergyMachineScreenHandler;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
@@ -13,25 +13,25 @@ import net.minecraft.screen.PropertyDelegate;
 import net.minecraft.screen.ScreenHandlerType;
 import org.jetbrains.annotations.NotNull;
 
-import static com.github.sib_energy_craft.machines.macerator.block.entity.AbstractMaceratorBlockEntity.*;
+import static com.github.sib_energy_craft.machines.block.entity.AbstractEnergyMachineBlockEntity.*;
 
 /**
  * @since 0.0.1
  * @author sibmaks
  */
-public abstract class AbstractMaceratorScreenHandler extends AbstractEnergyMachineScreenHandler {
+public abstract class AbstractCompressorScreenHandler extends AbstractEnergyMachineScreenHandler {
 
-    protected AbstractMaceratorScreenHandler(@NotNull ScreenHandlerType<?> type,
-                                             int syncId,
-                                             @NotNull PlayerInventory playerInventory) {
+    protected AbstractCompressorScreenHandler(@NotNull ScreenHandlerType<?> type,
+                                              int syncId,
+                                              @NotNull PlayerInventory playerInventory) {
         this(type, syncId, playerInventory, new SimpleInventory(3), new ArrayPropertyDelegate(4));
     }
 
-    protected AbstractMaceratorScreenHandler(@NotNull ScreenHandlerType<?> type,
-                                             int syncId,
-                                             @NotNull PlayerInventory playerInventory,
-                                             @NotNull Inventory inventory,
-                                             @NotNull PropertyDelegate propertyDelegate) {
+    protected AbstractCompressorScreenHandler(@NotNull ScreenHandlerType<?> type,
+                                              int syncId,
+                                              @NotNull PlayerInventory playerInventory,
+                                              @NotNull Inventory inventory,
+                                              @NotNull PropertyDelegate propertyDelegate) {
         super(type, syncId, playerInventory, inventory, propertyDelegate);
     }
 
@@ -53,14 +53,14 @@ public abstract class AbstractMaceratorScreenHandler extends AbstractEnergyMachi
                     return ItemStack.EMPTY;
                 }
             } else {
-                if(MaceratorTags.isUsedInMacerator(slotStack)) {
+                if(CompressorTags.isUsedInCompressor(slotStack)) {
                     if(!insertItem(slotStack, SOURCE_SLOT,
-                                    SOURCE_SLOT + 1, false)) {
+                            SOURCE_SLOT + 1, false)) {
                         return ItemStack.EMPTY;
                     }
                 } else if(CoreTags.isChargeable(slotStack)) {
                     if(!insertItem(slotStack, CHARGE_SLOT,
-                                    CHARGE_SLOT + 1, false)) {
+                            CHARGE_SLOT + 1, false)) {
                         return ItemStack.EMPTY;
                     }
                 } else if(index >= 3 && index < 30 && !insertItem(slotStack, 30, 39, false)) {

@@ -1,10 +1,8 @@
-package com.github.sib_energy_craft.machines.macerator.block;
+package com.github.sib_energy_craft.machines.compressor.block;
 
 import com.github.sib_energy_craft.energy_api.EnergyLevel;
 import com.github.sib_energy_craft.machines.block.AbstractEnergyMachineBlock;
-import com.github.sib_energy_craft.machines.block.entity.AbstractEnergyMachineBlockEntity;
-import com.github.sib_energy_craft.machines.macerator.block.entity.AbstractMaceratorBlockEntity;
-import net.minecraft.block.AbstractBlock;
+import com.github.sib_energy_craft.machines.compressor.block.entity.AbstractCompressorBlockEntity;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.HorizontalFacingBlock;
@@ -25,12 +23,12 @@ import org.jetbrains.annotations.Nullable;
  * @since 0.0.1
  * @author sibmaks
  */
-public abstract class AbstractMaceratorBlock extends AbstractEnergyMachineBlock {
+public abstract class AbstractCompressorBlock extends AbstractEnergyMachineBlock {
     public static final DirectionProperty FACING = HorizontalFacingBlock.FACING;
 
-    protected AbstractMaceratorBlock(@NotNull AbstractBlock.Settings settings,
-                                     @NotNull EnergyLevel energyLevel,
-                                     int maxCharge) {
+    protected AbstractCompressorBlock(@NotNull Settings settings,
+                                      @NotNull EnergyLevel energyLevel,
+                                      int maxCharge) {
         super(settings, energyLevel, maxCharge);
         this.setDefaultState(getDefaultState().with(FACING, Direction.NORTH));
     }
@@ -63,11 +61,11 @@ public abstract class AbstractMaceratorBlock extends AbstractEnergyMachineBlock 
     }
 
     @Nullable
-    protected static <T extends BlockEntity, E extends AbstractMaceratorBlockEntity> BlockEntityTicker<T> checkType(
+    protected static <T extends BlockEntity, E extends AbstractCompressorBlockEntity> BlockEntityTicker<T> checkType(
             @NotNull World world,
             @NotNull BlockEntityType<T> givenType,
             @NotNull BlockEntityType<E> expectedType) {
-        return world.isClient ? null : AbstractMaceratorBlock.checkType(givenType, expectedType,
-                AbstractEnergyMachineBlockEntity::simpleCookingTick);
+        return world.isClient ? null : AbstractCompressorBlock.checkType(givenType, expectedType,
+                AbstractCompressorBlockEntity::tick);
     }
 }
