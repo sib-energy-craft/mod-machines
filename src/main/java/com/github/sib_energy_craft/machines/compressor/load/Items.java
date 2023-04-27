@@ -1,6 +1,7 @@
 package com.github.sib_energy_craft.machines.compressor.load;
 
 import com.github.sib_energy_craft.energy_api.utils.Identifiers;
+import com.github.sib_energy_craft.machines.item.EnergyMachineBlockItem;
 import com.github.sib_energy_craft.sec_utils.load.ModRegistrar;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
@@ -18,7 +19,7 @@ public final class Items implements ModRegistrar {
     static {
         var compressorSettings = new Item.Settings();
 
-        var compressor = new BlockItem(Blocks.COMPRESSOR.entity(), compressorSettings);
+        var compressor = new EnergyMachineBlockItem<>(Blocks.COMPRESSOR.entity(), compressorSettings);
         COMPRESSOR = register(ItemGroups.FUNCTIONAL, Identifiers.of("compressor"), compressor);
     }
 }

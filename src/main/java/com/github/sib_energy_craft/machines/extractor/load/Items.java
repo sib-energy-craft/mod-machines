@@ -1,6 +1,7 @@
 package com.github.sib_energy_craft.machines.extractor.load;
 
 import com.github.sib_energy_craft.energy_api.utils.Identifiers;
+import com.github.sib_energy_craft.machines.item.EnergyMachineBlockItem;
 import com.github.sib_energy_craft.sec_utils.load.ModRegistrar;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
@@ -18,7 +19,7 @@ public final class Items implements ModRegistrar {
     static {
         var extractorSettings = new Item.Settings();
 
-        var extractor = new BlockItem(Blocks.EXTRACTOR.entity(), extractorSettings);
+        var extractor = new EnergyMachineBlockItem(Blocks.EXTRACTOR.entity(), extractorSettings);
         EXTRACTOR = register(ItemGroups.FUNCTIONAL, Identifiers.of("extractor"), extractor);
     }
 }
