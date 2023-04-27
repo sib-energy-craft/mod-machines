@@ -61,12 +61,13 @@ public abstract class AbstractEnergyGeneratorScreenHandler extends ScreenHandler
     }
 
     @Override
-    public boolean canUse(PlayerEntity player) {
+    public boolean canUse(@NotNull PlayerEntity player) {
         return this.inventory.canPlayerUse(player);
     }
 
+    @NotNull
     @Override
-    public ItemStack quickMove(PlayerEntity player, int index) {
+    public ItemStack quickMove(@NotNull PlayerEntity player, int index) {
         var itemStack = ItemStack.EMPTY;
         var slot = this.slots.get(index);
         if (slot.hasStack()) {
@@ -74,26 +75,26 @@ public abstract class AbstractEnergyGeneratorScreenHandler extends ScreenHandler
             itemStack = slotStack.copy();
             if(index == AbstractEnergyGeneratorBlockEntity.CHARGE_SLOT_INDEX ||
                     index == AbstractEnergyGeneratorBlockEntity.FUEL_SLOT_INDEX) {
-                if(!this.insertItem(slotStack, 2, 38, false)) {
+                if(!insertItem(slotStack, 2, 38, false)) {
                     return ItemStack.EMPTY;
                 }
             } else {
                 if(CoreTags.isChargeable(slotStack)) {
-                    if(!this.insertItem(slotStack, 0, 1, false)) {
+                    if(!insertItem(slotStack, 0, 1, false)) {
                         return ItemStack.EMPTY;
                     }
                 } else {
                     if(isFuel(slotStack)) {
-                        if(!this.insertItem(slotStack, 1, 2, false)) {
+                        if(!insertItem(slotStack, 1, 2, false)) {
                             return ItemStack.EMPTY;
                         }
                     } else {
                         if(index >= 2 && index < 29) {
-                            if(!this.insertItem(slotStack, 29, 38, false)) {
+                            if(!insertItem(slotStack, 29, 38, false)) {
                                 return ItemStack.EMPTY;
                             }
                         } else if(index >= 29 && index < 38) {
-                            if(!this.insertItem(slotStack, 2, 29, false)) {
+                            if(!insertItem(slotStack, 2, 29, false)) {
                                 return ItemStack.EMPTY;
                             }
                         }
@@ -113,18 +114,29 @@ public abstract class AbstractEnergyGeneratorScreenHandler extends ScreenHandler
         return itemStack;
     }
 
-    public static boolean isFuel(ItemStack itemStack) {
+    /**
+     * Check is item can be used as fuel
+     *
+     * @param itemStack item stack
+     * @return true - item is fuel, false - otherwise
+     */
+    public static boolean isFuel(@NotNull ItemStack itemStack) {
         return AbstractEnergyGeneratorBlockEntity.canUseAsFuel(itemStack);
     }
 
     public int getFuelProgress() {
-        int i = this.propertyDelegate.get(EnergyGeneratorProperties.FUEL_TIME.ordinal());
+        int i = propertyDelegate.get(EnergyGeneratorProperties.FUEL_TIME.ordinal());
         if (i == 0) {
             i = 200;
         }
-        return this.propertyDelegate.get(EnergyGeneratorProperties.BURN_TIME.ordinal()) * 13 / i;
+        return propertyDelegate.get(EnergyGeneratorProperties.BURN_TIME.ordinal()) * 13 / i;
     }
 
+    /**
+     * Get charge progress status
+     *
+     * @return charge progress
+     */
     public int getChargeProgress() {
         int i = getCharge();
         int j = getMaxCharge();
@@ -134,20 +146,40 @@ public abstract class AbstractEnergyGeneratorScreenHandler extends ScreenHandler
         return i * 24 / j;
     }
 
+    /**
+     * Get extractor charge
+     *
+     * @return charge
+     */
     public int getCharge() {
-        return this.propertyDelegate.get(EnergyGeneratorProperties.CHARGE.ordinal());
+        return propertyDelegate.get(EnergyGeneratorProperties.CHARGE.ordinal());
     }
 
+    /**
+     * Get extractor max charge
+     *
+     * @return max charge
+     */
     public int getMaxCharge() {
-        return this.propertyDelegate.get(EnergyGeneratorProperties.MAX_CHARGE.ordinal());
+        return propertyDelegate.get(EnergyGeneratorProperties.MAX_CHARGE.ordinal());
     }
 
+    /**
+     * Get extractor cooking time
+     *
+     * @return cooking time
+     */
     public int getEnergyPacketSize() {
-        return this.propertyDelegate.get(EnergyGeneratorProperties.ENERGY_PACKET_SIZE.ordinal());
+        return propertyDelegate.get(EnergyGeneratorProperties.ENERGY_PACKET_SIZE.ordinal());
     }
 
+    /**
+     * Get extractor total cooking time
+     *
+     * @return total cooking time
+     */
     public boolean isBurning() {
-        return this.propertyDelegate.get(EnergyGeneratorProperties.BURN_TIME.ordinal()) > 0;
+        return propertyDelegate.get(EnergyGeneratorProperties.BURN_TIME.ordinal()) > 0;
     }
 
 }

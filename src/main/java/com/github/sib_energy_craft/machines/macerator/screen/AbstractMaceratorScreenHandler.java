@@ -1,10 +1,10 @@
-package com.github.sib_energy_craft.machines.extractor.screen;
+package com.github.sib_energy_craft.machines.macerator.screen;
 
 import com.github.sib_energy_craft.energy_api.screen.ChargeSlot;
 import com.github.sib_energy_craft.energy_api.tags.CoreTags;
 import com.github.sib_energy_craft.machines.block.entity.AbstractEnergyMachineProperties;
-import com.github.sib_energy_craft.machines.extractor.block.entity.AbstractExtractorBlockEntity;
-import com.github.sib_energy_craft.machines.extractor.tag.ExtractorTags;
+import com.github.sib_energy_craft.machines.macerator.block.entity.AbstractMaceratorBlockEntity;
+import com.github.sib_energy_craft.machines.macerator.tag.MaceratorTags;
 import com.github.sib_energy_craft.machines.screen.slot.OutputSlot;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
@@ -20,42 +20,43 @@ import net.minecraft.world.World;
 import org.jetbrains.annotations.NotNull;
 
 /**
- * @since 0.0.1
  * @author sibmaks
+ * Created at 21-05-2022
  */
-public abstract class AbstractExtractorScreenHandler extends ScreenHandler {
+public abstract class AbstractMaceratorScreenHandler extends ScreenHandler {
     private final Inventory inventory;
     private final PropertyDelegate propertyDelegate;
     protected final World world;
 
-    protected AbstractExtractorScreenHandler(@NotNull ScreenHandlerType<?> type,
+    protected AbstractMaceratorScreenHandler(@NotNull ScreenHandlerType<?> type,
                                              int syncId,
                                              @NotNull PlayerInventory playerInventory) {
         this(type, syncId, playerInventory, new SimpleInventory(3), new ArrayPropertyDelegate(4));
     }
 
-    protected AbstractExtractorScreenHandler(@NotNull ScreenHandlerType<?> type,
+    protected AbstractMaceratorScreenHandler(@NotNull ScreenHandlerType<?> type,
                                              int syncId,
                                              @NotNull PlayerInventory playerInventory,
                                              @NotNull Inventory inventory,
                                              @NotNull PropertyDelegate propertyDelegate) {
         super(type, syncId);
-        AbstractExtractorScreenHandler.checkSize(inventory, 3);
-        AbstractExtractorScreenHandler.checkDataCount(propertyDelegate, 4);
+        int i;
+        AbstractMaceratorScreenHandler.checkSize(inventory, 3);
+        AbstractMaceratorScreenHandler.checkDataCount(propertyDelegate, 4);
         this.inventory = inventory;
         this.propertyDelegate = propertyDelegate;
         this.world = playerInventory.player.world;
-        this.addSlot(new Slot(inventory, AbstractExtractorBlockEntity.SOURCE_SLOT, 56, 17));
-        var chargeSlot = new ChargeSlot(inventory, AbstractExtractorBlockEntity.CHARGE_SLOT, 56, 53, false);
+        this.addSlot(new Slot(inventory, AbstractMaceratorBlockEntity.SOURCE_SLOT, 56, 17));
+        var chargeSlot = new ChargeSlot(inventory, AbstractMaceratorBlockEntity.CHARGE_SLOT, 56, 53, false);
         this.addSlot(chargeSlot);
-        var outputSlot = new OutputSlot(playerInventory.player, inventory, AbstractExtractorBlockEntity.OUTPUT_SLOT, 116, 35);
+        var outputSlot = new OutputSlot(playerInventory.player, inventory, AbstractMaceratorBlockEntity.OUTPUT_SLOT, 116, 35);
         this.addSlot(outputSlot);
-        for (int i = 0; i < 3; ++i) {
+        for (i = 0; i < 3; ++i) {
             for (int j = 0; j < 9; ++j) {
                 this.addSlot(new Slot(playerInventory, j + i * 9 + 9, 8 + j * 18, 84 + i * 18));
             }
         }
-        for (int i = 0; i < 9; ++i) {
+        for (i = 0; i < 9; ++i) {
             this.addSlot(new Slot(playerInventory, i, 8 + i * 18, 142));
         }
         this.addProperties(propertyDelegate);
@@ -66,31 +67,32 @@ public abstract class AbstractExtractorScreenHandler extends ScreenHandler {
         return this.inventory.canPlayerUse(player);
     }
 
+    @NotNull
     @Override
-    public @NotNull ItemStack quickMove(@NotNull PlayerEntity player, int index) {
+    public ItemStack quickMove(@NotNull PlayerEntity player, int index) {
         var itemStack = ItemStack.EMPTY;
         var slot = this.slots.get(index);
         if (slot.hasStack()) {
             var slotStack = slot.getStack();
             itemStack = slotStack.copy();
-            if(index == AbstractExtractorBlockEntity.OUTPUT_SLOT) {
-                if(!insertItem(slotStack, AbstractExtractorBlockEntity.OUTPUT_SLOT + 1, 39, true)) {
+            if(index == AbstractMaceratorBlockEntity.OUTPUT_SLOT) {
+                if(!insertItem(slotStack, AbstractMaceratorBlockEntity.OUTPUT_SLOT + 1, 39, true)) {
                     return ItemStack.EMPTY;
                 }
                 slot.onQuickTransfer(slotStack, itemStack);
-            } else if(index == AbstractExtractorBlockEntity.CHARGE_SLOT || index == AbstractExtractorBlockEntity.SOURCE_SLOT) {
-                if(!insertItem(slotStack, AbstractExtractorBlockEntity.OUTPUT_SLOT + 1, 39, false)) {
+            } else if(index == AbstractMaceratorBlockEntity.CHARGE_SLOT || index == AbstractMaceratorBlockEntity.SOURCE_SLOT) {
+                if(!insertItem(slotStack, AbstractMaceratorBlockEntity.OUTPUT_SLOT + 1, 39, false)) {
                     return ItemStack.EMPTY;
                 }
             } else {
-                if(ExtractorTags.isUsedInExtractor(slotStack)) {
-                    if(!insertItem(slotStack, AbstractExtractorBlockEntity.SOURCE_SLOT,
-                                    AbstractExtractorBlockEntity.SOURCE_SLOT + 1, false)) {
+                if(MaceratorTags.isUsedInMacerator(slotStack)) {
+                    if(!insertItem(slotStack, AbstractMaceratorBlockEntity.SOURCE_SLOT,
+                                    AbstractMaceratorBlockEntity.SOURCE_SLOT + 1, false)) {
                         return ItemStack.EMPTY;
                     }
                 } else if(CoreTags.isChargeable(slotStack)) {
-                    if(!insertItem(slotStack, AbstractExtractorBlockEntity.CHARGE_SLOT,
-                                    AbstractExtractorBlockEntity.CHARGE_SLOT + 1, false)) {
+                    if(!insertItem(slotStack, AbstractMaceratorBlockEntity.CHARGE_SLOT,
+                                    AbstractMaceratorBlockEntity.CHARGE_SLOT + 1, false)) {
                         return ItemStack.EMPTY;
                     }
                 } else if(index >= 3 && index < 30 && !insertItem(slotStack, 30, 39, false)) {
@@ -125,7 +127,6 @@ public abstract class AbstractExtractorScreenHandler extends ScreenHandler {
         }
         return i * 13 / j;
     }
-
 
     /**
      * Get cook progress status
