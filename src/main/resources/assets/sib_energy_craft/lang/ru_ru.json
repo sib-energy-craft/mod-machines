@@ -11,6 +11,9 @@
   "block.sib_energy_craft.macerator": "Мацератор",
   "stat.sib_energy_craft.interact_with_macerator": "Использований мацератора",
 
+  "block.sib_energy_craft.iron_furnace": "Железная печь",
+  "container.iron_furnace": "Железная печь",
+
   "attribute.name.sib_energy_craft.charge": "Заряд: %d ЕЭ",
   "attribute.name.sib_energy_craft.output_eu": "Выход: %d ЕЭ/т",
 

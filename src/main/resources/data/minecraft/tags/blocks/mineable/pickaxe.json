@@ -3,6 +3,7 @@
   "values": [
     "sib_energy_craft:energy_generator",
     "sib_energy_craft:extractor",
-    "sib_energy_craft:macerator"
+    "sib_energy_craft:macerator",
+    "sib_energy_craft:iron_furnace"
   ]
 }

@@ -16,6 +16,7 @@ import net.minecraft.block.entity.LockableContainerBlockEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.inventory.Inventories;
 import net.minecraft.inventory.SidedInventory;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
 import net.minecraft.nbt.NbtCompound;
@@ -26,6 +27,7 @@ import net.minecraft.world.World;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
+import java.util.Map;
 import java.util.Set;
 
 /**
@@ -34,6 +36,8 @@ import java.util.Set;
  */
 public abstract class AbstractEnergyGeneratorBlockEntity extends LockableContainerBlockEntity
         implements SidedInventory, ExtendedScreenHandlerFactory, EnergySupplier {
+    private static final Map<Item, Integer> FUEL_MAP = AbstractFurnaceBlockEntity.createFuelTimeMap();
+
     private static final Set<Direction> SUPPLYING_DIRECTIONS = Set.of(
             Direction.EAST, Direction.WEST, Direction.NORTH, Direction.SOUTH, Direction.DOWN, Direction.UP
     );
@@ -154,7 +158,7 @@ public abstract class AbstractEnergyGeneratorBlockEntity extends LockableContain
             return 0;
         }
         var item = fuel.getItem();
-        return AbstractFurnaceBlockEntity.createFuelTimeMap().getOrDefault(item, 0);
+        return FUEL_MAP.getOrDefault(item, 0);
     }
 
     /**
@@ -164,7 +168,7 @@ public abstract class AbstractEnergyGeneratorBlockEntity extends LockableContain
      * @return true - can be used, false - otherwise
      */
     public static boolean canUseAsFuel(@NotNull ItemStack stack) {
-        return AbstractFurnaceBlockEntity.createFuelTimeMap().containsKey(stack.getItem());
+        return FUEL_MAP.containsKey(stack.getItem());
     }
 
     @Override
@@ -240,9 +244,7 @@ public abstract class AbstractEnergyGeneratorBlockEntity extends LockableContain
         if (world.getBlockEntity(this.pos) != this) {
             return false;
         }
-        return player.squaredDistanceTo((double) this.pos.getX() + 0.5,
-                (double) this.pos.getY() + 0.5,
-                (double) this.pos.getZ() + 0.5) <= 64.0;
+        return player.squaredDistanceTo(pos.getX() + 0.5, pos.getY() + 0.5, pos.getZ() + 0.5) <= 64.0;
     }
 
     @Override

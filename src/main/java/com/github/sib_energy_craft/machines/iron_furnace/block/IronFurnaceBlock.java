@@ -1,7 +1,7 @@
-package com.github.sib_energy_craft.machines.generator.block;
+package com.github.sib_energy_craft.machines.iron_furnace.block;
 
-import com.github.sib_energy_craft.machines.generator.block.entity.EnergyGeneratorBlockEntity;
-import com.github.sib_energy_craft.machines.generator.load.Entities;
+import com.github.sib_energy_craft.machines.iron_furnace.block.entity.IronFurnaceBlockEntity;
+import com.github.sib_energy_craft.machines.iron_furnace.load.Entities;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.block.entity.BlockEntityTicker;
@@ -10,6 +10,7 @@ import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.particle.ParticleTypes;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvents;
+import net.minecraft.stat.Stats;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
 import net.minecraft.util.math.random.Random;
@@ -21,19 +22,16 @@ import org.jetbrains.annotations.Nullable;
  * @since 0.0.1
  * @author sibmaks
  */
-public class EnergyGeneratorBlock extends AbstractEnergyGeneratorBlock {
-
-    public EnergyGeneratorBlock(@NotNull Settings settings,
-                                int fuelToEnergyCoefficient,
-                                int maxCharge,
-                                int energyPacketSize) {
-        super(settings, fuelToEnergyCoefficient, maxCharge, energyPacketSize);
+public class IronFurnaceBlock extends AbstractIronFurnaceBlock {
+    public IronFurnaceBlock(@NotNull Settings settings) {
+        super(settings, 0.8, 1.25);
     }
 
+    @NotNull
     @Override
-    public @NotNull BlockEntity createBlockEntity(@NotNull BlockPos pos,
-                                                  @NotNull BlockState state) {
-        return new EnergyGeneratorBlockEntity(pos, state, this);
+    public BlockEntity createBlockEntity(@NotNull BlockPos pos,
+                                         @NotNull BlockState state) {
+        return new IronFurnaceBlockEntity(pos, state, this);
     }
 
     @Override
@@ -41,16 +39,17 @@ public class EnergyGeneratorBlock extends AbstractEnergyGeneratorBlock {
     public <T extends BlockEntity> BlockEntityTicker<T> getTicker(@NotNull World world,
                                                                   @NotNull BlockState state,
                                                                   @NotNull BlockEntityType<T> type) {
-        return EnergyGeneratorBlock.checkType(world, type, Entities.ENERGY_GENERATOR);
+        return IronFurnaceBlock.checkType(world, type, Entities.IRON_FURNACE);
     }
 
     @Override
     protected void openScreen(@NotNull World world,
-                              @NotNull BlockPos blockPos,
-                              @NotNull PlayerEntity playerEntity) {
-        var blockEntity = world.getBlockEntity(blockPos);
-        if (blockEntity instanceof EnergyGeneratorBlockEntity energyGeneratorBlock) {
-            playerEntity.openHandledScreen(energyGeneratorBlock);
+                              @NotNull BlockPos pos,
+                              @NotNull PlayerEntity player) {
+        var blockEntity = world.getBlockEntity(pos);
+        if (blockEntity instanceof IronFurnaceBlockEntity ironFurnaceBlock) {
+            player.openHandledScreen(ironFurnaceBlock);
+            player.incrementStat(Stats.INTERACT_WITH_FURNACE);
         }
     }
 

@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " I ",
+    "I I",
+    "IFI"
+  ],
+  "key": {
+    "I": {
+      "item": "sib_energy_craft:iron_plate"
+    },
+    "F": {
+      "item": "minecraft:furnace"
+    }
+  },
+  "result": {
+    "item": "sib_energy_craft:iron_furnace"
+  }
+}
