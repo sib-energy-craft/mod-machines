@@ -2,6 +2,7 @@ package com.github.sib_energy_craft.machines.compressor.block;
 
 import com.github.sib_energy_craft.energy_api.EnergyLevel;
 import com.github.sib_energy_craft.machines.block.AbstractEnergyMachineBlock;
+import com.github.sib_energy_craft.machines.block.entity.AbstractEnergyMachineBlockEntity;
 import com.github.sib_energy_craft.machines.compressor.block.entity.AbstractCompressorBlockEntity;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
@@ -66,6 +67,6 @@ public abstract class AbstractCompressorBlock extends AbstractEnergyMachineBlock
             @NotNull BlockEntityType<T> givenType,
             @NotNull BlockEntityType<E> expectedType) {
         return world.isClient ? null : AbstractCompressorBlock.checkType(givenType, expectedType,
-                AbstractCompressorBlockEntity::tick);
+                AbstractEnergyMachineBlockEntity::simpleCookingTick);
     }
 }
