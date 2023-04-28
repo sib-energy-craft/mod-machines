@@ -170,13 +170,13 @@ public abstract class AbstractEnergyTransformerBlockEntity extends BlockEntity
 
     @Override
     public void receiveOffer(@NotNull EnergyOffer energyOffer) {
-        var energyLevel = switch (mode) {
-            case UP -> block.getHighEnergyLevel();
-            default -> block.getLowEnergyLevel();
+        var inputEnergyLevel = switch (mode) {
+            case UP -> block.getLowEnergyLevel();
+            default -> block.getHighEnergyLevel();
         };
 
         var energy = energyOffer.getEnergyAmount();
-        if(energy.compareTo(energyLevel.toBig) > 0) {
+        if(energy.compareTo(inputEnergyLevel.toBig) > 0) {
             if(energyOffer.acceptOffer()) {
                 if (world instanceof ServerWorld serverWorld) {
                     serverWorld.breakBlock(pos, false);
