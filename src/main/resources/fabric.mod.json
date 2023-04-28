@@ -14,7 +14,10 @@
       "com.github.sib_energy_craft.machines.extractor.load.Loader",
       "com.github.sib_energy_craft.machines.macerator.load.Loader",
       "com.github.sib_energy_craft.machines.compressor.load.Loader",
+      "com.github.sib_energy_craft.machines.energy_furnace.load.Loader",
+
       "com.github.sib_energy_craft.energy_container.load.Loader",
+
       "com.github.sib_energy_craft.machines.load.Loader"
     ]
   }

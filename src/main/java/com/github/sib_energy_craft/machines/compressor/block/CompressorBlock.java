@@ -16,8 +16,8 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 /**
+ * @since 0.0.1
  * @author sibmaks
- * Created at 21-05-2022
  */
 public class CompressorBlock extends AbstractCompressorBlock {
     public CompressorBlock(@NotNull Settings settings) {

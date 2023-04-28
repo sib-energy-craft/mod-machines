@@ -21,6 +21,9 @@
   "block.sib_energy_craft.iron_furnace": "Iron Furnace",
   "container.iron_furnace": "Iron Furnace",
 
+  "block.sib_energy_craft.energy_furnace": "Energy Furnace",
+  "container.energy_furnace": "Energy Furnace",
+
   "block.sib_energy_craft.base_machine_body": "Base Machine Body",
 
   "attribute.name.sib_energy_craft.charge": "Charge: %d EU",
