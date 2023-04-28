@@ -12,8 +12,7 @@ public class Loader implements ModInitializer {
 
     @Override
     public void onInitialize() {
-        var classLoader = getClass().getClassLoader();
-        load(classLoader, "mod-machines-generator", Loader.class.getPackageName());
+        load(Loader.class, "mod-machines-generator");
     }
 
 }

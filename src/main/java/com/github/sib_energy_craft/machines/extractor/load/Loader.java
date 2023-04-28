@@ -11,7 +11,6 @@ import static com.github.sib_energy_craft.sec_utils.load.LoadUtils.load;
 public class Loader implements ModInitializer {
     @Override
     public void onInitialize() {
-        var classLoader = getClass().getClassLoader();
-        load(classLoader, "mod-machines-extractor", Loader.class.getPackageName());
+        load(Loader.class, "mod-machines-extractor");
     }
 }
