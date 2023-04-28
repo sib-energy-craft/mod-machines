@@ -15,6 +15,9 @@
   "block.sib_energy_craft.compressor": "Compressor",
   "stat.sib_energy_craft.interact_with_compressor": "Interactions with Compressor",
 
+  "block.sib_energy_craft.basic_energy_container": "Basic Energy Storage",
+  "container.basic_energy_container": "Basic Energy Storage",
+
   "block.sib_energy_craft.iron_furnace": "Iron Furnace",
   "container.iron_furnace": "Iron Furnace",
 
