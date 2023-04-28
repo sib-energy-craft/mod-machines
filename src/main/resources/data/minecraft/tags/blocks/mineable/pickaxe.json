@@ -7,6 +7,8 @@
     "sib_energy_craft:compressor",
     "sib_energy_craft:iron_furnace",
     "sib_energy_craft:base_machine_body",
-    "sib_energy_craft:energy_furnace"
+    "sib_energy_craft:energy_furnace",
+    "sib_energy_craft:l1_energy_transformer",
+    "sib_energy_craft:l2_energy_transformer"
   ]
 }

@@ -165,9 +165,9 @@ public abstract class AbstractEnergyGeneratorScreenHandler extends ScreenHandler
     }
 
     /**
-     * Get extractor cooking time
+     * Get extractor packet size
      *
-     * @return cooking time
+     * @return packet size
      */
     public int getEnergyPacketSize() {
         return propertyDelegate.get(EnergyGeneratorProperties.ENERGY_PACKET_SIZE.ordinal());

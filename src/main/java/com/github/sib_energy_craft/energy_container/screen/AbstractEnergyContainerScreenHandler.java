@@ -113,7 +113,7 @@ public abstract class AbstractEnergyContainerScreenHandler extends ScreenHandler
     }
 
     /**
-     * Get extractor charge
+     * Get container charge
      *
      * @return charge
      */
@@ -122,7 +122,7 @@ public abstract class AbstractEnergyContainerScreenHandler extends ScreenHandler
     }
 
     /**
-     * Get extractor max charge
+     * Get container max charge
      *
      * @return max charge
      */
@@ -131,9 +131,9 @@ public abstract class AbstractEnergyContainerScreenHandler extends ScreenHandler
     }
 
     /**
-     * Get extractor cooking time
+     * Get container energy packet size
      *
-     * @return cooking time
+     * @return packet size
      */
     public int getEnergyPacketSize() {
         return this.propertyDelegate.get(EnergyContainerProperties.ENERGY_PACKET_SIZE.ordinal());

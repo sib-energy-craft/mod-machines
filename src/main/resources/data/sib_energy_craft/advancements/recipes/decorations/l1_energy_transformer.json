@@ -1,0 +1,58 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "sib_energy_craft:l1_energy_transformer"
+    ]
+  },
+  "criteria": {
+    "has_tin_cable_isolated": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "sib_energy_craft:tin_cable_isolated"
+            ]
+          }
+        ]
+      }
+    },
+    "has_coil": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "sib_energy_craft:coil"
+            ]
+          }
+        ]
+      }
+    },
+    "has_planks": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "tag": "minecraft:planks"
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "sib_energy_craft:l1_energy_transformer"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_tin_cable_isolated",
+      "has_coil",
+      "has_planks",
+      "has_the_recipe"
+    ]
+  ]
+}

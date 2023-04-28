@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "PTP",
+    "PCP",
+    "PTP"
+  ],
+  "key": {
+    "P": {
+      "tag": "minecraft:planks"
+    },
+    "C": {
+      "item": "sib_energy_craft:coil"
+    },
+    "T": {
+      "item": "sib_energy_craft:tin_cable_isolated"
+    }
+  },
+  "result": {
+    "item": "sib_energy_craft:l1_energy_transformer"
+  }
+}

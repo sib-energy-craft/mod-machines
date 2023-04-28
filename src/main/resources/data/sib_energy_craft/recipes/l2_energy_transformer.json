@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "C",
+    "B",
+    "C"
+  ],
+  "key": {
+    "C": {
+      "item": "sib_energy_craft:copper_cable_isolated"
+    },
+    "B": {
+      "item": "sib_energy_craft:base_machine_body"
+    }
+  },
+  "result": {
+    "item": "sib_energy_craft:l2_energy_transformer"
+  }
+}
