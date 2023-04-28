@@ -1,0 +1,25 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " C ",
+    "#TB",
+    " C "
+  ],
+  "key": {
+    "C": {
+      "item": "sib_energy_craft:gold_cable_isolated_x2"
+    },
+    "#": {
+      "item": "sib_energy_craft:energy_circuit"
+    },
+    "T": {
+      "item": "sib_energy_craft:l2_energy_transformer"
+    },
+    "B": {
+      "item": "sib_energy_craft:advanced_rechargeable_battery"
+    }
+  },
+  "result": {
+    "item": "sib_energy_craft:l3_energy_transformer"
+  }
+}

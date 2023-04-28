@@ -41,6 +41,7 @@ dependencies {
     modImplementation("com.github.sib-energy-craft:mod-metallurgy:${project.sec_mod_metallurgy_version}")
     modImplementation("com.github.sib-energy-craft:mod-energy-items:${project.sec_mod_energy_items_version}")
     modImplementation("com.github.sib-energy-craft:mod-rubber:${project.sec_mod_rubber_version}")
+    modImplementation("com.github.sib-energy-craft:mod-cables:${project.sec_mod_cables_version}")
 }
 
 tasks.withType(JavaCompile).configureEach {

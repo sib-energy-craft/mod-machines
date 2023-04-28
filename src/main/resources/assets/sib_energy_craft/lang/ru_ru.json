@@ -26,8 +26,12 @@
 
   "block.sib_energy_craft.l1_energy_transformer": "Трансформатор 1 уровня",
   "container.l1_energy_transformer": "Трансформатор 1 уровня",
+
   "block.sib_energy_craft.l2_energy_transformer": "Трансформатор 2 уровня",
   "container.l2_energy_transformer": "Трансформатор 2 уровня",
+
+  "block.sib_energy_craft.l3_energy_transformer": "Трансформатор 3 уровня",
+  "container.l3_energy_transformer": "Трансформатор 3 уровня",
 
   "block.sib_energy_craft.base_machine_body": "Базовый корпус машины",
 

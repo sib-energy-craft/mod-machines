@@ -16,16 +16,18 @@ import net.minecraft.item.ItemGroups;
 public final class Items implements ModRegistrar {
     public static final BlockItem L1_ENERGY_TRANSFORMER;
     public static final BlockItem L2_ENERGY_TRANSFORMER;
+    public static final BlockItem L3_ENERGY_TRANSFORMER;
 
     static {
         L1_ENERGY_TRANSFORMER = registerTransformer(Blocks.L1_ENERGY_TRANSFORMER);
         L2_ENERGY_TRANSFORMER = registerTransformer(Blocks.L2_ENERGY_TRANSFORMER);
+        L3_ENERGY_TRANSFORMER = registerTransformer(Blocks.L3_ENERGY_TRANSFORMER);
     }
 
     private static EnergyTransformerBlockItem registerTransformer(Identified<? extends AbstractEnergyTransformerBlock> identified) {
-        AbstractEnergyTransformerBlock block = identified.entity();
-        Item.Settings settings = new Item.Settings();
-        EnergyTransformerBlockItem blockItem = new EnergyTransformerBlockItem(block, settings);
+        var block = identified.entity();
+        var settings = new Item.Settings();
+        var blockItem = new EnergyTransformerBlockItem(block, settings);
         return ItemUtils.register(ItemGroups.FUNCTIONAL, identified.identifier(), blockItem);
     }
 }

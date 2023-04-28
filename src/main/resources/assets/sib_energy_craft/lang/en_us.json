@@ -30,6 +30,9 @@
   "block.sib_energy_craft.l2_energy_transformer": "L2 Transformer",
   "container.l2_energy_transformer": "L2 Transformer",
 
+  "block.sib_energy_craft.l3_energy_transformer": "L3 Transformer",
+  "container.l3_energy_transformer": "L3 Transformer",
+
   "block.sib_energy_craft.base_machine_body": "Base Machine Body",
 
   "attribute.name.sib_energy_craft.charge": "Charge: %d EU",
