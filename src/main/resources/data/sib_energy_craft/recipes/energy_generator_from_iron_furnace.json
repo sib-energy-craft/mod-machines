@@ -1,6 +1,7 @@
 {
   "type": "sib_energy_craft:crafting_shaped_charged",
   "category": "building",
+  "group": "energy_generator",
   "pattern": [
     " B ",
     "PPP",
