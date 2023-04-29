@@ -54,13 +54,11 @@ public abstract class AbstractMaceratorScreenHandler extends AbstractEnergyMachi
                 }
             } else {
                 if(MaceratorTags.isUsedInMacerator(slotStack)) {
-                    if(!insertItem(slotStack, SOURCE_SLOT,
-                                    SOURCE_SLOT + 1, false)) {
+                    if(!insertItem(slotStack, SOURCE_SLOT, SOURCE_SLOT + 1, false)) {
                         return ItemStack.EMPTY;
                     }
                 } else if(CoreTags.isChargeable(slotStack)) {
-                    if(!insertItem(slotStack, CHARGE_SLOT,
-                                    CHARGE_SLOT + 1, false)) {
+                    if(!insertItem(slotStack, CHARGE_SLOT, CHARGE_SLOT + 1, false)) {
                         return ItemStack.EMPTY;
                     }
                 } else if(index >= 3 && index < 30 && !insertItem(slotStack, 30, 39, false)) {
