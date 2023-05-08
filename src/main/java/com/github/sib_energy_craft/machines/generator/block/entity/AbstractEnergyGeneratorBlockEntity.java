@@ -6,6 +6,8 @@ import com.github.sib_energy_craft.energy_api.EnergyOffer;
 import com.github.sib_energy_craft.energy_api.items.ChargeableItem;
 import com.github.sib_energy_craft.energy_api.supplier.EnergySupplier;
 import com.github.sib_energy_craft.machines.generator.block.AbstractEnergyGeneratorBlock;
+import com.github.sib_energy_craft.pipes.api.ItemConsumer;
+import com.github.sib_energy_craft.pipes.utils.PipeUtils;
 import com.github.sib_energy_craft.sec_utils.screen.PropertyMap;
 import net.fabricmc.fabric.api.screenhandler.v1.ExtendedScreenHandlerFactory;
 import net.minecraft.block.Block;
@@ -35,7 +37,7 @@ import java.util.Set;
  * @author sibmaks
  */
 public abstract class AbstractEnergyGeneratorBlockEntity extends LockableContainerBlockEntity
-        implements SidedInventory, ExtendedScreenHandlerFactory, EnergySupplier {
+        implements SidedInventory, ExtendedScreenHandlerFactory, EnergySupplier, ItemConsumer {
     private static final Map<Item, Integer> FUEL_MAP = AbstractFurnaceBlockEntity.createFuelTimeMap();
 
     private static final Set<Direction> SUPPLYING_DIRECTIONS = Set.of(
@@ -295,6 +297,29 @@ public abstract class AbstractEnergyGeneratorBlockEntity extends LockableContain
             return this.energyContainer.subtract(energy);
         }
         return false;
+    }
+
+    @Override
+    public boolean canConsume(@NotNull ItemStack itemStack, @NotNull Direction direction) {
+        if(canUseAsFuel(itemStack)) {
+            var currentFuel = inventory.get(FUEL_SLOT_INDEX);
+            return currentFuel.isEmpty() || PipeUtils.canMergeItems(currentFuel, itemStack);
+        }
+        return false;
+    }
+
+    @Override
+    public @NotNull ItemStack consume(@NotNull ItemStack itemStack, @NotNull Direction direction) {
+        if (!canConsume(itemStack, direction)) {
+            return itemStack;
+        }
+        markDirty();
+        var currentFuel = inventory.get(FUEL_SLOT_INDEX);
+        if (currentFuel.isEmpty()) {
+            inventory.set(FUEL_SLOT_INDEX, itemStack);
+            return ItemStack.EMPTY;
+        }
+        return PipeUtils.mergeItems(currentFuel, itemStack);
     }
 }
 
