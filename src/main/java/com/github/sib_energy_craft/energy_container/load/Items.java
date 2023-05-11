@@ -13,6 +13,7 @@ import net.minecraft.item.ItemGroups;
 public final class Items implements ModRegistrar {
     public static final EnergyContainerBlockItem BASIC_ENERGY_CONTAINER;
     public static final EnergyContainerBlockItem BRONZE_ENERGY_CONTAINER;
+    public static final EnergyContainerBlockItem CRYSTAL_ENERGY_CONTAINER;
 
     static {
         var commonSettings = new Item.Settings();
@@ -23,6 +24,10 @@ public final class Items implements ModRegistrar {
 
         BRONZE_ENERGY_CONTAINER = ItemUtils.register(ItemGroups.FUNCTIONAL,
                 Blocks.BRONZE_ENERGY_CONTAINER,
+                it -> new EnergyContainerBlockItem(it, commonSettings));
+
+        CRYSTAL_ENERGY_CONTAINER = ItemUtils.register(ItemGroups.FUNCTIONAL,
+                Blocks.CRYSTAL_ENERGY_CONTAINER,
                 it -> new EnergyContainerBlockItem(it, commonSettings));
     }
 }
