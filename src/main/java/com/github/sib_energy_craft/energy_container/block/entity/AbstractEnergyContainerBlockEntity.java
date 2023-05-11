@@ -7,6 +7,7 @@ import com.github.sib_energy_craft.energy_api.consumer.EnergyConsumer;
 import com.github.sib_energy_craft.energy_api.supplier.EnergySupplier;
 import com.github.sib_energy_craft.energy_api.tags.CoreTags;
 import com.github.sib_energy_craft.energy_container.block.AbstractEnergyContainerBlock;
+import com.github.sib_energy_craft.energy_container.screen.EnergyContainerScreenHandler;
 import com.github.sib_energy_craft.sec_utils.screen.PropertyMap;
 import com.github.sib_energy_craft.sec_utils.utils.BlockEntityUtils;
 import lombok.Getter;
@@ -15,11 +16,15 @@ import net.minecraft.block.BlockState;
 import net.minecraft.block.entity.BlockEntityType;
 import net.minecraft.block.entity.LockableContainerBlockEntity;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.inventory.Inventories;
 import net.minecraft.inventory.SidedInventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
 import net.minecraft.nbt.NbtCompound;
+import net.minecraft.network.PacketByteBuf;
+import net.minecraft.screen.ScreenHandler;
+import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.text.Text;
 import net.minecraft.util.collection.DefaultedList;
@@ -248,5 +253,16 @@ public abstract class AbstractEnergyContainerBlockEntity extends LockableContain
         return energyContainer.getCharge().intValue();
     }
 
+    @Override
+    protected ScreenHandler createScreenHandler(int syncId,
+                                                @NotNull PlayerInventory playerInventory) {
+        return new EnergyContainerScreenHandler(syncId, playerInventory, this, this.propertyMap);
+    }
+
+    @Override
+    public void writeScreenOpeningData(@NotNull ServerPlayerEntity player,
+                                       @NotNull PacketByteBuf buf) {
+        buf.writeBlockPos(pos);
+    }
 }
 

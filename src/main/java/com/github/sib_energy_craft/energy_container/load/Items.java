@@ -12,12 +12,17 @@ import net.minecraft.item.ItemGroups;
  */
 public final class Items implements ModRegistrar {
     public static final EnergyContainerBlockItem BASIC_ENERGY_CONTAINER;
+    public static final EnergyContainerBlockItem BRONZE_ENERGY_CONTAINER;
 
     static {
         var commonSettings = new Item.Settings();
 
         BASIC_ENERGY_CONTAINER = ItemUtils.register(ItemGroups.FUNCTIONAL,
                 Blocks.BASIC_ENERGY_CONTAINER,
+                it -> new EnergyContainerBlockItem(it, commonSettings));
+
+        BRONZE_ENERGY_CONTAINER = ItemUtils.register(ItemGroups.FUNCTIONAL,
+                Blocks.BRONZE_ENERGY_CONTAINER,
                 it -> new EnergyContainerBlockItem(it, commonSettings));
     }
 }

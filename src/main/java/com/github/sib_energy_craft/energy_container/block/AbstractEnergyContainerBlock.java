@@ -64,10 +64,6 @@ public abstract class AbstractEnergyContainerBlock extends BlockWithEntity {
         return ActionResult.CONSUME;
     }
 
-    protected abstract void openScreen(@NotNull World world,
-                                       @NotNull BlockPos blockPos,
-                                       @NotNull PlayerEntity playerEntity);
-
     @NotNull
     @Override
     public BlockState getPlacementState(@NotNull ItemPlacementContext ctx) {
@@ -186,5 +182,14 @@ public abstract class AbstractEnergyContainerBlock extends BlockWithEntity {
             }
         });
         state.onStacksDropped(serverWorld, pos, hand, true);
+    }
+
+    protected void openScreen(@NotNull World world,
+                              @NotNull BlockPos blockPos,
+                              @NotNull PlayerEntity playerEntity) {
+        var blockEntity = world.getBlockEntity(blockPos);
+        if (blockEntity instanceof AbstractEnergyContainerBlockEntity containerBlockEntity) {
+            playerEntity.openHandledScreen(containerBlockEntity);
+        }
     }
 }
