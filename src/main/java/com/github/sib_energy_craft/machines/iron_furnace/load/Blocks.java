@@ -3,7 +3,7 @@ package com.github.sib_energy_craft.machines.iron_furnace.load;
 import com.github.sib_energy_craft.energy_api.utils.Identifiers;
 import com.github.sib_energy_craft.machines.iron_furnace.block.IronFurnaceBlock;
 import com.github.sib_energy_craft.sec_utils.common.Identified;
-import com.github.sib_energy_craft.sec_utils.load.ModRegistrar;
+import com.github.sib_energy_craft.sec_utils.load.DefaultModInitializer;
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Material;
@@ -19,7 +19,7 @@ import static com.github.sib_energy_craft.sec_utils.utils.BlockUtils.register;
  * @since 0.0.1
  * @author sibmaks
  */
-public final class Blocks implements ModRegistrar {
+public final class Blocks implements DefaultModInitializer {
     public static final Identified<IronFurnaceBlock> IRON_FURNACE;
 
     static {

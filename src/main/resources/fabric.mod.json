@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "id": "mod-machines",
-  "version": "0.0.12",
+  "version": "0.0.13",
   "authors": [
     "sibmaks"
   ],
@@ -10,19 +10,52 @@
   "environment": "*",
   "entrypoints": {
     "main": [
-      "com.github.sib_energy_craft.machines.generator.load.Loader",
-      "com.github.sib_energy_craft.machines.extractor.load.Loader",
-      "com.github.sib_energy_craft.machines.macerator.load.Loader",
-      "com.github.sib_energy_craft.machines.compressor.load.Loader",
+      "com.github.sib_energy_craft.machines.compressor.load.Blocks",
+      "com.github.sib_energy_craft.machines.compressor.load.Entities",
+      "com.github.sib_energy_craft.machines.compressor.load.Items",
+      "com.github.sib_energy_craft.machines.compressor.load.Screens",
+      "com.github.sib_energy_craft.machines.compressor.load.Stats",
 
-      "com.github.sib_energy_craft.machines.iron_furnace.load.Loader",
-      "com.github.sib_energy_craft.machines.energy_furnace.load.Loader",
+      "com.github.sib_energy_craft.machines.extractor.load.Blocks",
+      "com.github.sib_energy_craft.machines.extractor.load.Entities",
+      "com.github.sib_energy_craft.machines.extractor.load.Items",
+      "com.github.sib_energy_craft.machines.extractor.load.Screens",
+      "com.github.sib_energy_craft.machines.extractor.load.Stats",
 
-      "com.github.sib_energy_craft.energy_container.load.Loader",
+      "com.github.sib_energy_craft.machines.generator.load.Blocks",
+      "com.github.sib_energy_craft.machines.generator.load.Entities",
+      "com.github.sib_energy_craft.machines.generator.load.Items",
+      "com.github.sib_energy_craft.machines.generator.load.Screens",
+      "com.github.sib_energy_craft.machines.generator.load.Stats",
 
-      "com.github.sib_energy_craft.energy_transformer.load.Loader",
+      "com.github.sib_energy_craft.machines.macerator.load.Blocks",
+      "com.github.sib_energy_craft.machines.macerator.load.Entities",
+      "com.github.sib_energy_craft.machines.macerator.load.Items",
+      "com.github.sib_energy_craft.machines.macerator.load.Screens",
+      "com.github.sib_energy_craft.machines.macerator.load.Stats",
 
-      "com.github.sib_energy_craft.machines.load.Loader"
+      "com.github.sib_energy_craft.machines.iron_furnace.load.Blocks",
+      "com.github.sib_energy_craft.machines.iron_furnace.load.Entities",
+      "com.github.sib_energy_craft.machines.iron_furnace.load.Items",
+
+      "com.github.sib_energy_craft.machines.energy_furnace.load.Blocks",
+      "com.github.sib_energy_craft.machines.energy_furnace.load.Entities",
+      "com.github.sib_energy_craft.machines.energy_furnace.load.Items",
+      "com.github.sib_energy_craft.machines.energy_furnace.load.Screens",
+      "com.github.sib_energy_craft.machines.energy_furnace.load.Stats",
+
+      "com.github.sib_energy_craft.energy_container.load.Blocks",
+      "com.github.sib_energy_craft.energy_container.load.Entities",
+      "com.github.sib_energy_craft.energy_container.load.Items",
+      "com.github.sib_energy_craft.energy_container.load.Screens",
+
+      "com.github.sib_energy_craft.energy_transformer.load.Blocks",
+      "com.github.sib_energy_craft.energy_transformer.load.Entities",
+      "com.github.sib_energy_craft.energy_transformer.load.Items",
+      "com.github.sib_energy_craft.energy_transformer.load.Screens",
+
+      "com.github.sib_energy_craft.machines.load.Blocks",
+      "com.github.sib_energy_craft.machines.load.Items"
     ]
   }
 }

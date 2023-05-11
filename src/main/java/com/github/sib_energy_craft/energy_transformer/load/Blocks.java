@@ -6,7 +6,7 @@ import com.github.sib_energy_craft.energy_transformer.block.L1EnergyTransformerB
 import com.github.sib_energy_craft.energy_transformer.block.L2EnergyTransformerBlock;
 import com.github.sib_energy_craft.energy_transformer.block.L3EnergyTransformerBlock;
 import com.github.sib_energy_craft.sec_utils.common.Identified;
-import com.github.sib_energy_craft.sec_utils.load.ModRegistrar;
+import com.github.sib_energy_craft.sec_utils.load.DefaultModInitializer;
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.minecraft.block.Material;
 import net.minecraft.sound.BlockSoundGroup;
@@ -17,7 +17,7 @@ import static com.github.sib_energy_craft.sec_utils.utils.BlockUtils.register;
  * @since 0.0.4
  * @author sibmaks
  */
-public final class Blocks implements ModRegistrar {
+public final class Blocks implements DefaultModInitializer {
     public static final Identified<L1EnergyTransformerBlock> L1_ENERGY_TRANSFORMER;
     public static final Identified<L2EnergyTransformerBlock> L2_ENERGY_TRANSFORMER;
     public static final Identified<L3EnergyTransformerBlock> L3_ENERGY_TRANSFORMER;

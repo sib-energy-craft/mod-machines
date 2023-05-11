@@ -6,7 +6,7 @@ import com.github.sib_energy_craft.energy_container.block.BasicEnergyContainerBl
 import com.github.sib_energy_craft.energy_container.block.BronzeEnergyContainerBlock;
 import com.github.sib_energy_craft.energy_container.block.CrystalEnergyContainerBlock;
 import com.github.sib_energy_craft.sec_utils.common.Identified;
-import com.github.sib_energy_craft.sec_utils.load.ModRegistrar;
+import com.github.sib_energy_craft.sec_utils.load.DefaultModInitializer;
 import com.github.sib_energy_craft.sec_utils.utils.BlockUtils;
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.minecraft.block.Material;
@@ -16,7 +16,7 @@ import net.minecraft.sound.BlockSoundGroup;
  * @since 0.0.2
  * @author sibmaks
  */
-public final class Blocks implements ModRegistrar {
+public final class Blocks implements DefaultModInitializer {
     public static final Identified<BasicEnergyContainerBlock> BASIC_ENERGY_CONTAINER;
     public static final Identified<BronzeEnergyContainerBlock> BRONZE_ENERGY_CONTAINER;
     public static final Identified<CrystalEnergyContainerBlock> CRYSTAL_ENERGY_CONTAINER;
