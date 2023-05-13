@@ -14,6 +14,7 @@ import net.minecraft.item.ItemPlacementContext;
 import net.minecraft.item.ItemStack;
 import net.minecraft.screen.ScreenHandler;
 import net.minecraft.server.world.ServerWorld;
+import net.minecraft.stat.Stats;
 import net.minecraft.state.StateManager;
 import net.minecraft.state.property.BooleanProperty;
 import net.minecraft.state.property.DirectionProperty;
@@ -156,10 +157,31 @@ public abstract class AbstractEnergyGeneratorBlock extends BlockWithEntity {
     }
 
     @Override
-    public void onBreak(@NotNull World world,
-                        @NotNull BlockPos pos,
-                        @NotNull BlockState state,
-                        @NotNull PlayerEntity player) {
-        super.onBreak(world, pos, state, player);
+    public void afterBreak(@NotNull World world,
+                           @NotNull PlayerEntity player,
+                           @NotNull BlockPos pos,
+                           @NotNull BlockState state,
+                           @Nullable BlockEntity blockEntity,
+                           @NotNull ItemStack hand) {
+        player.incrementStat(Stats.MINED.getOrCreateStat(this));
+        player.addExhaustion(0.005F);
+        if (!(world instanceof ServerWorld serverWorld)) {
+            return;
+        }
+        getDroppedStacks(state, serverWorld, pos, blockEntity, player, hand).forEach((stackx) -> {
+            dropStack(world, pos, stackx);
+            if (!(blockEntity instanceof AbstractEnergyGeneratorBlockEntity energyGeneratorBlockEntity)) {
+                return;
+            }
+            if (energyGeneratorBlockEntity.hasCustomName()) {
+                stackx.setCustomName(energyGeneratorBlockEntity.getCustomName());
+            }
+            var item = stackx.getItem();
+            var charge = energyGeneratorBlockEntity.getCharge();
+            if (item instanceof ChargeableItem chargeableItem) {
+                chargeableItem.charge(stackx, charge);
+            }
+        });
+        state.onStacksDropped(serverWorld, pos, hand, true);
     }
 }

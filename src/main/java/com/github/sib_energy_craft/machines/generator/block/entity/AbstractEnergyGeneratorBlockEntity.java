@@ -321,5 +321,14 @@ public abstract class AbstractEnergyGeneratorBlockEntity extends LockableContain
         }
         return PipeUtils.mergeItems(currentFuel, itemStack);
     }
+
+    /**
+     * Get current generator charge
+     *
+     * @return generator charge
+     */
+    public int getCharge() {
+        return energyContainer.getCharge().intValue();
+    }
 }
 
