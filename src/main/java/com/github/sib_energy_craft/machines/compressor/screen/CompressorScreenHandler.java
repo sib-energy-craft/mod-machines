@@ -1,6 +1,6 @@
 package com.github.sib_energy_craft.machines.compressor.screen;
 
-import com.github.sib_energy_craft.machines.compressor.load.Screens;
+import com.github.sib_energy_craft.machines.compressor.load.client.Screens;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.inventory.Inventory;
 import net.minecraft.network.PacketByteBuf;

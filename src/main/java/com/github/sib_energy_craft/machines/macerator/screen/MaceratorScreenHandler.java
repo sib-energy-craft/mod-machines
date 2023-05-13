@@ -1,6 +1,6 @@
 package com.github.sib_energy_craft.machines.macerator.screen;
 
-import com.github.sib_energy_craft.machines.macerator.load.Screens;
+import com.github.sib_energy_craft.machines.macerator.load.client.Screens;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.inventory.Inventory;
 import net.minecraft.network.PacketByteBuf;

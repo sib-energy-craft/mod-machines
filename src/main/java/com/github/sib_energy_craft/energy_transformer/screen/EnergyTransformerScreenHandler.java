@@ -1,6 +1,6 @@
 package com.github.sib_energy_craft.energy_transformer.screen;
 
-import com.github.sib_energy_craft.energy_transformer.load.Screens;
+import com.github.sib_energy_craft.energy_transformer.load.client.Screens;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.network.PacketByteBuf;
 import net.minecraft.screen.PropertyDelegate;
