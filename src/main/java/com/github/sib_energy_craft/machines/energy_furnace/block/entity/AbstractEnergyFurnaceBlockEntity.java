@@ -25,6 +25,7 @@ import org.jetbrains.annotations.NotNull;
  */
 public abstract class AbstractEnergyFurnaceBlockEntity extends AbstractEnergyMachineBlockEntity<SmeltingRecipe>
         implements ExtendedScreenHandlerFactory, EnergyConsumer {
+    protected static final Energy ENERGY_ONE = Energy.of(1);
 
     protected AbstractEnergyFurnaceBlockEntity(@NotNull BlockEntityType<?> blockEntityType,
                                                @NotNull BlockPos pos,
@@ -41,24 +42,24 @@ public abstract class AbstractEnergyFurnaceBlockEntity extends AbstractEnergyMac
         if(world.isClient) {
             return;
         }
-        boolean hasEnergy = blockEntity.energyContainer.hasEnergy();
+        boolean hasEnergy = blockEntity.energyContainer.hasAtLeast(ENERGY_ONE);
         boolean changed = false;
         boolean working = blockEntity.working;
         blockEntity.working = false;
 
         charge(blockEntity);
 
-        if(blockEntity.energyContainer.hasEnergy()) {
+        if(blockEntity.energyContainer.hasAtLeast(ENERGY_ONE)) {
             var recipeManager = world.getRecipeManager();
             var recipe = recipeManager.getFirstMatch(blockEntity.recipeType, blockEntity, world)
                     .orElse(null);
             if(recipe != null) {
                 int i = blockEntity.getMaxCountPerStack();
                 if (canAcceptRecipeOutput(world, recipe, blockEntity.inventory, i)) {
-                    if(blockEntity.energyContainer.subtract(Energy.of(1))) {
+                    if(blockEntity.energyContainer.subtract(ENERGY_ONE)) {
                         ++blockEntity.cookTime;
                         blockEntity.working = true;
-                        if (blockEntity.cookTime == blockEntity.cookTimeTotal) {
+                        if (blockEntity.cookTime >= blockEntity.cookTimeTotal) {
                             blockEntity.cookTime = 0;
                             var block = (AbstractEnergyFurnaceBlock) blockEntity.block;
                             blockEntity.cookTimeTotal = (int) (getSmeltingCookTime(world, blockEntity.recipeType, blockEntity) *
