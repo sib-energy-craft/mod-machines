@@ -55,19 +55,20 @@ public abstract class AbstractEnergyFurnaceBlockEntity extends AbstractEnergyMac
             if(recipe != null) {
                 int i = blockEntity.getMaxCountPerStack();
                 if (canAcceptRecipeOutput(world, recipe, blockEntity.inventory, i)) {
-                    blockEntity.energyContainer.subtract(Energy.of(1));
-                    ++blockEntity.cookTime;
-                    blockEntity.working = true;
-                    if (blockEntity.cookTime == blockEntity.cookTimeTotal) {
-                        blockEntity.cookTime = 0;
-                        var block = (AbstractEnergyFurnaceBlock) blockEntity.block;
-                        blockEntity.cookTimeTotal = (int) (getSmeltingCookTime(world, blockEntity.recipeType, blockEntity) *
-                                block.getCookingTotalTimeMultiplier());
-                        if (craftRecipe(world, recipe, blockEntity.inventory, 1, i)) {
-                            blockEntity.setLastRecipe(recipe);
+                    if(blockEntity.energyContainer.subtract(Energy.of(1))) {
+                        ++blockEntity.cookTime;
+                        blockEntity.working = true;
+                        if (blockEntity.cookTime == blockEntity.cookTimeTotal) {
+                            blockEntity.cookTime = 0;
+                            var block = (AbstractEnergyFurnaceBlock) blockEntity.block;
+                            blockEntity.cookTimeTotal = (int) (getSmeltingCookTime(world, blockEntity.recipeType, blockEntity) *
+                                    block.getCookingTotalTimeMultiplier());
+                            if (craftRecipe(world, recipe, blockEntity.inventory, 1, i)) {
+                                blockEntity.setLastRecipe(recipe);
+                            }
                         }
+                        changed = true;
                     }
-                    changed = true;
                 } else {
                     blockEntity.cookTime = 0;
                 }
