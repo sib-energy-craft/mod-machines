@@ -11,6 +11,10 @@
   "block.sib_energy_craft.macerator": "Мацератор",
   "stat.sib_energy_craft.interact_with_macerator": "Использований мацератора",
 
+  "container.press_machine": "Пресс машина",
+  "block.sib_energy_craft.press_machine": "Пресс машина",
+  "stat.sib_energy_craft.interact_with_press_machine": "Использований пресс машины",
+
   "container.compressor": "Компрессор",
   "block.sib_energy_craft.compressor": "Компрессор",
   "stat.sib_energy_craft.interact_with_compressor": "Использований компрессора",
@@ -29,7 +33,7 @@
 
   "block.sib_energy_craft.energy_furnace": "Энергетическая печь",
   "container.energy_furnace": "Энергетическая печь",
-  "stat.sib_energy_craft.energy_furnace": "Использований энергетической печи",
+  "stat.sib_energy_craft.interact_with_energy_furnace": "Использований энергетической печи",
 
   "block.sib_energy_craft.l1_energy_transformer": "Трансформатор 1 уровня",
   "container.l1_energy_transformer": "Трансформатор 1 уровня",

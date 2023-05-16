@@ -48,7 +48,12 @@
       "com.github.sib_energy_craft.energy_transformer.load.Items",
 
       "com.github.sib_energy_craft.machines.load.Blocks",
-      "com.github.sib_energy_craft.machines.load.Items"
+      "com.github.sib_energy_craft.machines.load.Items",
+
+      "com.github.sib_energy_craft.machines.press_machine.load.Blocks",
+      "com.github.sib_energy_craft.machines.press_machine.load.Entities",
+      "com.github.sib_energy_craft.machines.press_machine.load.Items",
+      "com.github.sib_energy_craft.machines.press_machine.load.Stats"
     ],
     "client": [
       "com.github.sib_energy_craft.machines.compressor.load.client.Screens",
@@ -56,6 +61,8 @@
       "com.github.sib_energy_craft.machines.generator.load.client.Screens",
       "com.github.sib_energy_craft.machines.macerator.load.client.Screens",
       "com.github.sib_energy_craft.machines.energy_furnace.load.client.Screens",
+      "com.github.sib_energy_craft.machines.press_machine.load.client.Screens",
+
       "com.github.sib_energy_craft.energy_container.load.client.Screens",
       "com.github.sib_energy_craft.energy_transformer.load.client.Screens"
     ]

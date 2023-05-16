@@ -19,6 +19,7 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.World;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
 
 /**
@@ -127,8 +128,8 @@ public abstract class AbstractEnergyFurnaceBlockEntity extends AbstractEnergyMac
     }
 
     @Override
-    public @NotNull <C extends Inventory, T extends Recipe<C>> RecipeType<T> getRecipeType() {
-        return (RecipeType<T>) recipeType;
+    public @Nullable Recipe<Inventory> getRecipe(@NotNull World world) {
+        return getRecipe(recipeType, world);
     }
 }
 

@@ -13,6 +13,7 @@
     "sib_energy_craft:energy_furnace",
     "sib_energy_craft:l1_energy_transformer",
     "sib_energy_craft:l2_energy_transformer",
-    "sib_energy_craft:l3_energy_transformer"
+    "sib_energy_craft:l3_energy_transformer",
+    "sib_energy_craft:press_machine"
   ]
 }

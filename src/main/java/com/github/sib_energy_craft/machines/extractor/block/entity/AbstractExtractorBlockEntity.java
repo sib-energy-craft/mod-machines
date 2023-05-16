@@ -19,6 +19,7 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
 /**
  * @since 0.0.1
@@ -63,8 +64,8 @@ public abstract class AbstractExtractorBlockEntity extends AbstractEnergyMachine
     }
 
     @Override
-    public @NotNull <C extends Inventory, T extends Recipe<C>> RecipeType<T> getRecipeType() {
-        return (RecipeType<T>) recipeType;
+    public @Nullable Recipe<Inventory> getRecipe(@NotNull World world) {
+        return getRecipe(recipeType, world);
     }
 }
 
