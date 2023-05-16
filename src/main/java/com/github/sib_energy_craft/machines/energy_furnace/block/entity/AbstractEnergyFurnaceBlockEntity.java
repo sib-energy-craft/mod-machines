@@ -3,6 +3,7 @@ package com.github.sib_energy_craft.machines.energy_furnace.block.entity;
 import com.github.sib_energy_craft.energy_api.Energy;
 import com.github.sib_energy_craft.energy_api.consumer.EnergyConsumer;
 import com.github.sib_energy_craft.machines.block.entity.AbstractEnergyMachineBlockEntity;
+import com.github.sib_energy_craft.machines.block.entity.EnergyMachineInventoryTypes;
 import com.github.sib_energy_craft.machines.energy_furnace.block.AbstractEnergyFurnaceBlock;
 import net.fabricmc.fabric.api.screenhandler.v1.ExtendedScreenHandlerFactory;
 import net.minecraft.block.Block;
@@ -11,6 +12,7 @@ import net.minecraft.block.entity.BlockEntityType;
 import net.minecraft.inventory.Inventory;
 import net.minecraft.inventory.SimpleInventory;
 import net.minecraft.item.ItemStack;
+import net.minecraft.recipe.Recipe;
 import net.minecraft.recipe.RecipeType;
 import net.minecraft.recipe.SmeltingRecipe;
 import net.minecraft.util.math.BlockPos;
@@ -23,16 +25,19 @@ import org.jetbrains.annotations.NotNull;
  * @since 0.0.2
  * @author sibmaks
  */
-public abstract class AbstractEnergyFurnaceBlockEntity extends AbstractEnergyMachineBlockEntity<SmeltingRecipe>
+public abstract class AbstractEnergyFurnaceBlockEntity extends AbstractEnergyMachineBlockEntity
         implements ExtendedScreenHandlerFactory, EnergyConsumer {
     protected static final Energy ENERGY_ONE = Energy.of(1);
+
+    protected final RecipeType<SmeltingRecipe> recipeType;
 
     protected AbstractEnergyFurnaceBlockEntity(@NotNull BlockEntityType<?> blockEntityType,
                                                @NotNull BlockPos pos,
                                                @NotNull BlockState state,
                                                @NotNull RecipeType<SmeltingRecipe> recipeType,
                                                @NotNull AbstractEnergyFurnaceBlock block) {
-        super(blockEntityType, pos, state, recipeType, block);
+        super(blockEntityType, pos, state, block);
+        this.recipeType = recipeType;
     }
 
     public static void tick(@NotNull World world,
@@ -55,7 +60,7 @@ public abstract class AbstractEnergyFurnaceBlockEntity extends AbstractEnergyMac
                     .orElse(null);
             if(recipe != null) {
                 int i = blockEntity.getMaxCountPerStack();
-                if (canAcceptRecipeOutput(world, recipe, blockEntity.inventory, i)) {
+                if (canAcceptRecipeOutput(0, blockEntity.inventory, world, recipe, i)) {
                     if(blockEntity.energyContainer.subtract(ENERGY_ONE)) {
                         ++blockEntity.cookTime;
                         blockEntity.working = true;
@@ -64,7 +69,7 @@ public abstract class AbstractEnergyFurnaceBlockEntity extends AbstractEnergyMac
                             var block = (AbstractEnergyFurnaceBlock) blockEntity.block;
                             blockEntity.cookTimeTotal = (int) (getSmeltingCookTime(world, blockEntity.recipeType, blockEntity) *
                                     block.getCookingTotalTimeMultiplier());
-                            if (craftRecipe(world, recipe, blockEntity.inventory, 1, i)) {
+                            if (craftRecipe(0, blockEntity.inventory, world, recipe, 1, i)) {
                                 blockEntity.setLastRecipe(recipe);
                             }
                         }
@@ -90,7 +95,8 @@ public abstract class AbstractEnergyFurnaceBlockEntity extends AbstractEnergyMac
 
     @Override
     public boolean isValid(int slot, @NotNull ItemStack stack) {
-        if(slot == SOURCE_SLOT) {
+        var slotType = inventory.getType(slot);
+        if(slotType == EnergyMachineInventoryTypes.SOURCE) {
             return isSmeltable(stack);
         }
         return super.isValid(slot, stack);
@@ -118,6 +124,11 @@ public abstract class AbstractEnergyFurnaceBlockEntity extends AbstractEnergyMac
                 .getFirstMatch(recipeType, inventory, world)
                 .map(SmeltingRecipe::getCookTime)
                 .orElse(200);
+    }
+
+    @Override
+    public @NotNull <C extends Inventory, T extends Recipe<C>> RecipeType<T> getRecipeType() {
+        return (RecipeType<T>) recipeType;
     }
 }
 

@@ -29,6 +29,7 @@
 
   "block.sib_energy_craft.energy_furnace": "Energy Furnace",
   "container.energy_furnace": "Energy Furnace",
+  "stat.sib_energy_craft.energy_furnace": "Interactions with Energy Furnace",
 
   "block.sib_energy_craft.l1_energy_transformer": "L1 Transformer",
   "container.l1_energy_transformer": "L1 Transformer",

@@ -2,6 +2,7 @@ package com.github.sib_energy_craft.machines.macerator.block.entity;
 
 import com.github.sib_energy_craft.energy_api.consumer.EnergyConsumer;
 import com.github.sib_energy_craft.machines.block.entity.AbstractEnergyMachineBlockEntity;
+import com.github.sib_energy_craft.machines.block.entity.EnergyMachineInventoryTypes;
 import com.github.sib_energy_craft.machines.macerator.block.AbstractMaceratorBlock;
 import com.github.sib_energy_craft.machines.macerator.tag.MaceratorTags;
 import com.github.sib_energy_craft.machines.utils.ExperienceUtils;
@@ -9,6 +10,7 @@ import com.github.sib_energy_craft.recipes.recipe.MaceratingRecipe;
 import net.fabricmc.fabric.api.screenhandler.v1.ExtendedScreenHandlerFactory;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.entity.BlockEntityType;
+import net.minecraft.inventory.Inventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.recipe.Recipe;
 import net.minecraft.recipe.RecipeType;
@@ -22,16 +24,18 @@ import org.jetbrains.annotations.NotNull;
  * @since 0.0.1
  * @author sibmaks
  */
-public abstract class AbstractMaceratorBlockEntity extends AbstractEnergyMachineBlockEntity<MaceratingRecipe>
+public abstract class AbstractMaceratorBlockEntity extends AbstractEnergyMachineBlockEntity
         implements ExtendedScreenHandlerFactory, EnergyConsumer {
 
+    protected final RecipeType<MaceratingRecipe> recipeType;
 
     protected AbstractMaceratorBlockEntity(@NotNull BlockEntityType<?> blockEntityType,
                                            @NotNull BlockPos pos,
                                            @NotNull BlockState state,
                                            @NotNull RecipeType<MaceratingRecipe> recipeType,
                                            @NotNull AbstractMaceratorBlock block) {
-        super(blockEntityType, pos, state, recipeType, block);
+        super(blockEntityType, pos, state, block);
+        this.recipeType = recipeType;
     }
 
     @Override
@@ -41,7 +45,8 @@ public abstract class AbstractMaceratorBlockEntity extends AbstractEnergyMachine
 
     @Override
     public boolean isValid(int slot, @NotNull ItemStack stack) {
-        if(slot == SOURCE_SLOT) {
+        var slotType = inventory.getType(slot);
+        if(slotType == EnergyMachineInventoryTypes.SOURCE) {
             return MaceratorTags.isUsedInMacerator(stack);
         }
         return super.isValid(slot, stack);
@@ -55,6 +60,11 @@ public abstract class AbstractMaceratorBlockEntity extends AbstractEnergyMachine
         if (recipe instanceof MaceratingRecipe cookingRecipe) {
             ExperienceUtils.drop(world, pos, id, cookingRecipe.getExperience());
         }
+    }
+
+    @Override
+    public @NotNull <C extends Inventory, T extends Recipe<C>> RecipeType<T> getRecipeType() {
+        return (RecipeType<T>) recipeType;
     }
 }
 

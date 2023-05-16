@@ -34,7 +34,7 @@ public class MaceratorScreen extends HandledScreen<MaceratorScreenHandler> {
         int chargeProgress = this.handler.getChargeProgress();
         drawTexture(matrices, i + 60, j + 37, 176, 0, 7, chargeProgress);
         int cookProgress = this.handler.getCookProgress();
-        drawTexture(matrices, i + 80, j + 34, 176, 13, cookProgress, 15);
+        drawTexture(matrices, i + 80, j + 35, 176, 13, cookProgress, 15);
         if(mouseX >= i + 60 && mouseX <= i + 60 + 7 &&
                 mouseY >= j + 37 && mouseY <= j + 37 + 13) {
             var charge = this.handler.getCharge();
