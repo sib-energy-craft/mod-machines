@@ -15,6 +15,10 @@
   "block.sib_energy_craft.press_machine": "Пресс машина",
   "stat.sib_energy_craft.interact_with_press_machine": "Использований пресс машины",
 
+  "container.cutting_machine": "Режущая машина",
+  "block.sib_energy_craft.cutting_machine": "Режущая машина",
+  "stat.sib_energy_craft.interact_with_cutting_machine": "Использований режущей машины",
+
   "container.compressor": "Компрессор",
   "block.sib_energy_craft.compressor": "Компрессор",
   "stat.sib_energy_craft.interact_with_compressor": "Использований компрессора",
