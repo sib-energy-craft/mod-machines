@@ -39,6 +39,10 @@
   "container.energy_furnace": "Энергетическая печь",
   "stat.sib_energy_craft.interact_with_energy_furnace": "Использований энергетической печи",
 
+  "block.sib_energy_craft.induction_furnace": "Индукционная печь",
+  "container.induction_furnace": "Индукционная печь",
+  "stat.sib_energy_craft.interact_with_induction_furnace": "Использований индукционной печи",
+
   "block.sib_energy_craft.l1_energy_transformer": "Трансформатор 1 уровня",
   "container.l1_energy_transformer": "Трансформатор 1 уровня",
 

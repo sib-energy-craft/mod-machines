@@ -1,7 +1,7 @@
 package com.github.sib_energy_craft.machines.energy_furnace.screen;
 
 import com.github.sib_energy_craft.machines.screen.AbstractEnergyMachineScreenHandler;
-import com.github.sib_energy_craft.machines.screen.VisualSettings;
+import com.github.sib_energy_craft.machines.screen.layout.SlotLayoutManager;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.inventory.Inventory;
 import net.minecraft.inventory.SimpleInventory;
@@ -23,8 +23,9 @@ public abstract class AbstractEnergyFurnaceScreenHandler extends AbstractEnergyM
                                              int syncId,
                                              @NotNull PlayerInventory playerInventory,
                                              @NotNull RecipeType<? extends AbstractCookingRecipe> recipeType,
-                                             @NotNull VisualSettings visualSettings) {
-        super(type, syncId, playerInventory, visualSettings);
+                                             int slots,
+                                             @NotNull SlotLayoutManager slotLayoutManager) {
+        super(type, syncId, playerInventory, slots, slotLayoutManager);
         this.recipeType = recipeType;
     }
 
@@ -34,8 +35,9 @@ public abstract class AbstractEnergyFurnaceScreenHandler extends AbstractEnergyM
                                                  @NotNull Inventory inventory,
                                                  @NotNull PropertyDelegate propertyDelegate,
                                                  @NotNull RecipeType<? extends AbstractCookingRecipe> recipeType,
-                                                 @NotNull VisualSettings visualSettings) {
-        super(type, syncId, playerInventory, inventory, propertyDelegate, visualSettings);
+                                                 int slots,
+                                                 @NotNull SlotLayoutManager slotLayoutManager) {
+        super(type, syncId, playerInventory, inventory, propertyDelegate, slots, slotLayoutManager);
         this.recipeType = recipeType;
     }
 

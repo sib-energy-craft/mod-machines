@@ -65,8 +65,8 @@ public abstract class AbstractExtractorBlockEntity extends AbstractEnergyMachine
     }
 
     @Override
-    public @Nullable Recipe<Inventory> getRecipe(@NotNull World world) {
-        return getRecipe(recipeType, world);
+    public @Nullable Recipe<Inventory> getRecipe(@NotNull World world, int slot) {
+        return getRecipe(recipeType, world, slot);
     }
 }
 

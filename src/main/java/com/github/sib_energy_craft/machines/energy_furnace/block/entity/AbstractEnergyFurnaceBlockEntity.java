@@ -34,8 +34,9 @@ public abstract class AbstractEnergyFurnaceBlockEntity extends AbstractEnergyMac
                                                @NotNull BlockPos pos,
                                                @NotNull BlockState state,
                                                @NotNull RecipeType<SmeltingRecipe> recipeType,
-                                               @NotNull AbstractEnergyFurnaceBlock block) {
-        super(blockEntityType, pos, state, block);
+                                               @NotNull AbstractEnergyFurnaceBlock block,
+                                               int slots) {
+        super(blockEntityType, pos, state, block, slots);
         this.recipeType = recipeType;
         this.addListener(EnergyMachineEvent.ENERGY_NOT_ENOUGH,
                 () -> cookTime = MathHelper.clamp(cookTime - 2, 0, cookTimeTotal));
@@ -76,8 +77,8 @@ public abstract class AbstractEnergyFurnaceBlockEntity extends AbstractEnergyMac
     }
 
     @Override
-    public @Nullable Recipe<Inventory> getRecipe(@NotNull World world) {
-        return getRecipe(recipeType, world);
+    public @Nullable Recipe<Inventory> getRecipe(@NotNull World world, int slot) {
+        return getRecipe(recipeType, world, slot);
     }
 }
 

@@ -65,7 +65,7 @@ public abstract class AbstractPressMachineBlockEntity extends AbstractEnergyMach
     }
 
     @Override
-    public @Nullable Recipe<Inventory> getRecipe(@NotNull World world) {
+    public @Nullable Recipe<Inventory> getRecipe(@NotNull World world, int slot) {
         var sourceInventory = inventory.getInventory(EnergyMachineInventoryType.SOURCE);
         if(sourceInventory == null) {
             return null;

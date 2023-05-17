@@ -19,7 +19,7 @@ import net.minecraft.util.math.BlockPos;
  */
 public class EnergyFurnaceBlockEntity extends AbstractEnergyFurnaceBlockEntity {
     public EnergyFurnaceBlockEntity(BlockPos pos, BlockState state, AbstractEnergyFurnaceBlock block) {
-        super(Entities.ENERGY_FURNACE, pos, state, RecipeType.SMELTING, block);
+        super(Entities.ENERGY_FURNACE, pos, state, RecipeType.SMELTING, block, 1);
     }
 
     @Override
