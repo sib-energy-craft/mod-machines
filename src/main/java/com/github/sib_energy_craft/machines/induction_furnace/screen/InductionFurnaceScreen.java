@@ -10,6 +10,8 @@ import net.minecraft.text.Text;
 import net.minecraft.util.Identifier;
 import org.jetbrains.annotations.NotNull;
 
+import java.awt.*;
+
 /**
  * @since 0.0.17
  * @author sibmaks
@@ -31,15 +33,19 @@ public class InductionFurnaceScreen extends HandledScreen<InductionFurnaceScreen
         RenderSystem.setShader(GameRenderer::getPositionTexProgram);
         RenderSystem.setShaderColor(1.0f, 1.0f, 1.0f, 1.0f);
         RenderSystem.setShaderTexture(0, TEXTURE);
-        int i = this.x;
-        int j = this.y;
-        drawTexture(matrices, i, j, 0, 0, this.backgroundWidth, this.backgroundHeight);
+        int x = this.x;
+        int y = this.y;
+        drawTexture(matrices, x, y, 0, 0, this.backgroundWidth, this.backgroundHeight);
         int progress = this.handler.getChargeProgress();
-        drawTexture(matrices, i + 60, j + 37, 176, 0, 7, progress);
+        drawTexture(matrices, x + 60, y + 37, 176, 0, 7, progress);
         progress = this.handler.getCookProgress(22);
-        drawTexture(matrices, i + 80, j + 35, 176, 13, progress, 16);
-        if(mouseX >= i + 60 && mouseX <= i + 60 + 7 &&
-                mouseY >= j + 37 && mouseY <= j + 37 + 13) {
+        drawTexture(matrices, x + 80, y + 35, 176, 13, progress, 16);
+        int heat = this.handler.getHeatPercent();
+        var heatText = Text.translatable("induction_furnace.heat.text", heat);
+        var heatTextX = 5 + (52 - textRenderer.getWidth(heatText)) / 2;
+        this.textRenderer.drawWithShadow(matrices, heatText, x + heatTextX, y + 38, Color.WHITE.getRGB());
+        if(mouseX >= x + 60 && mouseX <= x + 60 + 7 &&
+                mouseY >= y + 37 && mouseY <= y + 37 + 13) {
             var charge = this.handler.getCharge();
             var maxCharge = this.handler.getMaxCharge();
             var charging = Text.translatable("energy.range.text", charge, maxCharge);

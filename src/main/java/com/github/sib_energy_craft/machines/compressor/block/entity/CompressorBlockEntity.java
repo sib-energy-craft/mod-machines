@@ -1,6 +1,6 @@
 package com.github.sib_energy_craft.machines.compressor.block.entity;
 
-import com.github.sib_energy_craft.machines.compressor.block.AbstractCompressorBlock;
+import com.github.sib_energy_craft.machines.compressor.block.CompressorBlock;
 import com.github.sib_energy_craft.machines.compressor.load.Entities;
 import com.github.sib_energy_craft.machines.compressor.screen.CompressorScreenHandler;
 import com.github.sib_energy_craft.recipes.load.RecipeTypes;
@@ -17,10 +17,10 @@ import org.jetbrains.annotations.NotNull;
  * @since 0.0.1
  * @author sibmaks
  */
-public class CompressorBlockEntity extends AbstractCompressorBlockEntity {
+public class CompressorBlockEntity extends AbstractCompressorBlockEntity<CompressorBlock> {
     public CompressorBlockEntity(@NotNull BlockPos pos,
                                  @NotNull BlockState state,
-                                 @NotNull AbstractCompressorBlock block) {
+                                 @NotNull CompressorBlock block) {
         super(Entities.COMPRESSOR, pos, state, RecipeTypes.COMPRESSING, block);
     }
 

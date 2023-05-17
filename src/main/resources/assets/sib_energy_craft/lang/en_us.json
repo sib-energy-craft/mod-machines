@@ -42,6 +42,7 @@
   "block.sib_energy_craft.induction_furnace": "Induction Furnace",
   "container.induction_furnace": "Induction Furnace",
   "stat.sib_energy_craft.interact_with_induction_furnace": "Interactions with Induction Furnace",
+  "induction_furnace.heat.text": "Heat %d %%",
 
   "block.sib_energy_craft.l1_energy_transformer": "L1 Transformer",
   "container.l1_energy_transformer": "L1 Transformer",

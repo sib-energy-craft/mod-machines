@@ -1,6 +1,6 @@
 package com.github.sib_energy_craft.machines.press_machine.block.entity;
 
-import com.github.sib_energy_craft.machines.press_machine.block.AbstractPressMachineBlock;
+import com.github.sib_energy_craft.machines.press_machine.block.PressMachineBlock;
 import com.github.sib_energy_craft.machines.press_machine.load.Entities;
 import com.github.sib_energy_craft.machines.press_machine.screen.PressMachineScreenHandler;
 import com.github.sib_energy_craft.recipes.recipe.IronCraftingTableRecipeType;
@@ -17,10 +17,10 @@ import org.jetbrains.annotations.NotNull;
  * @since 0.0.17
  * @author sibmaks
  */
-public class PressMachineBlockEntity extends AbstractPressMachineBlockEntity {
+public class PressMachineBlockEntity extends AbstractPressMachineBlockEntity<PressMachineBlock> {
     public PressMachineBlockEntity(@NotNull BlockPos pos,
                                    @NotNull BlockState state,
-                                   @NotNull AbstractPressMachineBlock block) {
+                                   @NotNull PressMachineBlock block) {
         super(Entities.PRESS_MACHINE, pos, state, IronCraftingTableRecipeType.INSTANCE, block);
     }
 

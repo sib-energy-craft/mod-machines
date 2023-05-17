@@ -26,7 +26,7 @@ import org.jetbrains.annotations.Nullable;
  * @since 0.0.1
  * @author sibmaks
  */
-public abstract class AbstractMaceratorBlockEntity extends AbstractEnergyMachineBlockEntity
+public abstract class AbstractMaceratorBlockEntity<T extends AbstractMaceratorBlock> extends AbstractEnergyMachineBlockEntity<T>
         implements ExtendedScreenHandlerFactory, EnergyConsumer {
 
     protected final RecipeType<MaceratingRecipe> recipeType;
@@ -35,7 +35,7 @@ public abstract class AbstractMaceratorBlockEntity extends AbstractEnergyMachine
                                            @NotNull BlockPos pos,
                                            @NotNull BlockState state,
                                            @NotNull RecipeType<MaceratingRecipe> recipeType,
-                                           @NotNull AbstractMaceratorBlock block) {
+                                           @NotNull T block) {
         super(blockEntityType, pos, state, block);
         this.recipeType = recipeType;
     }

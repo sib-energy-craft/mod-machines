@@ -9,7 +9,6 @@ import net.minecraft.block.BlockState;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.network.PacketByteBuf;
-import net.minecraft.recipe.RecipeType;
 import net.minecraft.screen.ScreenHandler;
 import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.text.Text;
@@ -22,17 +21,18 @@ import org.jetbrains.annotations.NotNull;
  * @since 0.0.17
  * @author sibmaks
  */
-public class InductionFurnaceBlockEntity extends AbstractEnergyFurnaceBlockEntity {
+public class InductionFurnaceBlockEntity extends AbstractEnergyFurnaceBlockEntity<InductionFurnaceBlock> {
 
     protected int heatTicks;
 
     public InductionFurnaceBlockEntity(@NotNull BlockPos pos,
                                        @NotNull BlockState state,
                                        @NotNull InductionFurnaceBlock block) {
-        super(Entities.INDUCTION_FURNACE, pos, state, RecipeType.SMELTING, block, 2);
+        super(Entities.INDUCTION_FURNACE, pos, state, block, 2);
         this.addListener(EnergyMachineEvent.ENERGY_USED, () -> heatTicks = Math.min(heatTicks + 1, block.getMaxHeatTicks()));
         this.addListener(EnergyMachineEvent.CAN_NOT_COOK, () -> heatTicks = Math.max(heatTicks - 1, 0));
         this.addListener(EnergyMachineEvent.ENERGY_NOT_ENOUGH, () -> heatTicks = Math.max(heatTicks - 1, 0));
+        this.propertyMap.add(InductionFurnaceProperties.HEAT, () -> (int)(100f * heatTicks / block.getMaxHeatTicks()));
     }
 
     @Override

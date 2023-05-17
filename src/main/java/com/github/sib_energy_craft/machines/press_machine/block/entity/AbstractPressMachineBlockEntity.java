@@ -26,7 +26,7 @@ import org.jetbrains.annotations.Nullable;
  * @since 0.0.17
  * @author sibmaks
  */
-public abstract class AbstractPressMachineBlockEntity extends AbstractEnergyMachineBlockEntity
+public abstract class AbstractPressMachineBlockEntity<T extends AbstractPressMachineBlock> extends AbstractEnergyMachineBlockEntity<T>
         implements ExtendedScreenHandlerFactory, EnergyConsumer {
 
     protected final RecipeType<IronCraftingTableRecipe> recipeType;
@@ -36,7 +36,7 @@ public abstract class AbstractPressMachineBlockEntity extends AbstractEnergyMach
                                               @NotNull BlockPos pos,
                                               @NotNull BlockState state,
                                               @NotNull RecipeType<IronCraftingTableRecipe> recipeType,
-                                              @NotNull AbstractPressMachineBlock block) {
+                                              @NotNull T block) {
         super(blockEntityType, pos, state, block);
         this.recipeType = recipeType;
         this.craftingInventory = new SimpleInventory(2);

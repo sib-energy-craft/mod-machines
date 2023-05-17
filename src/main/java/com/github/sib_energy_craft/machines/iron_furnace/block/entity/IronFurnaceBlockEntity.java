@@ -4,7 +4,6 @@ import com.github.sib_energy_craft.machines.iron_furnace.block.AbstractIronFurna
 import com.github.sib_energy_craft.machines.iron_furnace.load.Entities;
 import net.minecraft.block.BlockState;
 import net.minecraft.entity.player.PlayerInventory;
-import net.minecraft.recipe.RecipeType;
 import net.minecraft.screen.FurnaceScreenHandler;
 import net.minecraft.screen.ScreenHandler;
 import net.minecraft.text.Text;
@@ -19,7 +18,7 @@ public class IronFurnaceBlockEntity extends AbstractIronFurnaceBlockEntity {
     public IronFurnaceBlockEntity(@NotNull BlockPos pos,
                                   @NotNull BlockState state,
                                   @NotNull AbstractIronFurnaceBlock block) {
-        super(Entities.IRON_FURNACE, pos, state, block, RecipeType.SMELTING);
+        super(Entities.IRON_FURNACE, pos, state, block);
     }
 
     @Override

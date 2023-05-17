@@ -33,9 +33,8 @@ public abstract class AbstractIronFurnaceBlockEntity extends OpenedAbstractFurna
     protected AbstractIronFurnaceBlockEntity(@NotNull BlockEntityType<?> blockEntityType,
                                              @NotNull BlockPos pos,
                                              @NotNull BlockState state,
-                                             @NotNull AbstractIronFurnaceBlock block,
-                                             @NotNull RecipeType<? extends AbstractCookingRecipe> recipeType) {
-        super(blockEntityType, pos, state, recipeType);
+                                             @NotNull AbstractIronFurnaceBlock block) {
+        super(blockEntityType, pos, state, RecipeType.SMELTING);
         this.block = block;
     }
 

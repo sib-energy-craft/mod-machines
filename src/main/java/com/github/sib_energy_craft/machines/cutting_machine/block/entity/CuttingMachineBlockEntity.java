@@ -1,6 +1,6 @@
 package com.github.sib_energy_craft.machines.cutting_machine.block.entity;
 
-import com.github.sib_energy_craft.machines.cutting_machine.block.AbstractCuttingMachineBlock;
+import com.github.sib_energy_craft.machines.cutting_machine.block.CuttingMachineBlock;
 import com.github.sib_energy_craft.machines.cutting_machine.load.Entities;
 import com.github.sib_energy_craft.machines.cutting_machine.screen.CuttingMachineScreenHandler;
 import com.github.sib_energy_craft.recipes.recipe.IronCraftingTableRecipeType;
@@ -17,10 +17,10 @@ import org.jetbrains.annotations.NotNull;
  * @since 0.0.17
  * @author sibmaks
  */
-public class CuttingMachineBlockEntity extends AbstractCuttingMachineBlockEntity {
+public class CuttingMachineBlockEntity extends AbstractCuttingMachineBlockEntity<CuttingMachineBlock> {
     public CuttingMachineBlockEntity(@NotNull BlockPos pos,
                                      @NotNull BlockState state,
-                                     @NotNull AbstractCuttingMachineBlock block) {
+                                     @NotNull CuttingMachineBlock block) {
         super(Entities.CUTTING_MACHINE, pos, state, IronCraftingTableRecipeType.INSTANCE, block);
     }
 

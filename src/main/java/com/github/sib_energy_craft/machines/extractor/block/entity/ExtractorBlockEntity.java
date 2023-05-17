@@ -1,6 +1,6 @@
 package com.github.sib_energy_craft.machines.extractor.block.entity;
 
-import com.github.sib_energy_craft.machines.extractor.block.AbstractExtractorBlock;
+import com.github.sib_energy_craft.machines.extractor.block.ExtractorBlock;
 import com.github.sib_energy_craft.machines.extractor.load.Entities;
 import com.github.sib_energy_craft.machines.extractor.screen.ExtractorScreenHandler;
 import com.github.sib_energy_craft.recipes.load.RecipeTypes;
@@ -17,10 +17,10 @@ import org.jetbrains.annotations.NotNull;
  * @since 0.0.1
  * @author sibmaks
  */
-public class ExtractorBlockEntity extends AbstractExtractorBlockEntity {
+public class ExtractorBlockEntity extends AbstractExtractorBlockEntity<ExtractorBlock> {
     public ExtractorBlockEntity(@NotNull BlockPos pos,
                                 @NotNull BlockState state,
-                                @NotNull AbstractExtractorBlock block) {
+                                @NotNull ExtractorBlock block) {
         super(Entities.EXTRACTOR, pos, state, RecipeTypes.EXTRACTING, block);
     }
 

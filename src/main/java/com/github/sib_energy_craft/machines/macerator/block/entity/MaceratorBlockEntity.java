@@ -1,6 +1,6 @@
 package com.github.sib_energy_craft.machines.macerator.block.entity;
 
-import com.github.sib_energy_craft.machines.macerator.block.AbstractMaceratorBlock;
+import com.github.sib_energy_craft.machines.macerator.block.MaceratorBlock;
 import com.github.sib_energy_craft.machines.macerator.load.Entities;
 import com.github.sib_energy_craft.machines.macerator.screen.MaceratorScreenHandler;
 import com.github.sib_energy_craft.recipes.load.RecipeTypes;
@@ -17,10 +17,10 @@ import org.jetbrains.annotations.NotNull;
  * @since 0.0.1
  * @author sibmaks
  */
-public class MaceratorBlockEntity extends AbstractMaceratorBlockEntity {
+public class MaceratorBlockEntity extends AbstractMaceratorBlockEntity<MaceratorBlock> {
     public MaceratorBlockEntity(@NotNull BlockPos pos,
                                 @NotNull BlockState state,
-                                @NotNull AbstractMaceratorBlock block) {
+                                @NotNull MaceratorBlock block) {
         super(Entities.MACERATOR, pos, state, RecipeTypes.MACERATING, block);
     }
 

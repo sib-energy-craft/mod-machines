@@ -1,7 +1,7 @@
 package com.github.sib_energy_craft.machines.cutting_machine.screen;
 
 import com.github.sib_energy_craft.machines.cutting_machine.load.client.Screens;
-import com.github.sib_energy_craft.machines.screen.layout.OneSlotMachineLayoutManager;
+import com.github.sib_energy_craft.machines.screen.layout.MultiSlotMachineLayoutManager;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.inventory.Inventory;
 import net.minecraft.network.PacketByteBuf;
@@ -13,7 +13,7 @@ import org.jetbrains.annotations.NotNull;
  * @author sibmaks
  */
 public class CuttingMachineScreenHandler extends AbstractCuttingMachineScreenHandler {
-    private static final OneSlotMachineLayoutManager LAYOUT_MANAGER = new OneSlotMachineLayoutManager(
+    private static final MultiSlotMachineLayoutManager LAYOUT_MANAGER = new MultiSlotMachineLayoutManager(
             8, 142,
             8, 84,
             56, 17,

@@ -25,19 +25,16 @@ import org.jetbrains.annotations.Nullable;
  * @since 0.0.2
  * @author sibmaks
  */
-public abstract class AbstractEnergyFurnaceBlockEntity extends AbstractEnergyMachineBlockEntity
+public abstract class AbstractEnergyFurnaceBlockEntity<T extends AbstractEnergyFurnaceBlock>
+        extends AbstractEnergyMachineBlockEntity<T>
         implements ExtendedScreenHandlerFactory, EnergyConsumer {
-
-    protected final RecipeType<SmeltingRecipe> recipeType;
 
     protected AbstractEnergyFurnaceBlockEntity(@NotNull BlockEntityType<?> blockEntityType,
                                                @NotNull BlockPos pos,
                                                @NotNull BlockState state,
-                                               @NotNull RecipeType<SmeltingRecipe> recipeType,
-                                               @NotNull AbstractEnergyFurnaceBlock block,
+                                               @NotNull T block,
                                                int slots) {
         super(blockEntityType, pos, state, block, slots);
-        this.recipeType = recipeType;
         this.addListener(EnergyMachineEvent.ENERGY_NOT_ENOUGH,
                 () -> cookTime = MathHelper.clamp(cookTime - 2, 0, cookTimeTotal));
     }
@@ -58,27 +55,25 @@ public abstract class AbstractEnergyFurnaceBlockEntity extends AbstractEnergyMac
         }
         var recipeManager = world.getRecipeManager();
         var simpleInventory = new SimpleInventory(itemStack);
-        return recipeManager.getFirstMatch(this.recipeType, simpleInventory, world).isPresent();
+        return recipeManager.getFirstMatch(RecipeType.SMELTING, simpleInventory, world).isPresent();
     }
 
     @Override
     public int getCookTimeTotal(@NotNull World world) {
-        return (int) (getSmeltingCookTime(world, recipeType, this) *
-                        ((AbstractEnergyFurnaceBlock)block).getCookingTotalTimeMultiplier());
+        return (int) (getSmeltingCookTime(world, this) * block.getCookingTotalTimeMultiplier());
     }
 
     protected static<T extends SmeltingRecipe> int getSmeltingCookTime(@NotNull World world,
-                                                                       @NotNull RecipeType<T> recipeType,
                                                                        @NotNull Inventory inventory) {
         return world.getRecipeManager()
-                .getFirstMatch(recipeType, inventory, world)
+                .getFirstMatch(RecipeType.SMELTING, inventory, world)
                 .map(SmeltingRecipe::getCookTime)
                 .orElse(200);
     }
 
     @Override
     public @Nullable Recipe<Inventory> getRecipe(@NotNull World world, int slot) {
-        return getRecipe(recipeType, world, slot);
+        return getRecipe(RecipeType.SMELTING, world, slot);
     }
 }
 
