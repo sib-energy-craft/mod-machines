@@ -22,7 +22,7 @@ import org.jetbrains.annotations.Nullable;
  */
 public class CuttingMachineBlock extends AbstractCuttingMachineBlock {
     public CuttingMachineBlock(@NotNull AbstractBlock.Settings settings) {
-        super(settings, EnergyLevel.L1, 800);
+        super(settings, EnergyLevel.L1, 800, 100);
     }
 
     @NotNull

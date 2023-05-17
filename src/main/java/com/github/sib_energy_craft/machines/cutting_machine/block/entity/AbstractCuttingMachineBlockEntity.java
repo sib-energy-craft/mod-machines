@@ -2,7 +2,7 @@ package com.github.sib_energy_craft.machines.cutting_machine.block.entity;
 
 import com.github.sib_energy_craft.energy_api.consumer.EnergyConsumer;
 import com.github.sib_energy_craft.machines.block.entity.AbstractEnergyMachineBlockEntity;
-import com.github.sib_energy_craft.machines.block.entity.EnergyMachineInventoryTypes;
+import com.github.sib_energy_craft.machines.block.entity.EnergyMachineInventoryType;
 import com.github.sib_energy_craft.machines.cutting_machine.block.AbstractCuttingMachineBlock;
 import com.github.sib_energy_craft.machines.cutting_machine.utils.CuttingMachineUtils;
 import com.github.sib_energy_craft.metallurgy.iron_craft_table.load.Items;
@@ -44,14 +44,14 @@ public abstract class AbstractCuttingMachineBlockEntity extends AbstractEnergyMa
     }
 
     @Override
-    public int getCookTime(@NotNull World world) {
-        return 100;
+    public int getCookTimeTotal(@NotNull World world) {
+        return ((AbstractCuttingMachineBlock) block).getCookTimeTotal();
     }
 
     @Override
     public boolean isValid(int slot, @NotNull ItemStack stack) {
         var slotType = inventory.getType(slot);
-        if(world != null && slotType == EnergyMachineInventoryTypes.SOURCE) {
+        if(world != null && slotType == EnergyMachineInventoryType.SOURCE) {
             return CuttingMachineUtils.isUsedInCuttingMachine(world, stack);
         }
         return super.isValid(slot, stack);
@@ -66,7 +66,7 @@ public abstract class AbstractCuttingMachineBlockEntity extends AbstractEnergyMa
 
     @Override
     public @Nullable Recipe<Inventory> getRecipe(@NotNull World world) {
-        var sourceInventory = inventory.getInventory(EnergyMachineInventoryTypes.SOURCE);
+        var sourceInventory = inventory.getInventory(EnergyMachineInventoryType.SOURCE);
         if(sourceInventory == null) {
             return null;
         }

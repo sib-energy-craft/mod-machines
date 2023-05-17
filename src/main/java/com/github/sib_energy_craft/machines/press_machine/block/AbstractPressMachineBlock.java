@@ -4,6 +4,7 @@ import com.github.sib_energy_craft.energy_api.EnergyLevel;
 import com.github.sib_energy_craft.machines.block.AbstractEnergyMachineBlock;
 import com.github.sib_energy_craft.machines.block.entity.AbstractEnergyMachineBlockEntity;
 import com.github.sib_energy_craft.machines.press_machine.block.entity.AbstractPressMachineBlockEntity;
+import lombok.Getter;
 import net.minecraft.block.AbstractBlock;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
@@ -28,11 +29,16 @@ import org.jetbrains.annotations.Nullable;
 public abstract class AbstractPressMachineBlock extends AbstractEnergyMachineBlock {
     public static final DirectionProperty FACING = HorizontalFacingBlock.FACING;
 
+    @Getter
+    protected final int cookTimeTotal;
+
     protected AbstractPressMachineBlock(@NotNull AbstractBlock.Settings settings,
                                         @NotNull EnergyLevel energyLevel,
-                                        int maxCharge) {
+                                        int maxCharge,
+                                        int cookTimeTotal) {
         super(settings, energyLevel, maxCharge);
         this.setDefaultState(getDefaultState().with(FACING, Direction.NORTH));
+        this.cookTimeTotal = cookTimeTotal;
     }
 
     @NotNull

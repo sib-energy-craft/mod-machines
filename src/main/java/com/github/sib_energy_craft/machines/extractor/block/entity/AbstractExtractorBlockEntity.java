@@ -2,9 +2,10 @@ package com.github.sib_energy_craft.machines.extractor.block.entity;
 
 import com.github.sib_energy_craft.energy_api.consumer.EnergyConsumer;
 import com.github.sib_energy_craft.machines.block.entity.AbstractEnergyMachineBlockEntity;
-import com.github.sib_energy_craft.machines.block.entity.EnergyMachineInventoryTypes;
+import com.github.sib_energy_craft.machines.block.entity.EnergyMachineInventoryType;
 import com.github.sib_energy_craft.machines.extractor.block.AbstractExtractorBlock;
 import com.github.sib_energy_craft.machines.extractor.tag.ExtractorTags;
+import com.github.sib_energy_craft.machines.utils.EnergyMachineUtils;
 import com.github.sib_energy_craft.machines.utils.ExperienceUtils;
 import com.github.sib_energy_craft.recipes.recipe.ExtractingRecipe;
 import net.fabricmc.fabric.api.screenhandler.v1.ExtendedScreenHandlerFactory;
@@ -40,14 +41,14 @@ public abstract class AbstractExtractorBlockEntity extends AbstractEnergyMachine
     }
 
     @Override
-    public int getCookTime(@NotNull World world) {
-        return getCookTime(world, recipeType, this);
+    public int getCookTimeTotal(@NotNull World world) {
+        return EnergyMachineUtils.getCookTimeTotal(world, recipeType, this);
     }
 
     @Override
     public boolean isValid(int slot, @NotNull ItemStack stack) {
         var slotType = inventory.getType(slot);
-        if(slotType == EnergyMachineInventoryTypes.SOURCE) {
+        if(slotType == EnergyMachineInventoryType.SOURCE) {
             return ExtractorTags.isUsedInExtractor(stack);
         }
         return super.isValid(slot, stack);

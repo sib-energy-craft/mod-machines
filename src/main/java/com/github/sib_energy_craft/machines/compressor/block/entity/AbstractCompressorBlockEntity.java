@@ -2,7 +2,7 @@ package com.github.sib_energy_craft.machines.compressor.block.entity;
 
 import com.github.sib_energy_craft.energy_api.consumer.EnergyConsumer;
 import com.github.sib_energy_craft.machines.block.entity.AbstractEnergyMachineBlockEntity;
-import com.github.sib_energy_craft.machines.block.entity.EnergyMachineInventoryTypes;
+import com.github.sib_energy_craft.machines.block.entity.EnergyMachineInventoryType;
 import com.github.sib_energy_craft.machines.compressor.block.AbstractCompressorBlock;
 import com.github.sib_energy_craft.machines.compressor.tag.CompressorTags;
 import com.github.sib_energy_craft.machines.utils.ExperienceUtils;
@@ -40,7 +40,7 @@ public abstract class AbstractCompressorBlockEntity extends AbstractEnergyMachin
     }
 
     @Override
-    public int getCookTime(@NotNull World world) {
+    public int getCookTimeTotal(@NotNull World world) {
         return world.getRecipeManager()
                 .getFirstMatch(recipeType, this, world)
                 .map(CompressingRecipe::getCookTime)
@@ -50,7 +50,7 @@ public abstract class AbstractCompressorBlockEntity extends AbstractEnergyMachin
     @Override
     public boolean isValid(int slot, @NotNull ItemStack stack) {
         var slotType = inventory.getType(slot);
-        if(slotType == EnergyMachineInventoryTypes.SOURCE) {
+        if(slotType == EnergyMachineInventoryType.SOURCE) {
             return CompressorTags.isUsedInCompressor(stack);
         }
         return super.isValid(slot, stack);

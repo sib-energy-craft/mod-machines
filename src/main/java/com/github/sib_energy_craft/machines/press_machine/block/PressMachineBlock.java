@@ -22,7 +22,7 @@ import org.jetbrains.annotations.Nullable;
  */
 public class PressMachineBlock extends AbstractPressMachineBlock {
     public PressMachineBlock(@NotNull AbstractBlock.Settings settings) {
-        super(settings, EnergyLevel.L1, 800);
+        super(settings, EnergyLevel.L1, 800, 100);
     }
 
     @NotNull

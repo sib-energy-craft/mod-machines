@@ -96,7 +96,7 @@ public abstract class AbstractEnergyFurnaceBlock extends AbstractEnergyMachineBl
             @NotNull BlockEntityType<T> givenType,
             @NotNull BlockEntityType<E> expectedType) {
         return world.isClient ? null : AbstractEnergyFurnaceBlock.checkType(givenType, expectedType,
-                AbstractEnergyFurnaceBlockEntity::tick);
+                AbstractEnergyFurnaceBlockEntity::simpleCookingTick);
     }
 
 }
