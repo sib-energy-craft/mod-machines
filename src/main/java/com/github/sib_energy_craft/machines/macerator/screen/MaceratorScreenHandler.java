@@ -21,18 +21,17 @@ public class MaceratorScreenHandler extends AbstractMaceratorScreenHandler {
             116, 35
     );
 
-
     public MaceratorScreenHandler(int syncId,
                                   @NotNull PlayerInventory playerInventory,
                                   @NotNull Inventory inventory,
                                   @NotNull PropertyDelegate propertyDelegate) {
-        super(Screens.MACERATOR, syncId, playerInventory, inventory, propertyDelegate, LAYOUT_MANAGER);
+        super(Screens.MACERATOR, syncId, playerInventory, inventory, propertyDelegate, 1, LAYOUT_MANAGER);
     }
 
     public MaceratorScreenHandler(int syncId,
                                   @NotNull PlayerInventory playerInventory,
                                   @NotNull PacketByteBuf packetByteBuf) {
-        super(Screens.MACERATOR, syncId, playerInventory, LAYOUT_MANAGER);
+        super(Screens.MACERATOR, syncId, playerInventory, 1, LAYOUT_MANAGER);
 
     }
 }

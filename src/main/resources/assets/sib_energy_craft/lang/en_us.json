@@ -11,6 +11,9 @@
   "block.sib_energy_craft.macerator": "Macerator",
   "stat.sib_energy_craft.interact_with_macerator": "Interactions with Macerator",
 
+  "container.advanced_macerator": "Advanced Macerator",
+  "block.sib_energy_craft.advanced_macerator": "Advanced Macerator",
+
   "container.press_machine": "Press Machine",
   "block.sib_energy_craft.press_machine": "Press Machine",
   "stat.sib_energy_craft.interact_with_press_machine": "Interactions with Press Machine",

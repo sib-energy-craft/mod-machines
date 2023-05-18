@@ -3,7 +3,6 @@ package com.github.sib_energy_craft.machines.macerator.block.entity;
 import com.github.sib_energy_craft.machines.macerator.block.MaceratorBlock;
 import com.github.sib_energy_craft.machines.macerator.load.Entities;
 import com.github.sib_energy_craft.machines.macerator.screen.MaceratorScreenHandler;
-import com.github.sib_energy_craft.recipes.load.RecipeTypes;
 import net.minecraft.block.BlockState;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.network.PacketByteBuf;
@@ -21,7 +20,7 @@ public class MaceratorBlockEntity extends AbstractMaceratorBlockEntity<Macerator
     public MaceratorBlockEntity(@NotNull BlockPos pos,
                                 @NotNull BlockState state,
                                 @NotNull MaceratorBlock block) {
-        super(Entities.MACERATOR, pos, state, RecipeTypes.MACERATING, block);
+        super(Entities.MACERATOR, pos, state, block, 1);
     }
 
     @NotNull

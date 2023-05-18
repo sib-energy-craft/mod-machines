@@ -1,6 +1,8 @@
 {
   "replace": false,
   "values": [
-    "sib_energy_craft:advanced_machine_body"
+    "sib_energy_craft:advanced_machine_body",
+    "sib_energy_craft:induction_furnace",
+    "sib_energy_craft:advanced_macerator"
   ]
 }

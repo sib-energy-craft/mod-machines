@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "C",
+    "M",
+    "B"
+  ],
+  "key": {
+    "C": {
+      "item": "sib_energy_craft:advanced_energy_circuit"
+    },
+    "M": {
+      "item": "sib_energy_craft:macerator"
+    },
+    "B": {
+      "item": "sib_energy_craft:advanced_machine_body"
+    }
+  },
+  "result": {
+    "item": "sib_energy_craft:advanced_macerator"
+  }
+}

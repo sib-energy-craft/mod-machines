@@ -11,6 +11,9 @@
   "block.sib_energy_craft.macerator": "Мацератор",
   "stat.sib_energy_craft.interact_with_macerator": "Использований мацератора",
 
+  "container.advanced_macerator": "Продвинутый мацератора",
+  "block.sib_energy_craft.advanced_macerator": "Продвинутый мацератора",
+
   "container.press_machine": "Пресс машина",
   "block.sib_energy_craft.press_machine": "Пресс машина",
   "stat.sib_energy_craft.interact_with_press_machine": "Использований пресс машины",

@@ -7,6 +7,7 @@ import com.github.sib_energy_craft.machines.macerator.block.AbstractMaceratorBlo
 import com.github.sib_energy_craft.machines.macerator.tag.MaceratorTags;
 import com.github.sib_energy_craft.machines.utils.EnergyMachineUtils;
 import com.github.sib_energy_craft.machines.utils.ExperienceUtils;
+import com.github.sib_energy_craft.recipes.load.RecipeTypes;
 import com.github.sib_energy_craft.recipes.recipe.MaceratingRecipe;
 import net.fabricmc.fabric.api.screenhandler.v1.ExtendedScreenHandlerFactory;
 import net.minecraft.block.BlockState;
@@ -14,7 +15,6 @@ import net.minecraft.block.entity.BlockEntityType;
 import net.minecraft.inventory.Inventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.recipe.Recipe;
-import net.minecraft.recipe.RecipeType;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Vec3d;
@@ -26,23 +26,21 @@ import org.jetbrains.annotations.Nullable;
  * @since 0.0.1
  * @author sibmaks
  */
-public abstract class AbstractMaceratorBlockEntity<T extends AbstractMaceratorBlock> extends AbstractEnergyMachineBlockEntity<T>
+public abstract class AbstractMaceratorBlockEntity<T extends AbstractMaceratorBlock>
+        extends AbstractEnergyMachineBlockEntity<T>
         implements ExtendedScreenHandlerFactory, EnergyConsumer {
-
-    protected final RecipeType<MaceratingRecipe> recipeType;
 
     protected AbstractMaceratorBlockEntity(@NotNull BlockEntityType<?> blockEntityType,
                                            @NotNull BlockPos pos,
                                            @NotNull BlockState state,
-                                           @NotNull RecipeType<MaceratingRecipe> recipeType,
-                                           @NotNull T block) {
-        super(blockEntityType, pos, state, block);
-        this.recipeType = recipeType;
+                                           @NotNull T block,
+                                           int slots) {
+        super(blockEntityType, pos, state, block, slots);
     }
 
     @Override
     public int getCookTimeTotal(@NotNull World world) {
-        return EnergyMachineUtils.getCookTimeTotal(world, recipeType, this);
+        return EnergyMachineUtils.getCookTimeTotal(world, RecipeTypes.MACERATING, this);
     }
 
     @Override
@@ -66,7 +64,7 @@ public abstract class AbstractMaceratorBlockEntity<T extends AbstractMaceratorBl
 
     @Override
     public @Nullable Recipe<Inventory> getRecipe(@NotNull World world, int slot) {
-        return getRecipe(recipeType, world, slot);
+        return getRecipe(RecipeTypes.MACERATING, world, slot);
     }
 }
 
