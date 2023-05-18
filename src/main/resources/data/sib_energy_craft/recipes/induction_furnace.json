@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "C",
+    "F",
+    "B"
+  ],
+  "key": {
+    "C": {
+      "item": "sib_energy_craft:advanced_energy_circuit"
+    },
+    "F": {
+      "item": "sib_energy_craft:energy_furnace"
+    },
+    "B": {
+      "item": "sib_energy_craft:advanced_machine_body"
+    }
+  },
+  "result": {
+    "item": "sib_energy_craft:induction_furnace"
+  }
+}

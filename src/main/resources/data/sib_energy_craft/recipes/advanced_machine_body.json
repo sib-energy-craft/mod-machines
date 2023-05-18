@@ -1,0 +1,26 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "pattern": [
+    "SCS",
+    "A#A",
+    "SCS"
+  ],
+  "key": {
+    "S": {
+      "item": "sib_energy_craft:steel_plate"
+    },
+    "C": {
+      "item": "sib_energy_craft:carbon_plate"
+    },
+    "A": {
+      "item": "sib_energy_craft:advanced_alloy"
+    },
+    "#": {
+      "item": "sib_energy_craft:base_machine_body"
+    }
+  },
+  "result": {
+    "item": "sib_energy_craft:advanced_machine_body"
+  }
+}

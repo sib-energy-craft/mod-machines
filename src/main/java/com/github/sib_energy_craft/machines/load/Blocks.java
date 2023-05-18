@@ -16,6 +16,7 @@ import net.minecraft.sound.BlockSoundGroup;
 public final class Blocks implements DefaultModInitializer {
 
     public static final Identified<Block> BASE_MACHINE_BODY;
+    public static final Identified<Block> ADVANCED_MACHINE_BODY;
 
     static {
         var baseMachineBodySettings = FabricBlockSettings.of(Material.METAL)
@@ -23,5 +24,11 @@ public final class Blocks implements DefaultModInitializer {
                 .strength(5, 6)
                 .requiresTool();
         BASE_MACHINE_BODY = BlockUtils.register(Identifiers.of("base_machine_body"), baseMachineBodySettings);
+
+        var advancedMachineBodySettings = FabricBlockSettings.of(Material.METAL)
+                .sounds(BlockSoundGroup.METAL)
+                .strength(50, 600)
+                .requiresTool();
+        ADVANCED_MACHINE_BODY = BlockUtils.register(Identifiers.of("advanced_machine_body"), advancedMachineBodySettings);
     }
 }

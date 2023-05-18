@@ -1,0 +1,60 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "sib_energy_craft:induction_furnace"
+    ]
+  },
+  "criteria": {
+    "has_energy_furnace": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "sib_energy_craft:energy_furnace"
+            ]
+          }
+        ]
+      }
+    },
+    "has_advanced_energy_circuit": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "sib_energy_craft:advanced_energy_circuit"
+            ]
+          }
+        ]
+      }
+    },
+    "has_advanced_machine_body": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "sib_energy_craft:advanced_machine_body"
+            ]
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "sib_energy_craft:induction_furnace"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_energy_furnace",
+      "has_advanced_energy_circuit",
+      "has_advanced_machine_body",
+      "has_the_recipe"
+    ]
+  ]
+}

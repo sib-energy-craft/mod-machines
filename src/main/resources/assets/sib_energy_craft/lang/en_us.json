@@ -54,6 +54,7 @@
   "container.l3_energy_transformer": "L3 Transformer",
 
   "block.sib_energy_craft.base_machine_body": "Base Machine Body",
+  "block.sib_energy_craft.advanced_machine_body": "Advanced Machine Body",
 
   "attribute.name.sib_energy_craft.charge": "Charge: %d EU",
   "attribute.name.sib_energy_craft.output_eu": "Output: %d EU/t",

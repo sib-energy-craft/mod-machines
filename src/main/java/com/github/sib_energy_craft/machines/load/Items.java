@@ -11,8 +11,10 @@ import net.minecraft.item.ItemGroups;
  */
 public final class Items implements DefaultModInitializer {
     public static final Item BASE_MACHINE_BODY;
+    public static final Item ADVANCED_MACHINE_BODY;
 
     static {
         BASE_MACHINE_BODY = ItemUtils.registerBlockItem(ItemGroups.BUILDING_BLOCKS, Blocks.BASE_MACHINE_BODY);
+        ADVANCED_MACHINE_BODY = ItemUtils.registerBlockItem(ItemGroups.BUILDING_BLOCKS, Blocks.ADVANCED_MACHINE_BODY);
     }
 }
