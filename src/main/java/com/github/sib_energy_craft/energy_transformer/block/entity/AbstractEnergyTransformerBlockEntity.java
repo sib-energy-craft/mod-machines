@@ -2,6 +2,7 @@ package com.github.sib_energy_craft.energy_transformer.block.entity;
 
 import com.github.sib_energy_craft.containers.CleanEnergyContainer;
 import com.github.sib_energy_craft.energy_api.Energy;
+import com.github.sib_energy_craft.energy_api.EnergyLevel;
 import com.github.sib_energy_craft.energy_api.EnergyOffer;
 import com.github.sib_energy_craft.energy_api.consumer.EnergyConsumer;
 import com.github.sib_energy_craft.energy_api.supplier.EnergySupplier;
@@ -21,6 +22,8 @@ import net.minecraft.network.PacketByteBuf;
 import net.minecraft.screen.ScreenHandler;
 import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.server.world.ServerWorld;
+import net.minecraft.sound.SoundCategory;
+import net.minecraft.sound.SoundEvents;
 import net.minecraft.state.property.Property;
 import net.minecraft.text.Text;
 import net.minecraft.util.math.BlockPos;
@@ -170,15 +173,18 @@ public abstract class AbstractEnergyTransformerBlockEntity extends BlockEntity
 
     @Override
     public void receiveOffer(@NotNull EnergyOffer energyOffer) {
-        var inputEnergyLevel = switch (mode) {
-            case UP -> block.getLowEnergyLevel();
-            default -> block.getHighEnergyLevel();
-        };
+        EnergyLevel inputEnergyLevel;
+        if(mode == AbstractEnergyTransformerMode.UP) {
+            inputEnergyLevel = block.getLowEnergyLevel();
+        } else {
+            inputEnergyLevel = block.getHighEnergyLevel();
+        }
 
         var energy = energyOffer.getEnergyAmount();
         if(energy.compareTo(inputEnergyLevel.toBig) > 0) {
             if(energyOffer.acceptOffer()) {
                 if (world instanceof ServerWorld serverWorld) {
+                    serverWorld.playSound(null, pos, SoundEvents.ENTITY_GENERIC_EXPLODE, SoundCategory.BLOCKS, 1f, 1f);
                     serverWorld.breakBlock(pos, false);
                     return;
                 }
