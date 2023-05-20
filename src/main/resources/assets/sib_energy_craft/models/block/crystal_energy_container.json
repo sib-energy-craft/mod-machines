@@ -1,7 +1,0 @@
-{
-  "parent": "minecraft:block/cube_top",
-  "textures": {
-    "top": "sib_energy_craft:block/crystal_energy_container_input",
-    "side": "sib_energy_craft:block/crystal_energy_container"
-  }
-}

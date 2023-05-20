@@ -13,8 +13,6 @@
     "sib_energy_craft:induction_furnace",
     "sib_energy_craft:l2_energy_transformer",
     "sib_energy_craft:l3_energy_transformer",
-    "sib_energy_craft:bronze_energy_container",
-    "sib_energy_craft:crystal_energy_container",
     "sib_energy_craft:press_machine",
     "sib_energy_craft:cutting_machine"
   ]
