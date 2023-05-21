@@ -1,6 +1,6 @@
 package com.github.sib_energy_craft.energy_transformer.screen;
 
-import com.github.sib_energy_craft.energy_transformer.load.client.Screens;
+import com.github.sib_energy_craft.energy_transformer.load.ScreenHandlers;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.network.PacketByteBuf;
 import net.minecraft.screen.PropertyDelegate;
@@ -20,12 +20,12 @@ public class EnergyTransformerScreenHandler extends AbstractEnergyTransformerScr
                                           @NotNull PropertyDelegate propertyDelegate,
                                           @Nullable World world,
                                           @NotNull BlockPos pos) {
-        super(Screens.ENERGY_TRANSFORMER, syncId, propertyDelegate, ScreenHandlerContext.create(world, pos));
+        super(ScreenHandlers.ENERGY_TRANSFORMER, syncId, propertyDelegate, ScreenHandlerContext.create(world, pos));
     }
 
     public EnergyTransformerScreenHandler(int syncId,
                                           @NotNull PlayerInventory inventory,
                                           @NotNull PacketByteBuf buf) {
-        super(Screens.ENERGY_TRANSFORMER, syncId, inventory);
+        super(ScreenHandlers.ENERGY_TRANSFORMER, syncId, inventory);
     }
 }

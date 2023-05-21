@@ -1,6 +1,6 @@
 package com.github.sib_energy_craft.machines.press_machine.screen;
 
-import com.github.sib_energy_craft.machines.press_machine.load.client.Screens;
+import com.github.sib_energy_craft.machines.press_machine.load.ScreenHandlers;
 import com.github.sib_energy_craft.machines.screen.layout.MultiSlotMachineLayoutManager;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.inventory.Inventory;
@@ -26,12 +26,12 @@ public class PressMachineScreenHandler extends AbstractPressMachineScreenHandler
                                      @NotNull PlayerInventory playerInventory,
                                      @NotNull Inventory inventory,
                                      @NotNull PropertyDelegate propertyDelegate) {
-        super(Screens.PRESS_MACHINE, syncId, playerInventory, inventory, propertyDelegate, LAYOUT_MANAGER);
+        super(ScreenHandlers.PRESS_MACHINE, syncId, playerInventory, inventory, propertyDelegate, LAYOUT_MANAGER);
     }
 
     public PressMachineScreenHandler(int syncId,
                                      @NotNull PlayerInventory playerInventory,
                                      @NotNull PacketByteBuf packetByteBuf) {
-        super(Screens.PRESS_MACHINE, syncId, playerInventory, LAYOUT_MANAGER);
+        super(ScreenHandlers.PRESS_MACHINE, syncId, playerInventory, LAYOUT_MANAGER);
     }
 }

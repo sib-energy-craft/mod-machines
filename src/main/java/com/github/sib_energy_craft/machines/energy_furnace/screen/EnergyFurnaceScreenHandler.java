@@ -1,6 +1,6 @@
 package com.github.sib_energy_craft.machines.energy_furnace.screen;
 
-import com.github.sib_energy_craft.machines.energy_furnace.load.client.Screens;
+import com.github.sib_energy_craft.machines.energy_furnace.load.ScreenHandlers;
 import com.github.sib_energy_craft.machines.screen.layout.MultiSlotMachineLayoutManager;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.inventory.Inventory;
@@ -25,13 +25,13 @@ public class EnergyFurnaceScreenHandler extends AbstractEnergyFurnaceScreenHandl
                                       @NotNull PlayerInventory playerInventory,
                                       @NotNull Inventory inventory,
                                       @NotNull PropertyDelegate propertyDelegate) {
-        super(Screens.ENERGY_FURNACE, syncId, playerInventory, inventory, propertyDelegate, 1, LAYOUT_MANAGER);
+        super(ScreenHandlers.ENERGY_FURNACE, syncId, playerInventory, inventory, propertyDelegate, 1, LAYOUT_MANAGER);
     }
 
     public EnergyFurnaceScreenHandler(int syncId,
                                       @NotNull PlayerInventory playerInventory,
                                       @NotNull PacketByteBuf packetByteBuf) {
-        super(Screens.ENERGY_FURNACE, syncId, playerInventory, 1, LAYOUT_MANAGER);
+        super(ScreenHandlers.ENERGY_FURNACE, syncId, playerInventory, 1, LAYOUT_MANAGER);
 
     }
 }

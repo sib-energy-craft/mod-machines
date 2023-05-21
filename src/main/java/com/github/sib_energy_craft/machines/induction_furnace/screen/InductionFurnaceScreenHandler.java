@@ -2,7 +2,7 @@ package com.github.sib_energy_craft.machines.induction_furnace.screen;
 
 import com.github.sib_energy_craft.machines.energy_furnace.screen.AbstractEnergyFurnaceScreenHandler;
 import com.github.sib_energy_craft.machines.induction_furnace.block.entity.InductionFurnaceProperties;
-import com.github.sib_energy_craft.machines.induction_furnace.load.client.Screens;
+import com.github.sib_energy_craft.machines.induction_furnace.load.ScreenHandlers;
 import com.github.sib_energy_craft.machines.screen.layout.MultiSlotMachineLayoutManager;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.inventory.Inventory;
@@ -28,13 +28,13 @@ public class InductionFurnaceScreenHandler extends AbstractEnergyFurnaceScreenHa
                                       @NotNull PlayerInventory playerInventory,
                                       @NotNull Inventory inventory,
                                       @NotNull PropertyDelegate propertyDelegate) {
-        super(Screens.INDUCTION_FURNACE, syncId, playerInventory, inventory, propertyDelegate, 2, LAYOUT_MANAGER);
+        super(ScreenHandlers.INDUCTION_FURNACE, syncId, playerInventory, inventory, propertyDelegate, 2, LAYOUT_MANAGER);
     }
 
     public InductionFurnaceScreenHandler(int syncId,
                                          @NotNull PlayerInventory playerInventory,
                                          @NotNull PacketByteBuf packetByteBuf) {
-        super(Screens.INDUCTION_FURNACE, syncId, playerInventory, 5, 2, LAYOUT_MANAGER);
+        super(ScreenHandlers.INDUCTION_FURNACE, syncId, playerInventory, 5, 2, LAYOUT_MANAGER);
     }
 
     /**

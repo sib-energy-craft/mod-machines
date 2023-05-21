@@ -3,11 +3,12 @@ package com.github.sib_energy_craft.machines.load;
 import com.github.sib_energy_craft.energy_api.utils.Identifiers;
 import com.github.sib_energy_craft.sec_utils.common.Identified;
 import com.github.sib_energy_craft.sec_utils.load.DefaultModInitializer;
-import com.github.sib_energy_craft.sec_utils.utils.BlockUtils;
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.minecraft.block.Block;
 import net.minecraft.block.Material;
 import net.minecraft.sound.BlockSoundGroup;
+
+import static com.github.sib_energy_craft.sec_utils.utils.BlockUtils.register;
 
 /**
  * @since 0.0.1
@@ -23,12 +24,12 @@ public final class Blocks implements DefaultModInitializer {
                 .sounds(BlockSoundGroup.METAL)
                 .strength(5, 6)
                 .requiresTool();
-        BASE_MACHINE_BODY = BlockUtils.register(Identifiers.of("base_machine_body"), baseMachineBodySettings);
+        BASE_MACHINE_BODY = register(Identifiers.of("base_machine_body"), baseMachineBodySettings);
 
         var advancedMachineBodySettings = FabricBlockSettings.of(Material.METAL)
                 .sounds(BlockSoundGroup.METAL)
                 .strength(50, 600)
                 .requiresTool();
-        ADVANCED_MACHINE_BODY = BlockUtils.register(Identifiers.of("advanced_machine_body"), advancedMachineBodySettings);
+        ADVANCED_MACHINE_BODY = register(Identifiers.of("advanced_machine_body"), advancedMachineBodySettings);
     }
 }
