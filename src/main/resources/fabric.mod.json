@@ -13,26 +13,31 @@
       "com.github.sib_energy_craft.machines.compressor.load.Blocks",
       "com.github.sib_energy_craft.machines.compressor.load.Entities",
       "com.github.sib_energy_craft.machines.compressor.load.Items",
+      "com.github.sib_energy_craft.machines.compressor.load.ScreenHandlers",
       "com.github.sib_energy_craft.machines.compressor.load.Stats",
 
       "com.github.sib_energy_craft.machines.extractor.load.Blocks",
       "com.github.sib_energy_craft.machines.extractor.load.Entities",
       "com.github.sib_energy_craft.machines.extractor.load.Items",
+      "com.github.sib_energy_craft.machines.extractor.load.ScreenHandlers",
       "com.github.sib_energy_craft.machines.extractor.load.Stats",
 
       "com.github.sib_energy_craft.machines.generator.load.Blocks",
       "com.github.sib_energy_craft.machines.generator.load.Entities",
       "com.github.sib_energy_craft.machines.generator.load.Items",
+      "com.github.sib_energy_craft.machines.generator.load.ScreenHandlers",
       "com.github.sib_energy_craft.machines.generator.load.Stats",
 
       "com.github.sib_energy_craft.machines.macerator.load.Blocks",
       "com.github.sib_energy_craft.machines.macerator.load.Entities",
       "com.github.sib_energy_craft.machines.macerator.load.Items",
+      "com.github.sib_energy_craft.machines.macerator.load.ScreenHandlers",
       "com.github.sib_energy_craft.machines.macerator.load.Stats",
 
       "com.github.sib_energy_craft.machines.advanced_macerator.load.Blocks",
       "com.github.sib_energy_craft.machines.advanced_macerator.load.Entities",
       "com.github.sib_energy_craft.machines.advanced_macerator.load.Items",
+      "com.github.sib_energy_craft.machines.advanced_macerator.load.ScreenHandlers",
 
       "com.github.sib_energy_craft.machines.iron_furnace.load.Blocks",
       "com.github.sib_energy_craft.machines.iron_furnace.load.Entities",
@@ -41,16 +46,19 @@
       "com.github.sib_energy_craft.machines.energy_furnace.load.Blocks",
       "com.github.sib_energy_craft.machines.energy_furnace.load.Entities",
       "com.github.sib_energy_craft.machines.energy_furnace.load.Items",
+      "com.github.sib_energy_craft.machines.energy_furnace.load.ScreenHandlers",
       "com.github.sib_energy_craft.machines.energy_furnace.load.Stats",
 
       "com.github.sib_energy_craft.machines.induction_furnace.load.Blocks",
       "com.github.sib_energy_craft.machines.induction_furnace.load.Entities",
       "com.github.sib_energy_craft.machines.induction_furnace.load.Items",
+      "com.github.sib_energy_craft.machines.induction_furnace.load.ScreenHandlers",
       "com.github.sib_energy_craft.machines.induction_furnace.load.Stats",
 
       "com.github.sib_energy_craft.energy_transformer.load.Blocks",
       "com.github.sib_energy_craft.energy_transformer.load.Entities",
       "com.github.sib_energy_craft.energy_transformer.load.Items",
+      "com.github.sib_energy_craft.energy_transformer.load.ScreenHandlers",
 
       "com.github.sib_energy_craft.machines.load.Blocks",
       "com.github.sib_energy_craft.machines.load.Items",
@@ -58,11 +66,13 @@
       "com.github.sib_energy_craft.machines.press_machine.load.Blocks",
       "com.github.sib_energy_craft.machines.press_machine.load.Entities",
       "com.github.sib_energy_craft.machines.press_machine.load.Items",
+      "com.github.sib_energy_craft.machines.press_machine.load.ScreenHandlers",
       "com.github.sib_energy_craft.machines.press_machine.load.Stats",
 
       "com.github.sib_energy_craft.machines.cutting_machine.load.Blocks",
       "com.github.sib_energy_craft.machines.cutting_machine.load.Entities",
       "com.github.sib_energy_craft.machines.cutting_machine.load.Items",
+      "com.github.sib_energy_craft.machines.cutting_machine.load.ScreenHandlers",
       "com.github.sib_energy_craft.machines.cutting_machine.load.Stats"
     ],
     "client": [

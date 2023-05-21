@@ -1,6 +1,6 @@
 package com.github.sib_energy_craft.machines.generator.screen;
 
-import com.github.sib_energy_craft.machines.generator.load.client.Screens;
+import com.github.sib_energy_craft.machines.generator.load.ScreenHandlers;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.inventory.Inventory;
 import net.minecraft.network.PacketByteBuf;
@@ -17,13 +17,12 @@ public class EnergyGeneratorScreenHandler extends AbstractEnergyGeneratorScreenH
                                         @NotNull PlayerInventory playerInventory,
                                         @NotNull Inventory inventory,
                                         @NotNull PropertyDelegate propertyDelegate) {
-        super(Screens.ENERGY_GENERATOR, syncId, playerInventory, inventory, propertyDelegate);
+        super(ScreenHandlers.ENERGY_GENERATOR, syncId, playerInventory, inventory, propertyDelegate);
     }
 
     public EnergyGeneratorScreenHandler(int syncId,
                                         @NotNull PlayerInventory playerInventory,
                                         @NotNull PacketByteBuf packetByteBuf) {
-        super(Screens.ENERGY_GENERATOR, syncId, playerInventory);
-
+        super(ScreenHandlers.ENERGY_GENERATOR, syncId, playerInventory);
     }
 }

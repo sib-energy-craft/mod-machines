@@ -1,6 +1,6 @@
 package com.github.sib_energy_craft.machines.extractor.screen;
 
-import com.github.sib_energy_craft.machines.extractor.load.client.Screens;
+import com.github.sib_energy_craft.machines.extractor.load.ScreenHandlers;
 import com.github.sib_energy_craft.machines.screen.layout.MultiSlotMachineLayoutManager;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.inventory.Inventory;
@@ -25,13 +25,13 @@ public class ExtractorScreenHandler extends AbstractExtractorScreenHandler {
                                   @NotNull PlayerInventory playerInventory,
                                   @NotNull Inventory inventory,
                                   @NotNull PropertyDelegate propertyDelegate) {
-        super(Screens.EXTRACTOR, syncId, playerInventory, inventory, propertyDelegate, LAYOUT_MANAGER);
+        super(ScreenHandlers.EXTRACTOR, syncId, playerInventory, inventory, propertyDelegate, LAYOUT_MANAGER);
     }
 
     public ExtractorScreenHandler(int syncId,
                                   @NotNull PlayerInventory playerInventory,
                                   @NotNull PacketByteBuf packetByteBuf) {
-        super(Screens.EXTRACTOR, syncId, playerInventory, LAYOUT_MANAGER);
+        super(ScreenHandlers.EXTRACTOR, syncId, playerInventory, LAYOUT_MANAGER);
 
     }
 }

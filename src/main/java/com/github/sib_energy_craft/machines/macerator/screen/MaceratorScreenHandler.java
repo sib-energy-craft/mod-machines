@@ -1,6 +1,6 @@
 package com.github.sib_energy_craft.machines.macerator.screen;
 
-import com.github.sib_energy_craft.machines.macerator.load.client.Screens;
+import com.github.sib_energy_craft.machines.macerator.load.ScreenHandlers;
 import com.github.sib_energy_craft.machines.screen.layout.MultiSlotMachineLayoutManager;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.inventory.Inventory;
@@ -25,13 +25,13 @@ public class MaceratorScreenHandler extends AbstractMaceratorScreenHandler {
                                   @NotNull PlayerInventory playerInventory,
                                   @NotNull Inventory inventory,
                                   @NotNull PropertyDelegate propertyDelegate) {
-        super(Screens.MACERATOR, syncId, playerInventory, inventory, propertyDelegate, 1, LAYOUT_MANAGER);
+        super(ScreenHandlers.MACERATOR, syncId, playerInventory, inventory, propertyDelegate, 1, LAYOUT_MANAGER);
     }
 
     public MaceratorScreenHandler(int syncId,
                                   @NotNull PlayerInventory playerInventory,
                                   @NotNull PacketByteBuf packetByteBuf) {
-        super(Screens.MACERATOR, syncId, playerInventory, 1, LAYOUT_MANAGER);
+        super(ScreenHandlers.MACERATOR, syncId, playerInventory, 1, LAYOUT_MANAGER);
 
     }
 }
