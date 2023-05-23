@@ -16,13 +16,14 @@ public class EnergyGeneratorScreenHandler extends AbstractEnergyGeneratorScreenH
     public EnergyGeneratorScreenHandler(int syncId,
                                         @NotNull PlayerInventory playerInventory,
                                         @NotNull Inventory inventory,
-                                        @NotNull PropertyDelegate propertyDelegate) {
-        super(ScreenHandlers.ENERGY_GENERATOR, syncId, playerInventory, inventory, propertyDelegate);
+                                        @NotNull PropertyDelegate propertyDelegate,
+                                        int maxCharge) {
+        super(ScreenHandlers.ENERGY_GENERATOR, syncId, playerInventory, inventory, propertyDelegate, maxCharge);
     }
 
     public EnergyGeneratorScreenHandler(int syncId,
                                         @NotNull PlayerInventory playerInventory,
                                         @NotNull PacketByteBuf packetByteBuf) {
-        super(ScreenHandlers.ENERGY_GENERATOR, syncId, playerInventory);
+        super(ScreenHandlers.ENERGY_GENERATOR, syncId, playerInventory, packetByteBuf.readInt());
     }
 }

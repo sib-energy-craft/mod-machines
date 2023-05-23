@@ -4,7 +4,11 @@ import com.github.sib_energy_craft.energy_api.screen.ChargeSlot;
 import com.github.sib_energy_craft.energy_api.tags.CoreTags;
 import com.github.sib_energy_craft.machines.generator.block.entity.AbstractEnergyGeneratorBlockEntity;
 import com.github.sib_energy_craft.machines.generator.block.entity.EnergyGeneratorProperties;
+import com.github.sib_energy_craft.machines.generator.block.entity.EnergyGeneratorTypedProperties;
 import com.github.sib_energy_craft.machines.generator.screen.slot.EnergyGeneratorFuelSlot;
+import com.github.sib_energy_craft.screen.TypedPropertyScreenHandler;
+import lombok.Getter;
+import lombok.Setter;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.inventory.Inventory;
@@ -22,39 +26,47 @@ import org.jetbrains.annotations.NotNull;
  * @since 0.0.1
  * @author sibmaks
  */
-public abstract class AbstractEnergyGeneratorScreenHandler extends ScreenHandler {
+public abstract class AbstractEnergyGeneratorScreenHandler extends ScreenHandler implements TypedPropertyScreenHandler {
     private final Inventory inventory;
     private final PropertyDelegate propertyDelegate;
     protected final World world;
+    @Getter
+    protected int charge;
+    @Getter
+    protected final int maxCharge;
+    @Setter
+    protected Runnable syncer;
 
     protected AbstractEnergyGeneratorScreenHandler(@NotNull ScreenHandlerType<?> type,
                                                    int syncId,
-                                                   @NotNull PlayerInventory playerInventory) {
-        this(type, syncId, playerInventory, new SimpleInventory(2), new ArrayPropertyDelegate(5));
+                                                   @NotNull PlayerInventory playerInventory,
+                                                   int maxCharge) {
+        this(type, syncId, playerInventory, new SimpleInventory(2), new ArrayPropertyDelegate(5), maxCharge);
     }
 
     protected AbstractEnergyGeneratorScreenHandler(@NotNull ScreenHandlerType<?> type,
                                                    int syncId,
                                                    @NotNull PlayerInventory playerInventory,
                                                    @NotNull Inventory inventory,
-                                                   @NotNull PropertyDelegate propertyDelegate) {
+                                                   @NotNull PropertyDelegate propertyDelegate,
+                                                   int maxCharge) {
         super(type, syncId);
-        int i;
         AbstractEnergyGeneratorScreenHandler.checkSize(inventory, 2);
-        AbstractEnergyGeneratorScreenHandler.checkDataCount(propertyDelegate, 5);
+        AbstractEnergyGeneratorScreenHandler.checkDataCount(propertyDelegate, 3);
         this.inventory = inventory;
         this.propertyDelegate = propertyDelegate;
+        this.maxCharge = maxCharge;
         this.world = playerInventory.player.world;
         var chargeSlot = new ChargeSlot(inventory, AbstractEnergyGeneratorBlockEntity.CHARGE_SLOT_INDEX, 56, 17, true);
         this.addSlot(chargeSlot);
         var fuelSlot = new EnergyGeneratorFuelSlot(inventory, AbstractEnergyGeneratorBlockEntity.FUEL_SLOT_INDEX, 56, 53);
         this.addSlot(fuelSlot);
-        for (i = 0; i < 3; ++i) {
+        for (int i = 0; i < 3; ++i) {
             for (int j = 0; j < 9; ++j) {
                 this.addSlot(new Slot(playerInventory, j + i * 9 + 9, 8 + j * 18, 84 + i * 18));
             }
         }
-        for (i = 0; i < 9; ++i) {
+        for (int i = 0; i < 9; ++i) {
             this.addSlot(new Slot(playerInventory, i, 8 + i * 18, 142));
         }
         this.addProperties(propertyDelegate);
@@ -147,24 +159,6 @@ public abstract class AbstractEnergyGeneratorScreenHandler extends ScreenHandler
     }
 
     /**
-     * Get extractor charge
-     *
-     * @return charge
-     */
-    public int getCharge() {
-        return propertyDelegate.get(EnergyGeneratorProperties.CHARGE.ordinal());
-    }
-
-    /**
-     * Get extractor max charge
-     *
-     * @return max charge
-     */
-    public int getMaxCharge() {
-        return propertyDelegate.get(EnergyGeneratorProperties.MAX_CHARGE.ordinal());
-    }
-
-    /**
      * Get extractor packet size
      *
      * @return packet size
@@ -182,5 +176,20 @@ public abstract class AbstractEnergyGeneratorScreenHandler extends ScreenHandler
         return propertyDelegate.get(EnergyGeneratorProperties.BURN_TIME.ordinal()) > 0;
     }
 
+    @Override
+    public <V> void onTypedPropertyChanged(int index, V value) {
+        if(index == EnergyGeneratorTypedProperties.CHARGE.ordinal()) {
+            charge = (int) value;
+        }
+    }
+
+    @Override
+    public final void sendContentUpdates() {
+        super.sendContentUpdates();
+        var syncer = this.syncer;
+        if(syncer != null) {
+            syncer.run();
+        }
+    }
 }
 
