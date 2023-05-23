@@ -8,13 +8,15 @@ import com.github.sib_energy_craft.energy_api.supplier.EnergySupplier;
 import com.github.sib_energy_craft.machines.generator.block.AbstractEnergyGeneratorBlock;
 import com.github.sib_energy_craft.pipes.api.ItemConsumer;
 import com.github.sib_energy_craft.pipes.utils.PipeUtils;
+import com.github.sib_energy_craft.screen.property.ScreenPropertyTypes;
+import com.github.sib_energy_craft.screen.property.TypedScreenProperty;
 import com.github.sib_energy_craft.sec_utils.screen.PropertyMap;
 import net.fabricmc.fabric.api.screenhandler.v1.ExtendedScreenHandlerFactory;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.entity.AbstractFurnaceBlockEntity;
+import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.block.entity.BlockEntityType;
-import net.minecraft.block.entity.LockableContainerBlockEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.inventory.Inventories;
 import net.minecraft.inventory.SidedInventory;
@@ -22,6 +24,8 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
 import net.minecraft.nbt.NbtCompound;
+import net.minecraft.network.PacketByteBuf;
+import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.util.collection.DefaultedList;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
@@ -29,6 +33,7 @@ import net.minecraft.world.World;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
+import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
@@ -36,7 +41,7 @@ import java.util.Set;
  * @since 0.0.1
  * @author sibmaks
  */
-public abstract class AbstractEnergyGeneratorBlockEntity extends LockableContainerBlockEntity
+public abstract class AbstractEnergyGeneratorBlockEntity extends BlockEntity
         implements SidedInventory, ExtendedScreenHandlerFactory, EnergySupplier, ItemConsumer {
     private static final Map<Item, Integer> FUEL_MAP = AbstractFurnaceBlockEntity.createFuelTimeMap();
 
@@ -58,6 +63,7 @@ public abstract class AbstractEnergyGeneratorBlockEntity extends LockableContain
     private final AbstractEnergyGeneratorBlock block;
 
     protected final PropertyMap<EnergyGeneratorProperties> propertyMap;
+    protected final List<TypedScreenProperty<?>> typedScreenProperties;
 
     protected AbstractEnergyGeneratorBlockEntity(@NotNull BlockEntityType<?> blockEntityType,
                                                  @NotNull BlockPos pos,
@@ -68,11 +74,16 @@ public abstract class AbstractEnergyGeneratorBlockEntity extends LockableContain
         this.propertyMap = new PropertyMap<>(EnergyGeneratorProperties.class);
         this.propertyMap.add(EnergyGeneratorProperties.BURN_TIME, () -> burnTime);
         this.propertyMap.add(EnergyGeneratorProperties.FUEL_TIME, () -> fuelTime);
-        this.propertyMap.add(EnergyGeneratorProperties.CHARGE, () -> energyContainer.getCharge().intValue());
-        this.propertyMap.add(EnergyGeneratorProperties.MAX_CHARGE, () -> energyContainer.getMaxCharge().intValue());
         this.propertyMap.add(EnergyGeneratorProperties.ENERGY_PACKET_SIZE, () -> block.getEnergyPacketSize().intValue());
         this.energyContainer = new CleanEnergyContainer(Energy.ZERO, block.getMaxCharge());
-        inventory = DefaultedList.ofSize(2, ItemStack.EMPTY);
+        this.inventory = DefaultedList.ofSize(2, ItemStack.EMPTY);
+        this.typedScreenProperties = List.of(
+                new TypedScreenProperty<>(
+                        EnergyGeneratorTypedProperties.CHARGE.ordinal(),
+                        ScreenPropertyTypes.INT,
+                        this::getCharge
+                )
+        );
     }
 
     private boolean isBurning() {
@@ -272,6 +283,12 @@ public abstract class AbstractEnergyGeneratorBlockEntity extends LockableContain
         this.inventory.clear();
     }
 
+    @Override
+    public void writeScreenOpeningData(@NotNull ServerPlayerEntity player,
+                                       @NotNull PacketByteBuf buf) {
+        buf.writeInt(getMaxCharge());
+    }
+
     /**
      * Called when item placed in world
      * @param charge item charge
@@ -329,6 +346,15 @@ public abstract class AbstractEnergyGeneratorBlockEntity extends LockableContain
      */
     public int getCharge() {
         return energyContainer.getCharge().intValue();
+    }
+
+    /**
+     * Get max generator charge
+     *
+     * @return max generator charge
+     */
+    public int getMaxCharge() {
+        return energyContainer.getMaxCharge().intValue();
     }
 }
 

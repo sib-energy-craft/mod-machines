@@ -85,9 +85,6 @@ public abstract class AbstractEnergyGeneratorBlock extends BlockWithEntity {
         if (!(world.getBlockEntity(pos) instanceof AbstractEnergyGeneratorBlockEntity entity)) {
             return;
         }
-        if(itemStack.hasCustomName()) {
-            entity.setCustomName(itemStack.getName());
-        }
         var item = itemStack.getItem();
         if(item instanceof ChargeableItem chargeableItem) {
             entity.onPlaced(chargeableItem.getCharge(itemStack));
@@ -172,9 +169,6 @@ public abstract class AbstractEnergyGeneratorBlock extends BlockWithEntity {
             dropStack(world, pos, stackx);
             if (!(blockEntity instanceof AbstractEnergyGeneratorBlockEntity energyGeneratorBlockEntity)) {
                 return;
-            }
-            if (energyGeneratorBlockEntity.hasCustomName()) {
-                stackx.setCustomName(energyGeneratorBlockEntity.getCustomName());
             }
             var item = stackx.getItem();
             var charge = energyGeneratorBlockEntity.getCharge();
