@@ -22,7 +22,7 @@ public final class Blocks implements DefaultModInitializer {
                 .strength(5, 6)
                 .requiresTool();
 
-        var energyGeneratorBlock = new EnergyGeneratorBlock(extractorSettings, 8, 8000, 10);
+        var energyGeneratorBlock = new EnergyGeneratorBlock(extractorSettings, 2, 8000, 10);
         ENERGY_GENERATOR = BlockUtils.register(Identifiers.of("energy_generator"), energyGeneratorBlock);
     }
 }
