@@ -116,7 +116,7 @@ public abstract class AbstractBioReactorScreenHandler extends SlotsScreenHandler
             var slotGroupBuilder = SlotGroupMetaBuilder.builder(BioReactorSlotTypes.CHARGE);
             slotGroupBuilder.addSlot(globalSlotIndex++, AbstractBioReactorBlockEntity.CHARGE_SLOT_INDEX);
             var pos = slotLayoutManager.getSlotPosition(BioReactorSlotTypes.CHARGE, 0, AbstractBioReactorBlockEntity.CHARGE_SLOT_INDEX);
-            var chargeSlot = new ChargeSlot(inventory, AbstractBioReactorBlockEntity.CHARGE_SLOT_INDEX, pos.x, pos.y, false);
+            var chargeSlot = new ChargeSlot(inventory, AbstractBioReactorBlockEntity.CHARGE_SLOT_INDEX, pos.x, pos.y, true);
             this.addSlot(chargeSlot);
             var slotGroup = slotGroupBuilder.build();
             slotGroupsBuilder.add(slotGroup);
