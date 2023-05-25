@@ -3,6 +3,13 @@
   "container.energy_generator": "Генератор энергии",
   "stat.sib_energy_craft.interact_with_generator": "Использований генератора энергии",
 
+  "block.sib_energy_craft.bio_reactor": "Биореактор",
+  "container.bio_reactor": "Биореактор",
+  "stat.sib_energy_craft.interact_with_bio_reactor": "Использований биореактора",
+  "ferments.range.text": "%d/%d",
+  "attribute.name.sib_energy_craft.ferments": "Ферментов: %d",
+  "attribute.name.sib_energy_craft.max_ferments": "Макс. ферментов: %d",
+
   "container.extractor": "Экстрактор",
   "block.sib_energy_craft.extractor": "Экстрактор",
   "stat.sib_energy_craft.interact_with_extractor": "Использований экстрактора",

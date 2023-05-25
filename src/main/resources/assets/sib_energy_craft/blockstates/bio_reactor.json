@@ -1,0 +1,158 @@
+{
+  "variants": {
+    "facing=east,lit=false,filling=empty": {
+      "model": "sib_energy_craft:block/bio_reactor",
+      "y": 90
+    },
+    "facing=east,lit=true,filling=empty": {
+      "model": "sib_energy_craft:block/bio_reactor_on",
+      "y": 90
+    },
+    "facing=north,lit=false,filling=empty": {
+      "model": "sib_energy_craft:block/bio_reactor"
+    },
+    "facing=north,lit=true,filling=empty": {
+      "model": "sib_energy_craft:block/bio_reactor_on"
+    },
+    "facing=south,lit=false,filling=empty": {
+      "model": "sib_energy_craft:block/bio_reactor",
+      "y": 180
+    },
+    "facing=south,lit=true,filling=empty": {
+      "model": "sib_energy_craft:block/bio_reactor_on",
+      "y": 180
+    },
+    "facing=west,lit=false,filling=empty": {
+      "model": "sib_energy_craft:block/bio_reactor",
+      "y": 270
+    },
+    "facing=west,lit=true,filling=empty": {
+      "model": "sib_energy_craft:block/bio_reactor_on",
+      "y": 270
+    },
+
+    "facing=east,lit=false,filling=almost_empty": {
+      "model": "sib_energy_craft:block/bio_reactor_25",
+      "y": 90
+    },
+    "facing=east,lit=true,filling=almost_empty": {
+      "model": "sib_energy_craft:block/bio_reactor_on_25",
+      "y": 90
+    },
+    "facing=north,lit=false,filling=almost_empty": {
+      "model": "sib_energy_craft:block/bio_reactor_25"
+    },
+    "facing=north,lit=true,filling=almost_empty": {
+      "model": "sib_energy_craft:block/bio_reactor_on_25"
+    },
+    "facing=south,lit=false,filling=almost_empty": {
+      "model": "sib_energy_craft:block/bio_reactor_25",
+      "y": 180
+    },
+    "facing=south,lit=true,filling=almost_empty": {
+      "model": "sib_energy_craft:block/bio_reactor_on_25",
+      "y": 180
+    },
+    "facing=west,lit=false,filling=almost_empty": {
+      "model": "sib_energy_craft:block/bio_reactor_25",
+      "y": 270
+    },
+    "facing=west,lit=true,filling=5": {
+      "model": "sib_energy_craft:block/bio_reactor_on_25",
+      "y": 270
+    },
+
+    "facing=east,lit=false,filling=half": {
+      "model": "sib_energy_craft:block/bio_reactor_50",
+      "y": 90
+    },
+    "facing=east,lit=true,filling=half": {
+      "model": "sib_energy_craft:block/bio_reactor_on_50",
+      "y": 90
+    },
+    "facing=north,lit=false,filling=half": {
+      "model": "sib_energy_craft:block/bio_reactor_50"
+    },
+    "facing=north,lit=true,filling=half": {
+      "model": "sib_energy_craft:block/bio_reactor_on_50"
+    },
+    "facing=south,lit=false,filling=half": {
+      "model": "sib_energy_craft:block/bio_reactor_50",
+      "y": 180
+    },
+    "facing=south,lit=true,filling=half": {
+      "model": "sib_energy_craft:block/bio_reactor_on_50",
+      "y": 180
+    },
+    "facing=west,lit=false,filling=half": {
+      "model": "sib_energy_craft:block/bio_reactor_50",
+      "y": 270
+    },
+    "facing=west,lit=true,filling=half": {
+      "model": "sib_energy_craft:block/bio_reactor_on_50",
+      "y": 270
+    },
+
+    "facing=east,lit=false,filling=almost_full": {
+      "model": "sib_energy_craft:block/bio_reactor_75",
+      "y": 90
+    },
+    "facing=east,lit=true,filling=almost_full": {
+      "model": "sib_energy_craft:block/bio_reactor_on_75",
+      "y": 90
+    },
+    "facing=north,lit=false,filling=almost_full": {
+      "model": "sib_energy_craft:block/bio_reactor_75"
+    },
+    "facing=north,lit=true,filling=almost_full": {
+      "model": "sib_energy_craft:block/bio_reactor_on_75"
+    },
+    "facing=south,lit=false,filling=almost_full": {
+      "model": "sib_energy_craft:block/bio_reactor_75",
+      "y": 180
+    },
+    "facing=south,lit=true,filling=almost_full": {
+      "model": "sib_energy_craft:block/bio_reactor_on_75",
+      "y": 180
+    },
+    "facing=west,lit=false,filling=almost_full": {
+      "model": "sib_energy_craft:block/bio_reactor_75",
+      "y": 270
+    },
+    "facing=west,lit=true,filling=almost_full": {
+      "model": "sib_energy_craft:block/bio_reactor_on_75",
+      "y": 270
+    },
+
+    "facing=east,lit=false,filling=full": {
+      "model": "sib_energy_craft:block/bio_reactor_100",
+      "y": 90
+    },
+    "facing=east,lit=true,filling=full": {
+      "model": "sib_energy_craft:block/bio_reactor_on_100",
+      "y": 90
+    },
+    "facing=north,lit=false,filling=full": {
+      "model": "sib_energy_craft:block/bio_reactor_100"
+    },
+    "facing=north,lit=true,filling=full": {
+      "model": "sib_energy_craft:block/bio_reactor_on_100"
+    },
+    "facing=south,lit=false,filling=full": {
+      "model": "sib_energy_craft:block/bio_reactor_100",
+      "y": 180
+    },
+    "facing=south,lit=true,filling=full": {
+      "model": "sib_energy_craft:block/bio_reactor_on_100",
+      "y": 180
+    },
+    "facing=west,lit=false,filling=full": {
+      "model": "sib_energy_craft:block/bio_reactor_100",
+      "y": 270
+    },
+    "facing=west,lit=true,filling=full": {
+      "model": "sib_energy_craft:block/bio_reactor_on_100",
+      "y": 270
+    }
+  }
+}
