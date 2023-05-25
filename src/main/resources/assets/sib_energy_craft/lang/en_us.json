@@ -3,6 +3,13 @@
   "container.energy_generator": "Energy Generator",
   "stat.sib_energy_craft.interact_with_generator": "Interactions with Generator",
 
+  "block.sib_energy_craft.bio_reactor": "Bio Reactor",
+  "container.bio_reactor": "Bio Reactor",
+  "stat.sib_energy_craft.interact_with_bio_reactor": "Interactions with Bio Reactor",
+  "ferments.range.text": "%d/%d",
+  "attribute.name.sib_energy_craft.ferments": "Ferments: %d",
+  "attribute.name.sib_energy_craft.max_ferments": "Max Ferments: %d",
+
   "container.extractor": "Extractor",
   "block.sib_energy_craft.extractor": "Extractor",
   "stat.sib_energy_craft.interact_with_extractor": "Interactions with Extractor",

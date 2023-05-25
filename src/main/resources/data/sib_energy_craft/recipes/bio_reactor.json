@@ -1,0 +1,26 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "pattern": [
+    "#V#",
+    "###",
+    "CGC"
+  ],
+  "key": {
+    "V": {
+      "item": "minecraft:composter"
+    },
+    "#": {
+      "item": "sib_energy_craft:iron_plate"
+    },
+    "G": {
+      "item": "sib_energy_craft:energy_generator"
+    },
+    "C": {
+      "item": "sib_energy_craft:energy_circuit"
+    }
+  },
+  "result": {
+    "item": "sib_energy_craft:bio_reactor"
+  }
+}
