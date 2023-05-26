@@ -1,13 +1,13 @@
-package com.github.sib_energy_craft.machines.bio_generator.block.entity;
+package com.github.sib_energy_craft.machines.bio_reactor.block.entity;
 
 import com.github.sib_energy_craft.containers.CleanEnergyContainer;
 import com.github.sib_energy_craft.energy_api.Energy;
 import com.github.sib_energy_craft.energy_api.EnergyOffer;
 import com.github.sib_energy_craft.energy_api.items.ChargeableItem;
 import com.github.sib_energy_craft.energy_api.supplier.EnergySupplier;
-import com.github.sib_energy_craft.machines.bio_generator.BioFuelRegistry;
-import com.github.sib_energy_craft.machines.bio_generator.block.AbstractBioReactorBlock;
-import com.github.sib_energy_craft.machines.bio_generator.block.BioReactorFilling;
+import com.github.sib_energy_craft.machines.bio_reactor.BioFuelRegistry;
+import com.github.sib_energy_craft.machines.bio_reactor.block.AbstractBioReactorBlock;
+import com.github.sib_energy_craft.machines.bio_reactor.block.BioReactorFilling;
 import com.github.sib_energy_craft.pipes.api.ItemConsumer;
 import com.github.sib_energy_craft.pipes.utils.PipeUtils;
 import com.github.sib_energy_craft.screen.property.ScreenPropertyTypes;

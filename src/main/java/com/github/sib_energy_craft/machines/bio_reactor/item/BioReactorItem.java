@@ -1,7 +1,7 @@
-package com.github.sib_energy_craft.machines.bio_generator.item;
+package com.github.sib_energy_craft.machines.bio_reactor.item;
 
 import com.github.sib_energy_craft.energy_api.items.ChargeableItem;
-import com.github.sib_energy_craft.machines.bio_generator.block.AbstractBioReactorBlock;
+import com.github.sib_energy_craft.machines.bio_reactor.block.AbstractBioReactorBlock;
 import lombok.Getter;
 import net.minecraft.client.item.TooltipContext;
 import net.minecraft.item.BlockItem;

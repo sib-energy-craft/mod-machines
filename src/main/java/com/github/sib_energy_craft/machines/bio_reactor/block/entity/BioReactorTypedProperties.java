@@ -1,4 +1,4 @@
-package com.github.sib_energy_craft.machines.bio_generator.block.entity;
+package com.github.sib_energy_craft.machines.bio_reactor.block.entity;
 
 /**
  * @since 0.0.23

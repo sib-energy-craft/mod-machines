@@ -1,8 +1,8 @@
-package com.github.sib_energy_craft.machines.bio_generator.block;
+package com.github.sib_energy_craft.machines.bio_reactor.block;
 
 import com.github.sib_energy_craft.energy_api.Energy;
-import com.github.sib_energy_craft.machines.bio_generator.block.entity.AbstractBioReactorBlockEntity;
-import com.github.sib_energy_craft.machines.bio_generator.item.BioReactorItem;
+import com.github.sib_energy_craft.machines.bio_reactor.block.entity.AbstractBioReactorBlockEntity;
+import com.github.sib_energy_craft.machines.bio_reactor.item.BioReactorItem;
 import lombok.Getter;
 import net.minecraft.block.*;
 import net.minecraft.block.entity.BlockEntity;

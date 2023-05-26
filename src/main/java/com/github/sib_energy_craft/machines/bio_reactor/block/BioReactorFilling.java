@@ -1,4 +1,4 @@
-package com.github.sib_energy_craft.machines.bio_generator.block;
+package com.github.sib_energy_craft.machines.bio_reactor.block;
 
 import net.minecraft.util.StringIdentifiable;
 

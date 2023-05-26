@@ -1,6 +1,6 @@
-package com.github.sib_energy_craft.machines.bio_generator.load;
+package com.github.sib_energy_craft.machines.bio_reactor.load;
 
-import com.github.sib_energy_craft.machines.bio_generator.BioFuelRegistry;
+import com.github.sib_energy_craft.machines.bio_reactor.BioFuelRegistry;
 import com.github.sib_energy_craft.sec_utils.load.DefaultModInitializer;
 import net.minecraft.item.Items;
 
@@ -95,7 +95,7 @@ public final class BioFuels implements DefaultModInitializer {
         BioFuelRegistry.registry(Items.MELON, 18 * hungryToEnergy);
 
         // # ingredients
-        BioFuelRegistry.registry(Items.SUGAR, hungryToEnergy / 2);
+        BioFuelRegistry.registry(Items.SUGAR, hungryToEnergy);
         BioFuelRegistry.registry(Items.EGG, hungryToEnergy / 2);
         BioFuelRegistry.registry(Items.RED_MUSHROOM, hungryToEnergy / 2);
         BioFuelRegistry.registry(Items.BROWN_MUSHROOM, hungryToEnergy / 2);

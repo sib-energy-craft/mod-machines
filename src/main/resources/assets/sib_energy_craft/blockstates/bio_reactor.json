@@ -57,7 +57,7 @@
       "model": "sib_energy_craft:block/bio_reactor_25",
       "y": 270
     },
-    "facing=west,lit=true,filling=5": {
+    "facing=west,lit=true,filling=almost_empty": {
       "model": "sib_energy_craft:block/bio_reactor_on_25",
       "y": 270
     },

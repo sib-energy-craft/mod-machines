@@ -1,7 +1,7 @@
-package com.github.sib_energy_craft.machines.bio_generator.load;
+package com.github.sib_energy_craft.machines.bio_reactor.load;
 
 import com.github.sib_energy_craft.energy_api.utils.Identifiers;
-import com.github.sib_energy_craft.machines.bio_generator.item.BioReactorItem;
+import com.github.sib_energy_craft.machines.bio_reactor.item.BioReactorItem;
 import com.github.sib_energy_craft.sec_utils.load.DefaultModInitializer;
 import com.github.sib_energy_craft.sec_utils.utils.ItemUtils;
 import net.minecraft.item.BlockItem;

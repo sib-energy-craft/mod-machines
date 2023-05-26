@@ -28,13 +28,13 @@
       "com.github.sib_energy_craft.machines.generator.load.ScreenHandlers",
       "com.github.sib_energy_craft.machines.generator.load.Stats",
 
-      "com.github.sib_energy_craft.machines.bio_generator.load.BioFuels",
+      "com.github.sib_energy_craft.machines.bio_reactor.load.BioFuels",
 
-      "com.github.sib_energy_craft.machines.bio_generator.load.Blocks",
-      "com.github.sib_energy_craft.machines.bio_generator.load.Entities",
-      "com.github.sib_energy_craft.machines.bio_generator.load.Items",
-      "com.github.sib_energy_craft.machines.bio_generator.load.ScreenHandlers",
-      "com.github.sib_energy_craft.machines.bio_generator.load.Stats",
+      "com.github.sib_energy_craft.machines.bio_reactor.load.Blocks",
+      "com.github.sib_energy_craft.machines.bio_reactor.load.Entities",
+      "com.github.sib_energy_craft.machines.bio_reactor.load.Items",
+      "com.github.sib_energy_craft.machines.bio_reactor.load.ScreenHandlers",
+      "com.github.sib_energy_craft.machines.bio_reactor.load.Stats",
 
       "com.github.sib_energy_craft.machines.macerator.load.Blocks",
       "com.github.sib_energy_craft.machines.macerator.load.Entities",
@@ -87,7 +87,7 @@
       "com.github.sib_energy_craft.machines.compressor.load.client.Screens",
       "com.github.sib_energy_craft.machines.extractor.load.client.Screens",
       "com.github.sib_energy_craft.machines.generator.load.client.Screens",
-      "com.github.sib_energy_craft.machines.bio_generator.load.client.Screens",
+      "com.github.sib_energy_craft.machines.bio_reactor.load.client.Screens",
       "com.github.sib_energy_craft.machines.macerator.load.client.Screens",
       "com.github.sib_energy_craft.machines.advanced_macerator.load.client.Screens",
       "com.github.sib_energy_craft.machines.energy_furnace.load.client.Screens",

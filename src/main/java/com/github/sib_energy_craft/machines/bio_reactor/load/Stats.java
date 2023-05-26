@@ -1,4 +1,4 @@
-package com.github.sib_energy_craft.machines.bio_generator.load;
+package com.github.sib_energy_craft.machines.bio_reactor.load;
 
 import com.github.sib_energy_craft.energy_api.utils.Identifiers;
 import com.github.sib_energy_craft.sec_utils.load.DefaultModInitializer;

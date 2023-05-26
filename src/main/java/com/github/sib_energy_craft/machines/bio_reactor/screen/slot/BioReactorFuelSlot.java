@@ -1,6 +1,6 @@
-package com.github.sib_energy_craft.machines.bio_generator.screen.slot;
+package com.github.sib_energy_craft.machines.bio_reactor.screen.slot;
 
-import com.github.sib_energy_craft.machines.bio_generator.BioFuelRegistry;
+import com.github.sib_energy_craft.machines.bio_reactor.BioFuelRegistry;
 import net.minecraft.inventory.Inventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.screen.slot.Slot;
