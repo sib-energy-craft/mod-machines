@@ -1,4 +1,4 @@
-package com.github.sib_energy_craft.machines.bio_generator;
+package com.github.sib_energy_craft.machines.bio_reactor;
 
 import com.google.common.collect.BiMap;
 import com.google.common.collect.HashBiMap;

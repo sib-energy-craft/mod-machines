@@ -1,7 +1,7 @@
-package com.github.sib_energy_craft.machines.bio_generator.load;
+package com.github.sib_energy_craft.machines.bio_reactor.load;
 
 import com.github.sib_energy_craft.energy_api.utils.Identifiers;
-import com.github.sib_energy_craft.machines.bio_generator.screen.BioReactorScreenHandler;
+import com.github.sib_energy_craft.machines.bio_reactor.screen.BioReactorScreenHandler;
 import com.github.sib_energy_craft.sec_utils.load.DefaultModInitializer;
 import net.minecraft.screen.ScreenHandlerType;
 

@@ -1,8 +1,8 @@
-package com.github.sib_energy_craft.machines.bio_generator.block.entity;
+package com.github.sib_energy_craft.machines.bio_reactor.block.entity;
 
-import com.github.sib_energy_craft.machines.bio_generator.block.BioReactorBlock;
-import com.github.sib_energy_craft.machines.bio_generator.load.Entities;
-import com.github.sib_energy_craft.machines.bio_generator.screen.BioReactorScreenHandler;
+import com.github.sib_energy_craft.machines.bio_reactor.block.BioReactorBlock;
+import com.github.sib_energy_craft.machines.bio_reactor.load.Entities;
+import com.github.sib_energy_craft.machines.bio_reactor.screen.BioReactorScreenHandler;
 import com.github.sib_energy_craft.network.PropertyUpdateSyncer;
 import net.minecraft.block.BlockState;
 import net.minecraft.entity.player.PlayerEntity;

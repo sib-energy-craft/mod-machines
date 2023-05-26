@@ -1,10 +1,10 @@
-package com.github.sib_energy_craft.machines.bio_generator.screen;
+package com.github.sib_energy_craft.machines.bio_reactor.screen;
 
 import com.github.sib_energy_craft.energy_api.screen.ChargeSlot;
 import com.github.sib_energy_craft.energy_api.tags.CoreTags;
-import com.github.sib_energy_craft.machines.bio_generator.BioFuelRegistry;
-import com.github.sib_energy_craft.machines.bio_generator.block.entity.AbstractBioReactorBlockEntity;
-import com.github.sib_energy_craft.machines.bio_generator.block.entity.BioReactorTypedProperties;
+import com.github.sib_energy_craft.machines.bio_reactor.BioFuelRegistry;
+import com.github.sib_energy_craft.machines.bio_reactor.block.entity.AbstractBioReactorBlockEntity;
+import com.github.sib_energy_craft.machines.bio_reactor.block.entity.BioReactorTypedProperties;
 import com.github.sib_energy_craft.machines.screen.layout.SlotLayoutManager;
 import com.github.sib_energy_craft.screen.TypedPropertyScreenHandler;
 import com.github.sib_energy_craft.sec_utils.screen.SlotsScreenHandler;

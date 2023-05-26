@@ -1,6 +1,6 @@
-package com.github.sib_energy_craft.machines.bio_generator.screen;
+package com.github.sib_energy_craft.machines.bio_reactor.screen;
 
-import com.github.sib_energy_craft.machines.bio_generator.load.ScreenHandlers;
+import com.github.sib_energy_craft.machines.bio_reactor.load.ScreenHandlers;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.inventory.Inventory;
 import net.minecraft.network.PacketByteBuf;

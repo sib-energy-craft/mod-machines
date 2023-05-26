@@ -1,4 +1,4 @@
-package com.github.sib_energy_craft.machines.bio_generator.screen;
+package com.github.sib_energy_craft.machines.bio_reactor.screen;
 
 import com.github.sib_energy_craft.energy_api.utils.Identifiers;
 import com.mojang.blaze3d.systems.RenderSystem;
