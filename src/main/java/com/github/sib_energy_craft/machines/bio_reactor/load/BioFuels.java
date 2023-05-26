@@ -82,6 +82,7 @@ public final class BioFuels implements DefaultModInitializer {
         BioFuelRegistry.registry(Items.GOLDEN_CARROT, 10 * hungryToEnergy);
 
         // # other
+        BioFuelRegistry.registry(Items.SUGAR_CANE, hungryToEnergy / 2);
         BioFuelRegistry.registry(Items.WHEAT_SEEDS, hungryToEnergy / 2);
         BioFuelRegistry.registry(Items.PUMPKIN_SEEDS, hungryToEnergy / 2);
         BioFuelRegistry.registry(Items.MELON_SEEDS, hungryToEnergy / 2);
