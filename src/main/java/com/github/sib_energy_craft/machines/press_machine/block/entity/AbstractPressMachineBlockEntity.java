@@ -45,7 +45,7 @@ public abstract class AbstractPressMachineBlockEntity<T extends AbstractPressMac
 
     @Override
     public int getCookTimeTotal(@NotNull World world) {
-        return ((AbstractPressMachineBlock) block).getCookTimeTotal();
+        return block.getCookTimeTotal();
     }
 
     @Override

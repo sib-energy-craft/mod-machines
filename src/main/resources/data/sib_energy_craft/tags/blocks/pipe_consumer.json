@@ -11,6 +11,7 @@
     "sib_energy_craft:macerator",
     "sib_energy_craft:advanced_macerator",
     "sib_energy_craft:press_machine",
-    "sib_energy_craft:cutting_machine"
+    "sib_energy_craft:cutting_machine",
+    "sib_energy_craft:ore_purifying_machine"
   ]
 }

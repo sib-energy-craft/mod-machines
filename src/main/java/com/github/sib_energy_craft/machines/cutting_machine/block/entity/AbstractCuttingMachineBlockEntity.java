@@ -45,7 +45,7 @@ public abstract class AbstractCuttingMachineBlockEntity<T extends AbstractCuttin
 
     @Override
     public int getCookTimeTotal(@NotNull World world) {
-        return ((AbstractCuttingMachineBlock) block).getCookTimeTotal();
+        return block.getCookTimeTotal();
     }
 
     @Override

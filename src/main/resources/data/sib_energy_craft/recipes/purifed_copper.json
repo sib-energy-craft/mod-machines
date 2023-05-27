@@ -1,0 +1,14 @@
+{
+  "type": "sib_energy_craft:purifying",
+  "source": {
+    "item": "sib_energy_craft:copper_crushed_ore"
+  },
+  "outputMain": {
+    "item": "sib_energy_craft:copper_purified_crushed_ore"
+  },
+  "outputSide": {
+    "item": "sib_energy_craft:copper_tiny_pile_dust",
+    "count": 2
+  },
+  "cookingTime": 1000
+}
