@@ -3,11 +3,12 @@ package com.github.sib_energy_craft.machines.extractor.block.entity;
 import com.github.sib_energy_craft.machines.extractor.block.ExtractorBlock;
 import com.github.sib_energy_craft.machines.extractor.load.Entities;
 import com.github.sib_energy_craft.machines.extractor.screen.ExtractorScreenHandler;
+import com.github.sib_energy_craft.machines.screen.AbstractEnergyMachineScreenHandler;
 import com.github.sib_energy_craft.recipes.load.RecipeTypes;
 import net.minecraft.block.BlockState;
+import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.network.PacketByteBuf;
-import net.minecraft.screen.ScreenHandler;
 import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.text.Text;
 import net.minecraft.util.math.BlockPos;
@@ -24,17 +25,16 @@ public class ExtractorBlockEntity extends AbstractExtractorBlockEntity<Extractor
         super(Entities.EXTRACTOR, pos, state, RecipeTypes.EXTRACTING, block);
     }
 
-    @NotNull
     @Override
-    protected Text getContainerName() {
+    public @NotNull Text getDisplayName() {
         return Text.translatable("container.extractor");
     }
 
-    @NotNull
     @Override
-    protected ScreenHandler createScreenHandler(int syncId,
-                                                @NotNull PlayerInventory playerInventory) {
-        return new ExtractorScreenHandler(syncId, playerInventory, this, this.propertyMap);
+    protected AbstractEnergyMachineScreenHandler createScreenHandler(int syncId,
+                                                                     @NotNull PlayerInventory playerInventory,
+                                                                     @NotNull PlayerEntity player) {
+        return new ExtractorScreenHandler(syncId, playerInventory, this);
     }
 
     @Override

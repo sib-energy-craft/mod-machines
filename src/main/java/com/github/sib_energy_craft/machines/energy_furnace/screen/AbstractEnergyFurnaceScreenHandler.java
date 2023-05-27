@@ -7,8 +7,6 @@ import net.minecraft.inventory.Inventory;
 import net.minecraft.inventory.SimpleInventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.recipe.RecipeType;
-import net.minecraft.screen.ArrayPropertyDelegate;
-import net.minecraft.screen.PropertyDelegate;
 import net.minecraft.screen.ScreenHandlerType;
 import org.jetbrains.annotations.NotNull;
 
@@ -21,28 +19,18 @@ public abstract class AbstractEnergyFurnaceScreenHandler extends AbstractEnergyM
     protected AbstractEnergyFurnaceScreenHandler(@NotNull ScreenHandlerType<?> type,
                                              int syncId,
                                              @NotNull PlayerInventory playerInventory,
-                                             int slots,
+                                             int parallelProcess,
                                              @NotNull SlotLayoutManager slotLayoutManager) {
-        super(type, syncId, playerInventory, slots, slotLayoutManager);
-    }
-    protected AbstractEnergyFurnaceScreenHandler(@NotNull ScreenHandlerType<?> type,
-                                                 int syncId,
-                                                 @NotNull PlayerInventory playerInventory,
-                                                 int properties,
-                                                 int slots,
-                                                 @NotNull SlotLayoutManager slotLayoutManager) {
-        super(type, syncId, playerInventory, new SimpleInventory(1 + 2 * slots),
-                new ArrayPropertyDelegate(properties), slots, slotLayoutManager);
+        super(type, syncId, playerInventory, parallelProcess, parallelProcess, slotLayoutManager);
     }
 
     protected AbstractEnergyFurnaceScreenHandler(@NotNull ScreenHandlerType<?> type,
                                                  int syncId,
                                                  @NotNull PlayerInventory playerInventory,
                                                  @NotNull Inventory inventory,
-                                                 @NotNull PropertyDelegate propertyDelegate,
-                                                 int slots,
+                                                 int parallelProcess,
                                                  @NotNull SlotLayoutManager slotLayoutManager) {
-        super(type, syncId, playerInventory, inventory, propertyDelegate, slots, slotLayoutManager);
+        super(type, syncId, playerInventory, inventory, parallelProcess, parallelProcess, slotLayoutManager);
     }
 
     @Override

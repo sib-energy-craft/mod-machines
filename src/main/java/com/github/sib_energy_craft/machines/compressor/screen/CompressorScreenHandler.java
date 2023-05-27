@@ -5,7 +5,6 @@ import com.github.sib_energy_craft.machines.screen.layout.MultiSlotMachineLayout
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.inventory.Inventory;
 import net.minecraft.network.PacketByteBuf;
-import net.minecraft.screen.PropertyDelegate;
 import org.jetbrains.annotations.NotNull;
 
 /**
@@ -23,9 +22,8 @@ public class CompressorScreenHandler extends AbstractCompressorScreenHandler {
 
     public CompressorScreenHandler(int syncId,
                                    @NotNull PlayerInventory playerInventory,
-                                   @NotNull Inventory inventory,
-                                   @NotNull PropertyDelegate propertyDelegate) {
-        super(ScreenHandlers.COMPRESSOR, syncId, playerInventory, inventory, propertyDelegate, LAYOUT_MANAGER);
+                                   @NotNull Inventory inventory) {
+        super(ScreenHandlers.COMPRESSOR, syncId, playerInventory, inventory, LAYOUT_MANAGER);
     }
 
     public CompressorScreenHandler(int syncId,

@@ -3,11 +3,12 @@ package com.github.sib_energy_craft.machines.press_machine.block.entity;
 import com.github.sib_energy_craft.machines.press_machine.block.PressMachineBlock;
 import com.github.sib_energy_craft.machines.press_machine.load.Entities;
 import com.github.sib_energy_craft.machines.press_machine.screen.PressMachineScreenHandler;
+import com.github.sib_energy_craft.machines.screen.AbstractEnergyMachineScreenHandler;
 import com.github.sib_energy_craft.recipes.recipe.IronCraftingTableRecipeType;
 import net.minecraft.block.BlockState;
+import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.network.PacketByteBuf;
-import net.minecraft.screen.ScreenHandler;
 import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.text.Text;
 import net.minecraft.util.math.BlockPos;
@@ -24,16 +25,16 @@ public class PressMachineBlockEntity extends AbstractPressMachineBlockEntity<Pre
         super(Entities.PRESS_MACHINE, pos, state, IronCraftingTableRecipeType.INSTANCE, block);
     }
 
-    @NotNull
     @Override
-    protected Text getContainerName() {
+    public @NotNull Text getDisplayName() {
         return Text.translatable("container.press_machine");
     }
 
-    @NotNull
     @Override
-    protected ScreenHandler createScreenHandler(int syncId, @NotNull PlayerInventory playerInventory) {
-        return new PressMachineScreenHandler(syncId, playerInventory, this, this.propertyMap);
+    protected AbstractEnergyMachineScreenHandler createScreenHandler(int syncId,
+                                                                     @NotNull PlayerInventory playerInventory,
+                                                                     @NotNull PlayerEntity player) {
+        return new PressMachineScreenHandler(syncId, playerInventory, this);
     }
 
     @Override

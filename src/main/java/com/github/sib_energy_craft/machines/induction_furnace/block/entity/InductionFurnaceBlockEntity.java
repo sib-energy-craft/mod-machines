@@ -5,11 +5,12 @@ import com.github.sib_energy_craft.machines.energy_furnace.block.entity.Abstract
 import com.github.sib_energy_craft.machines.induction_furnace.block.InductionFurnaceBlock;
 import com.github.sib_energy_craft.machines.induction_furnace.load.Entities;
 import com.github.sib_energy_craft.machines.induction_furnace.screen.InductionFurnaceScreenHandler;
+import com.github.sib_energy_craft.machines.screen.AbstractEnergyMachineScreenHandler;
 import net.minecraft.block.BlockState;
+import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.network.PacketByteBuf;
-import net.minecraft.screen.ScreenHandler;
 import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.text.Text;
 import net.minecraft.util.math.BlockPos;
@@ -32,7 +33,7 @@ public class InductionFurnaceBlockEntity extends AbstractEnergyFurnaceBlockEntit
         this.addListener(EnergyMachineEvent.ENERGY_USED, () -> heatTicks = Math.min(heatTicks + 1, block.getMaxHeatTicks()));
         this.addListener(EnergyMachineEvent.CAN_NOT_COOK, () -> heatTicks = Math.max(heatTicks - 1, 0));
         this.addListener(EnergyMachineEvent.ENERGY_NOT_ENOUGH, () -> heatTicks = Math.max(heatTicks - 1, 0));
-        this.propertyMap.add(InductionFurnaceProperties.HEAT, () -> (int)(100f * heatTicks / block.getMaxHeatTicks()));
+        this.energyMachinePropertyMap.add(InductionFurnaceProperties.HEAT, () -> 100 * heatTicks / block.getMaxHeatTicks());
     }
 
     @Override
@@ -48,14 +49,15 @@ public class InductionFurnaceBlockEntity extends AbstractEnergyFurnaceBlockEntit
     }
 
     @Override
-    protected @NotNull Text getContainerName() {
+    public @NotNull Text getDisplayName() {
         return Text.translatable("container.induction_furnace");
     }
 
     @Override
-    protected @NotNull ScreenHandler createScreenHandler(int syncId,
-                                                         @NotNull PlayerInventory playerInventory) {
-        return new InductionFurnaceScreenHandler(syncId, playerInventory, this, this.propertyMap);
+    protected AbstractEnergyMachineScreenHandler createScreenHandler(int syncId,
+                                                                     @NotNull PlayerInventory playerInventory,
+                                                                     @NotNull PlayerEntity player) {
+        return new InductionFurnaceScreenHandler(syncId, playerInventory, this);
     }
 
     @Override

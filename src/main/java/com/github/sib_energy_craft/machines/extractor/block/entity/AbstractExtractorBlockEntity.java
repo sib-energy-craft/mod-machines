@@ -1,8 +1,7 @@
 package com.github.sib_energy_craft.machines.extractor.block.entity;
 
-import com.github.sib_energy_craft.energy_api.consumer.EnergyConsumer;
-import com.github.sib_energy_craft.machines.block.entity.AbstractEnergyMachineBlockEntity;
 import com.github.sib_energy_craft.machines.block.entity.EnergyMachineInventoryType;
+import com.github.sib_energy_craft.machines.block.entity.OneToOneEnergyMachineBlockEntity;
 import com.github.sib_energy_craft.machines.extractor.block.AbstractExtractorBlock;
 import com.github.sib_energy_craft.machines.extractor.tag.ExtractorTags;
 import com.github.sib_energy_craft.machines.utils.EnergyMachineUtils;
@@ -26,8 +25,9 @@ import org.jetbrains.annotations.Nullable;
  * @since 0.0.1
  * @author sibmaks
  */
-public abstract class AbstractExtractorBlockEntity<T extends AbstractExtractorBlock> extends AbstractEnergyMachineBlockEntity<T>
-        implements ExtendedScreenHandlerFactory, EnergyConsumer {
+public abstract class AbstractExtractorBlockEntity<T extends AbstractExtractorBlock>
+        extends OneToOneEnergyMachineBlockEntity<T>
+        implements ExtendedScreenHandlerFactory {
     protected final RecipeType<ExtractingRecipe> recipeType;
 
 

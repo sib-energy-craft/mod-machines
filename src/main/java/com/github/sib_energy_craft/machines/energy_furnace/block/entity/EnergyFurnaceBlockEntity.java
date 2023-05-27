@@ -3,13 +3,15 @@ package com.github.sib_energy_craft.machines.energy_furnace.block.entity;
 import com.github.sib_energy_craft.machines.energy_furnace.block.EnergyFurnaceBlock;
 import com.github.sib_energy_craft.machines.energy_furnace.load.Entities;
 import com.github.sib_energy_craft.machines.energy_furnace.screen.EnergyFurnaceScreenHandler;
+import com.github.sib_energy_craft.machines.screen.AbstractEnergyMachineScreenHandler;
 import net.minecraft.block.BlockState;
+import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.network.PacketByteBuf;
-import net.minecraft.screen.ScreenHandler;
 import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.text.Text;
 import net.minecraft.util.math.BlockPos;
+import org.jetbrains.annotations.NotNull;
 
 
 /**
@@ -22,13 +24,15 @@ public class EnergyFurnaceBlockEntity extends AbstractEnergyFurnaceBlockEntity<E
     }
 
     @Override
-    protected Text getContainerName() {
+    public @NotNull Text getDisplayName() {
         return Text.translatable("container.energy_furnace");
     }
 
     @Override
-    protected ScreenHandler createScreenHandler(int syncId, PlayerInventory playerInventory) {
-        return new EnergyFurnaceScreenHandler(syncId, playerInventory, this, this.propertyMap);
+    protected AbstractEnergyMachineScreenHandler createScreenHandler(int syncId,
+                                                                     @NotNull PlayerInventory playerInventory,
+                                                                     @NotNull PlayerEntity player) {
+        return new EnergyFurnaceScreenHandler(syncId, playerInventory, this);
     }
 
     @Override

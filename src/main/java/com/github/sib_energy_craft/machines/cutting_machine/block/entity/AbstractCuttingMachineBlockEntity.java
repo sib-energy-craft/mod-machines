@@ -1,8 +1,7 @@
 package com.github.sib_energy_craft.machines.cutting_machine.block.entity;
 
-import com.github.sib_energy_craft.energy_api.consumer.EnergyConsumer;
-import com.github.sib_energy_craft.machines.block.entity.AbstractEnergyMachineBlockEntity;
 import com.github.sib_energy_craft.machines.block.entity.EnergyMachineInventoryType;
+import com.github.sib_energy_craft.machines.block.entity.OneToOneEnergyMachineBlockEntity;
 import com.github.sib_energy_craft.machines.cutting_machine.block.AbstractCuttingMachineBlock;
 import com.github.sib_energy_craft.machines.cutting_machine.utils.CuttingMachineUtils;
 import com.github.sib_energy_craft.metallurgy.iron_craft_table.load.Items;
@@ -27,8 +26,8 @@ import org.jetbrains.annotations.Nullable;
  * @author sibmaks
  */
 public abstract class AbstractCuttingMachineBlockEntity<T extends AbstractCuttingMachineBlock>
-        extends AbstractEnergyMachineBlockEntity<T>
-        implements ExtendedScreenHandlerFactory, EnergyConsumer {
+        extends OneToOneEnergyMachineBlockEntity<T>
+        implements ExtendedScreenHandlerFactory {
 
     protected final RecipeType<IronCraftingTableRecipe> recipeType;
     protected final SimpleInventory craftingInventory;

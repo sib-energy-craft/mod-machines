@@ -1,8 +1,7 @@
 package com.github.sib_energy_craft.machines.macerator.block.entity;
 
-import com.github.sib_energy_craft.energy_api.consumer.EnergyConsumer;
-import com.github.sib_energy_craft.machines.block.entity.AbstractEnergyMachineBlockEntity;
 import com.github.sib_energy_craft.machines.block.entity.EnergyMachineInventoryType;
+import com.github.sib_energy_craft.machines.block.entity.OneToOneEnergyMachineBlockEntity;
 import com.github.sib_energy_craft.machines.macerator.block.AbstractMaceratorBlock;
 import com.github.sib_energy_craft.machines.macerator.tag.MaceratorTags;
 import com.github.sib_energy_craft.machines.utils.EnergyMachineUtils;
@@ -27,8 +26,8 @@ import org.jetbrains.annotations.Nullable;
  * @author sibmaks
  */
 public abstract class AbstractMaceratorBlockEntity<T extends AbstractMaceratorBlock>
-        extends AbstractEnergyMachineBlockEntity<T>
-        implements ExtendedScreenHandlerFactory, EnergyConsumer {
+        extends OneToOneEnergyMachineBlockEntity<T>
+        implements ExtendedScreenHandlerFactory {
 
     protected AbstractMaceratorBlockEntity(@NotNull BlockEntityType<?> blockEntityType,
                                            @NotNull BlockPos pos,
