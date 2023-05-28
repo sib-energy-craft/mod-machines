@@ -1,6 +1,7 @@
 package com.github.sib_energy_craft.machines.cutting_machine.screen;
 
 import com.github.sib_energy_craft.energy_api.utils.Identifiers;
+import com.github.sib_energy_craft.sec_utils.screen.ScreenSquareArea;
 import com.mojang.blaze3d.systems.RenderSystem;
 import net.minecraft.client.gui.screen.ingame.HandledScreen;
 import net.minecraft.client.render.GameRenderer;
@@ -17,6 +18,8 @@ import org.jetbrains.annotations.NotNull;
 public class CuttingMachineScreen extends HandledScreen<CuttingMachineScreenHandler> {
     private static final Identifier TEXTURE = Identifiers.of("textures/gui/container/cutting_machine.png");
 
+    private static final ScreenSquareArea CHARGE = new ScreenSquareArea(60, 37, 7, 13);
+
     public CuttingMachineScreen(@NotNull CuttingMachineScreenHandler handler,
                                 @NotNull PlayerInventory inventory,
                                 @NotNull Text title) {
@@ -28,15 +31,14 @@ public class CuttingMachineScreen extends HandledScreen<CuttingMachineScreenHand
         RenderSystem.setShader(GameRenderer::getPositionTexProgram);
         RenderSystem.setShaderColor(1.0f, 1.0f, 1.0f, 1.0f);
         RenderSystem.setShaderTexture(0, TEXTURE);
-        int i = this.x;
-        int j = this.y;
-        drawTexture(matrices, i, j, 0, 0, this.backgroundWidth, this.backgroundHeight);
+        int x = this.x;
+        int y = this.y;
+        drawTexture(matrices, x, y, 0, 0, this.backgroundWidth, this.backgroundHeight);
         int chargeProgress = this.handler.getChargeProgress();
-        drawTexture(matrices, i + 60, j + 37, 176, 0, 7, chargeProgress);
+        drawTexture(matrices, x + CHARGE.x(), y + CHARGE.y(), 176, 0, CHARGE.width(), chargeProgress);
         int cookProgress = this.handler.getCookProgress(20);
-        drawTexture(matrices, i + 81, j + 32, 176, 13, cookProgress, 20);
-        if(mouseX >= i + 60 && mouseX <= i + 60 + 7 &&
-                mouseY >= j + 37 && mouseY <= j + 37 + 13) {
+        drawTexture(matrices, x + 81, y + 32, 176, 13, cookProgress, 20);
+        if(CHARGE.in(x, y, mouseX, mouseY)) {
             var charge = this.handler.getCharge();
             var maxCharge = this.handler.getMaxCharge();
             var charging = Text.translatable("energy.range.text", charge, maxCharge);

@@ -18,12 +18,17 @@ public final class Blocks implements DefaultModInitializer {
     public static final Identified<InductionFurnaceBlock> INDUCTION_FURNACE;
 
     static {
-        var induction_furnaceSettings = FabricBlockSettings.of(Material.METAL)
+        var inductionFurnaceSettings = FabricBlockSettings.of(Material.METAL)
                 .sounds(BlockSoundGroup.METAL)
-                .strength(5, 6)
+                .strength(50, 600)
                 .requiresTool();
 
-        var inductionFurnaceBlock = new InductionFurnaceBlock(induction_furnaceSettings);
+        var inductionFurnaceBlock = new InductionFurnaceBlock(
+                inductionFurnaceSettings,
+                1.5,
+                2400,
+                4
+        );
         INDUCTION_FURNACE = register(Identifiers.of("induction_furnace"), inductionFurnaceBlock);
     }
 }

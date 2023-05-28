@@ -1,8 +1,7 @@
 package com.github.sib_energy_craft.machines.press_machine.block.entity;
 
-import com.github.sib_energy_craft.energy_api.consumer.EnergyConsumer;
-import com.github.sib_energy_craft.machines.block.entity.AbstractEnergyMachineBlockEntity;
 import com.github.sib_energy_craft.machines.block.entity.EnergyMachineInventoryType;
+import com.github.sib_energy_craft.machines.block.entity.OneToOneEnergyMachineBlockEntity;
 import com.github.sib_energy_craft.machines.press_machine.block.AbstractPressMachineBlock;
 import com.github.sib_energy_craft.machines.press_machine.utils.PressMachineUtils;
 import com.github.sib_energy_craft.metallurgy.iron_craft_table.load.Items;
@@ -26,8 +25,9 @@ import org.jetbrains.annotations.Nullable;
  * @since 0.0.17
  * @author sibmaks
  */
-public abstract class AbstractPressMachineBlockEntity<T extends AbstractPressMachineBlock> extends AbstractEnergyMachineBlockEntity<T>
-        implements ExtendedScreenHandlerFactory, EnergyConsumer {
+public abstract class AbstractPressMachineBlockEntity<T extends AbstractPressMachineBlock>
+        extends OneToOneEnergyMachineBlockEntity<T>
+        implements ExtendedScreenHandlerFactory {
 
     protected final RecipeType<IronCraftingTableRecipe> recipeType;
     protected final SimpleInventory craftingInventory;
@@ -45,7 +45,7 @@ public abstract class AbstractPressMachineBlockEntity<T extends AbstractPressMac
 
     @Override
     public int getCookTimeTotal(@NotNull World world) {
-        return ((AbstractPressMachineBlock) block).getCookTimeTotal();
+        return block.getCookTimeTotal();
     }
 
     @Override

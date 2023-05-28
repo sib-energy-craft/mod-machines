@@ -1,8 +1,7 @@
 package com.github.sib_energy_craft.machines.compressor.block.entity;
 
-import com.github.sib_energy_craft.energy_api.consumer.EnergyConsumer;
-import com.github.sib_energy_craft.machines.block.entity.AbstractEnergyMachineBlockEntity;
 import com.github.sib_energy_craft.machines.block.entity.EnergyMachineInventoryType;
+import com.github.sib_energy_craft.machines.block.entity.OneToOneEnergyMachineBlockEntity;
 import com.github.sib_energy_craft.machines.compressor.block.AbstractCompressorBlock;
 import com.github.sib_energy_craft.machines.compressor.tag.CompressorTags;
 import com.github.sib_energy_craft.machines.utils.ExperienceUtils;
@@ -25,8 +24,9 @@ import org.jetbrains.annotations.Nullable;
  * @since 0.0.1
  * @author sibmaks
  */
-public abstract class AbstractCompressorBlockEntity<T extends AbstractCompressorBlock> extends AbstractEnergyMachineBlockEntity<T>
-        implements ExtendedScreenHandlerFactory, EnergyConsumer {
+public abstract class AbstractCompressorBlockEntity<T extends AbstractCompressorBlock>
+        extends OneToOneEnergyMachineBlockEntity<T>
+        implements ExtendedScreenHandlerFactory {
     protected final RecipeType<CompressingRecipe> recipeType;
 
 

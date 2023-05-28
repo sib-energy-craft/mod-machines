@@ -1,9 +1,8 @@
 package com.github.sib_energy_craft.machines.energy_furnace.block.entity;
 
-import com.github.sib_energy_craft.energy_api.consumer.EnergyConsumer;
-import com.github.sib_energy_craft.machines.block.entity.AbstractEnergyMachineBlockEntity;
 import com.github.sib_energy_craft.machines.block.entity.EnergyMachineEvent;
 import com.github.sib_energy_craft.machines.block.entity.EnergyMachineInventoryType;
+import com.github.sib_energy_craft.machines.block.entity.OneToOneEnergyMachineBlockEntity;
 import com.github.sib_energy_craft.machines.energy_furnace.block.AbstractEnergyFurnaceBlock;
 import net.fabricmc.fabric.api.screenhandler.v1.ExtendedScreenHandlerFactory;
 import net.minecraft.block.BlockState;
@@ -26,8 +25,8 @@ import org.jetbrains.annotations.Nullable;
  * @author sibmaks
  */
 public abstract class AbstractEnergyFurnaceBlockEntity<T extends AbstractEnergyFurnaceBlock>
-        extends AbstractEnergyMachineBlockEntity<T>
-        implements ExtendedScreenHandlerFactory, EnergyConsumer {
+        extends OneToOneEnergyMachineBlockEntity<T>
+        implements ExtendedScreenHandlerFactory {
 
     protected AbstractEnergyFurnaceBlockEntity(@NotNull BlockEntityType<?> blockEntityType,
                                                @NotNull BlockPos pos,

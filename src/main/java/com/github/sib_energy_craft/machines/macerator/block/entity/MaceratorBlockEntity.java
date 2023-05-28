@@ -3,10 +3,11 @@ package com.github.sib_energy_craft.machines.macerator.block.entity;
 import com.github.sib_energy_craft.machines.macerator.block.MaceratorBlock;
 import com.github.sib_energy_craft.machines.macerator.load.Entities;
 import com.github.sib_energy_craft.machines.macerator.screen.MaceratorScreenHandler;
+import com.github.sib_energy_craft.machines.screen.AbstractEnergyMachineScreenHandler;
 import net.minecraft.block.BlockState;
+import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.network.PacketByteBuf;
-import net.minecraft.screen.ScreenHandler;
 import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.text.Text;
 import net.minecraft.util.math.BlockPos;
@@ -23,16 +24,16 @@ public class MaceratorBlockEntity extends AbstractMaceratorBlockEntity<Macerator
         super(Entities.MACERATOR, pos, state, block, 1);
     }
 
-    @NotNull
     @Override
-    protected Text getContainerName() {
+    public @NotNull Text getDisplayName() {
         return Text.translatable("container.macerator");
     }
 
-    @NotNull
     @Override
-    protected ScreenHandler createScreenHandler(int syncId, @NotNull PlayerInventory playerInventory) {
-        return new MaceratorScreenHandler(syncId, playerInventory, this, this.propertyMap);
+    protected AbstractEnergyMachineScreenHandler createScreenHandler(int syncId,
+                                                                     @NotNull PlayerInventory playerInventory,
+                                                                     @NotNull PlayerEntity player) {
+        return new MaceratorScreenHandler(syncId, playerInventory, this);
     }
 
     @Override

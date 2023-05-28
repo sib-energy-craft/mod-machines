@@ -33,10 +33,13 @@ public class InductionFurnaceBlock extends AbstractEnergyFurnaceBlock {
     @Getter
     protected final int heatCookSpeedMultiplier;
 
-    public InductionFurnaceBlock(@NotNull AbstractBlock.Settings settings) {
-        super(settings, EnergyLevel.L2, 1.5, 1024);
-        this.maxHeatTicks = 1000;
-        this.heatCookSpeedMultiplier = 4;
+    public InductionFurnaceBlock(@NotNull AbstractBlock.Settings settings,
+                                 double cookingTotalTimeMultiplier,
+                                 int maxHeatTicks,
+                                 int heatCookSpeedMultiplier) {
+        super(settings, EnergyLevel.L2, cookingTotalTimeMultiplier, 1024);
+        this.maxHeatTicks = maxHeatTicks;
+        this.heatCookSpeedMultiplier = heatCookSpeedMultiplier;
     }
 
     @Override

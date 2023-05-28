@@ -1,0 +1,32 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "pattern": [
+    "CVC",
+    "PBP",
+    "#M#"
+  ],
+  "key": {
+    "C": {
+      "item": "sib_energy_craft:coil"
+    },
+    "V": {
+      "item": "minecraft:cauldron"
+    },
+    "P": {
+      "item": "sib_energy_craft:iron_plate"
+    },
+    "B": {
+      "item": "sib_energy_craft:base_machine_body"
+    },
+    "#": {
+      "item": "sib_energy_craft:energy_circuit"
+    },
+    "M": {
+      "item": "sib_energy_craft:energy_motor"
+    }
+  },
+  "result": {
+    "item": "sib_energy_craft:ore_purifying_machine"
+  }
+}

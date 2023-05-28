@@ -3,11 +3,12 @@ package com.github.sib_energy_craft.machines.compressor.block.entity;
 import com.github.sib_energy_craft.machines.compressor.block.CompressorBlock;
 import com.github.sib_energy_craft.machines.compressor.load.Entities;
 import com.github.sib_energy_craft.machines.compressor.screen.CompressorScreenHandler;
+import com.github.sib_energy_craft.machines.screen.AbstractEnergyMachineScreenHandler;
 import com.github.sib_energy_craft.recipes.load.RecipeTypes;
 import net.minecraft.block.BlockState;
+import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.network.PacketByteBuf;
-import net.minecraft.screen.ScreenHandler;
 import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.text.Text;
 import net.minecraft.util.math.BlockPos;
@@ -24,17 +25,16 @@ public class CompressorBlockEntity extends AbstractCompressorBlockEntity<Compres
         super(Entities.COMPRESSOR, pos, state, RecipeTypes.COMPRESSING, block);
     }
 
-    @NotNull
     @Override
-    protected Text getContainerName() {
+    public @NotNull Text getDisplayName() {
         return Text.translatable("container.compressor");
     }
 
-    @NotNull
     @Override
-    protected ScreenHandler createScreenHandler(int syncId,
-                                                @NotNull PlayerInventory playerInventory) {
-        return new CompressorScreenHandler(syncId, playerInventory, this, this.propertyMap);
+    protected AbstractEnergyMachineScreenHandler createScreenHandler(int syncId,
+                                                                     @NotNull PlayerInventory playerInventory,
+                                                                     @NotNull PlayerEntity player) {
+        return new CompressorScreenHandler(syncId, playerInventory, this);
     }
 
     @Override

@@ -1,0 +1,99 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "sib_energy_craft:ore_purifying_machine"
+    ]
+  },
+  "criteria": {
+    "has_coil": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "sib_energy_craft:coil"
+            ]
+          }
+        ]
+      }
+    },
+    "has_cauldron": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "minecraft:cauldron"
+            ]
+          }
+        ]
+      }
+    },
+    "has_iron_plate": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "sib_energy_craft:iron_plate"
+            ]
+          }
+        ]
+      }
+    },
+    "has_base_machine_body": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "sib_energy_craft:base_machine_body"
+            ]
+          }
+        ]
+      }
+    },
+    "has_energy_circuit": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "sib_energy_craft:energy_circuit"
+            ]
+          }
+        ]
+      }
+    },
+    "has_energy_motor": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "sib_energy_craft:energy_motor"
+            ]
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "sib_energy_craft:ore_purifying_machine"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_coil",
+      "has_cauldron",
+      "has_iron_plate",
+      "has_base_machine_body",
+      "has_energy_circuit",
+      "has_energy_motor",
+      "has_the_recipe"
+    ]
+  ]
+}
