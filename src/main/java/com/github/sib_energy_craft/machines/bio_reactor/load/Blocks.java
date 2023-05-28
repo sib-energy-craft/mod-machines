@@ -23,7 +23,7 @@ public final class Blocks implements DefaultModInitializer {
                 .strength(5, 6)
                 .requiresTool();
 
-        var bioReactorBlock = new BioReactorBlock(extractorSettings, 10000, 8000, 12, 6, Energy.of(10));
+        var bioReactorBlock = new BioReactorBlock(extractorSettings, 10000, 8000, 12, 6, Energy.of(16));
         BIO_REACTOR = BlockUtils.register(Identifiers.of("bio_reactor"), bioReactorBlock);
     }
 }
