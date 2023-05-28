@@ -1,6 +1,7 @@
 package com.github.sib_energy_craft.machines.compressor.screen;
 
 import com.github.sib_energy_craft.energy_api.utils.Identifiers;
+import com.github.sib_energy_craft.sec_utils.screen.ScreenSquareArea;
 import com.mojang.blaze3d.systems.RenderSystem;
 import net.minecraft.client.gui.screen.ingame.HandledScreen;
 import net.minecraft.client.render.GameRenderer;
@@ -17,6 +18,8 @@ import org.jetbrains.annotations.NotNull;
 public class CompressorScreen extends HandledScreen<CompressorScreenHandler> {
     private static final Identifier TEXTURE = Identifiers.of("textures/gui/container/compressor.png");
 
+    private static final ScreenSquareArea CHARGE = new ScreenSquareArea(60, 37, 7, 13);
+
     public CompressorScreen(@NotNull CompressorScreenHandler handler,
                             @NotNull PlayerInventory inventory,
                             @NotNull Text title) {
@@ -28,15 +31,14 @@ public class CompressorScreen extends HandledScreen<CompressorScreenHandler> {
         RenderSystem.setShader(GameRenderer::getPositionTexProgram);
         RenderSystem.setShaderColor(1.0f, 1.0f, 1.0f, 1.0f);
         RenderSystem.setShaderTexture(0, TEXTURE);
-        int i = this.x;
-        int j = this.y;
-        drawTexture(matrices, i, j, 0, 0, this.backgroundWidth, this.backgroundHeight);
+        int x = this.x;
+        int y = this.y;
+        drawTexture(matrices, x, y, 0, 0, this.backgroundWidth, this.backgroundHeight);
         int progress = this.handler.getChargeProgress();
-        drawTexture(matrices, i + 60, j + 37, 176, 0, 7, progress);
+        drawTexture(matrices, x + CHARGE.x(), y + CHARGE.y(), 176, 0, CHARGE.width(), progress);
         progress = this.handler.getCookProgress(22);
-        drawTexture(matrices, i + 80, j + 34, 176, 13, progress, 15);
-        if(mouseX >= i + 60 && mouseX <= i + 60 + 7 &&
-                mouseY >= j + 37 && mouseY <= j + 37 + 13) {
+        drawTexture(matrices, x + 80, y + 34, 176, 13, progress, 15);
+        if(CHARGE.in(x, y, mouseX, mouseY)) {
             int charge = this.handler.getCharge();
             int maxCharge = this.handler.getMaxCharge();
             var charging = Text.translatable("energy.range.text", charge, maxCharge);

@@ -1,6 +1,7 @@
 package com.github.sib_energy_craft.machines.ore_purifying_machine.screen;
 
 import com.github.sib_energy_craft.energy_api.utils.Identifiers;
+import com.github.sib_energy_craft.sec_utils.screen.ScreenSquareArea;
 import com.mojang.blaze3d.systems.RenderSystem;
 import net.minecraft.client.gui.screen.ingame.HandledScreen;
 import net.minecraft.client.render.GameRenderer;
@@ -11,7 +12,7 @@ import net.minecraft.util.Identifier;
 import org.jetbrains.annotations.NotNull;
 
 /**
- * @since 0.0.17
+ * @since 0.0.26
  * @author sibmaks
  */
 public class OrePurifyingMachineScreen extends HandledScreen<OrePurifyingMachineScreenHandler> {

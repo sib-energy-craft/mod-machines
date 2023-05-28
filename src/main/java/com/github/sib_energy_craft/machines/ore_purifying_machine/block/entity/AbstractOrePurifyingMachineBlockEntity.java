@@ -5,8 +5,9 @@ import com.github.sib_energy_craft.machines.block.entity.AbstractEnergyMachineBl
 import com.github.sib_energy_craft.machines.block.entity.EnergyMachineEvent;
 import com.github.sib_energy_craft.machines.block.entity.EnergyMachineInventoryType;
 import com.github.sib_energy_craft.machines.ore_purifying_machine.block.AbstractOrePurifyingMachineBlock;
-import com.github.sib_energy_craft.machines.ore_purifying_machine.recipe.PurifyingRecipe;
-import com.github.sib_energy_craft.machines.ore_purifying_machine.recipe.PurifyingRecipeType;
+import com.github.sib_energy_craft.machines.ore_purifying_machine.tag.OrePurifyingMachineTags;
+import com.github.sib_energy_craft.recipes.recipe.PurifyingRecipe;
+import com.github.sib_energy_craft.recipes.recipe.PurifyingRecipeType;
 import net.fabricmc.fabric.api.screenhandler.v1.ExtendedScreenHandlerFactory;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.entity.BlockEntityType;
@@ -99,6 +100,15 @@ public abstract class AbstractOrePurifyingMachineBlockEntity<T extends AbstractO
             return false;
         }
         return canAcceptOutputTrashStack(process, purifyingRecipe, count);
+    }
+
+    @Override
+    public boolean isValid(int slot, @NotNull ItemStack stack) {
+        var slotType = inventory.getType(slot);
+        if(slotType == EnergyMachineInventoryType.SOURCE) {
+            return OrePurifyingMachineTags.isUsedInOrePurifyingMachine(stack);
+        }
+        return super.isValid(slot, stack);
     }
 
     private boolean canAcceptOutputMainStack(int process,

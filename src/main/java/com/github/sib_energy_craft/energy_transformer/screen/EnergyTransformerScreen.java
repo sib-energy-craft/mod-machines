@@ -2,6 +2,7 @@ package com.github.sib_energy_craft.energy_transformer.screen;
 
 import com.github.sib_energy_craft.energy_api.utils.Identifiers;
 import com.github.sib_energy_craft.energy_transformer.block.entity.AbstractEnergyTransformerMode;
+import com.github.sib_energy_craft.sec_utils.screen.ScreenSquareArea;
 import com.mojang.blaze3d.systems.RenderSystem;
 import lombok.Getter;
 import net.minecraft.client.gui.screen.Screen;
@@ -28,6 +29,9 @@ public class EnergyTransformerScreen extends Screen
 
     private static final Identifier TEXTURE = Identifiers.of("textures/gui/container/energy_transformer.png");
 
+    private static final ScreenSquareArea DOWN_BUTTON = new ScreenSquareArea(24, 24, 128, 20);
+    private static final ScreenSquareArea UP_BUTTON = new ScreenSquareArea(24, 48, 128, 20);
+
     @Getter
     private final EnergyTransformerScreenHandler screenHandler;
     private int titleX;
@@ -52,46 +56,53 @@ public class EnergyTransformerScreen extends Screen
         RenderSystem.setShader(GameRenderer::getPositionTexProgram);
         RenderSystem.setShaderColor(1.0F, 1.0F, 1.0F, 1.0F);
         RenderSystem.setShaderTexture(0, TEXTURE);
-        drawTexture(matrices, 0, 0, 0, 0, backgroundWidth, backgroundHeight);
+        int x = this.x;
+        int y = this.y;
+        drawTexture(matrices, x, y, 0, 0, backgroundWidth, backgroundHeight);
 
         var mode = this.screenHandler.getMode();
         if (mode == AbstractEnergyTransformerMode.DOWN) {
-            drawTexture(matrices, 24, 24, 24, 108, 128, 20);
+            drawTexture(matrices, x + DOWN_BUTTON.x(), y + DOWN_BUTTON.y(), 24, 108, DOWN_BUTTON.width(), DOWN_BUTTON.height());
         }
-        if (isOnModeDownButton(mouseX, mouseY)) {
-            drawTexture(matrices, 24, 24, 24, 128, 128, 20);
+        if (DOWN_BUTTON.in(x, y, mouseX, mouseY)) {
+            drawTexture(matrices, x + DOWN_BUTTON.x(), y + DOWN_BUTTON.y(), 24, 128, DOWN_BUTTON.width(), DOWN_BUTTON.height());
         }
 
         if (mode == AbstractEnergyTransformerMode.UP) {
-            drawTexture(matrices, 24, 48, 24, 108, 128, 20);
+            drawTexture(matrices, x + UP_BUTTON.x(), y + UP_BUTTON.y(), 24, 108, UP_BUTTON.width(), UP_BUTTON.height());
         }
-        if (isOnModeUpButton(mouseX, mouseY)) {
-            drawTexture(matrices, 24, 48, 24, 128, 128, 20);
+        if (UP_BUTTON.in(x, y, mouseX, mouseY)) {
+            drawTexture(matrices, x + UP_BUTTON.x(), y + UP_BUTTON.y(), 24, 128, UP_BUTTON.width(), UP_BUTTON.height());
         }
 
         var modeDown = Text.translatable("attribute.name.sib_energy_craft.transform",
                 this.screenHandler.getLowLevel(), this.screenHandler.getMaxLevel());
         int modeUpLeftOffset = (backgroundWidth - textRenderer.getWidth(modeDown)) / 2;
-        this.textRenderer.drawWithShadow(matrices, modeDown, modeUpLeftOffset, 30, Color.WHITE.getRGB());
+        this.textRenderer.drawWithShadow(matrices, modeDown, x + modeUpLeftOffset, y + 30, Color.WHITE.getRGB());
 
         var modeUp = Text.translatable("attribute.name.sib_energy_craft.transform",
                 this.screenHandler.getMaxLevel(), this.screenHandler.getLowLevel());
         int modeDownLeftOffset = (backgroundWidth - textRenderer.getWidth(modeUp)) / 2;
-        this.textRenderer.drawWithShadow(matrices, modeUp, modeDownLeftOffset, 54, Color.WHITE.getRGB());
+        this.textRenderer.drawWithShadow(matrices, modeUp, x + modeDownLeftOffset, y + 54, Color.WHITE.getRGB());
     }
 
     @Override
     public void render(@NotNull MatrixStack matrices, int mouseX, int mouseY, float delta) {
-        super.renderBackground(matrices);
-        var matrixStack = RenderSystem.getModelViewStack();
-        matrixStack.push();
-        matrixStack.translate(x, y, 0.0);
-        RenderSystem.applyModelViewMatrix();
-        drawBackground(matrices, mouseX, mouseY);
-        this.textRenderer.draw(matrices, this.title, this.titleX, this.titleY, 0x404040);
-        matrixStack.pop();
-        RenderSystem.applyModelViewMatrix();
+        int l;
+        int i = this.x;
+        int j = this.y;
+        this.drawBackground(matrices, mouseX, mouseY);
+        RenderSystem.disableDepthTest();
+        super.render(matrices, mouseX, mouseY, delta);
+        matrices.push();
+        matrices.translate(i, j, 0.0f);
+        drawForeground(matrices);
+        matrices.pop();
         RenderSystem.enableDepthTest();
+    }
+
+    protected void drawForeground(MatrixStack matrices) {
+        this.textRenderer.draw(matrices, this.title, this.titleX, this.titleY, Color.DARK_GRAY.getRGB());
     }
 
     @Override
@@ -109,22 +120,14 @@ public class EnergyTransformerScreen extends Screen
             return false;
         }
 
-        if (mode != AbstractEnergyTransformerMode.UP && isOnModeUpButton(mouseX, mouseY)) {
+        if (mode != AbstractEnergyTransformerMode.UP && UP_BUTTON.in(x, y, mouseX, mouseY)) {
             interactionManager.clickButton(this.screenHandler.syncId, Button.MODE_UP.ordinal());
             return true;
-        } else if (mode != AbstractEnergyTransformerMode.DOWN && isOnModeDownButton(mouseX, mouseY)) {
+        } else if (mode != AbstractEnergyTransformerMode.DOWN && DOWN_BUTTON.in(x, y, mouseX, mouseY)) {
             interactionManager.clickButton(this.screenHandler.syncId, Button.MODE_DOWN.ordinal());
             return true;
         }
         return false;
-    }
-
-    private boolean isOnModeDownButton(double mouseX, double mouseY) {
-        return mouseX >= x + 24 && mouseX <= x + 24 + 128 && mouseY >= y + 24 && mouseY <= y + 24 + 20;
-    }
-
-    private boolean isOnModeUpButton(double mouseX, double mouseY) {
-        return mouseX >= x + 24 && mouseX <= x + 24 + 128 && mouseY >= y + 48 && mouseY <= y + 48 + 20;
     }
 
     @Override

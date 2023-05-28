@@ -2,6 +2,7 @@ package com.github.sib_energy_craft.machines.ore_purifying_machine.screen;
 
 import com.github.sib_energy_craft.machines.ore_purifying_machine.block.entity.OrePurifyingMachineProperties;
 import com.github.sib_energy_craft.machines.ore_purifying_machine.load.ScreenHandlers;
+import com.github.sib_energy_craft.machines.ore_purifying_machine.tag.OrePurifyingMachineTags;
 import com.github.sib_energy_craft.machines.screen.AbstractEnergyMachineScreenHandler;
 import com.github.sib_energy_craft.machines.screen.layout.MultiSlotMachineLayoutManager;
 import lombok.Getter;
@@ -13,7 +14,7 @@ import org.jetbrains.annotations.NotNull;
 import org.joml.Vector2i;
 
 /**
- * @since 0.0.17
+ * @since 0.0.26
  * @author sibmaks
  */
 public class OrePurifyingMachineScreenHandler extends AbstractEnergyMachineScreenHandler {
@@ -49,7 +50,7 @@ public class OrePurifyingMachineScreenHandler extends AbstractEnergyMachineScree
 
     @Override
     protected boolean isUsedInMachine(@NotNull ItemStack itemStack) {
-        return true;
+        return OrePurifyingMachineTags.isUsedInOrePurifyingMachine(itemStack);
     }
 
     @Override
