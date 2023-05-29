@@ -23,12 +23,7 @@ public final class Blocks implements DefaultModInitializer {
                 .strength(50, 600)
                 .requiresTool();
 
-        var inductionFurnaceBlock = new InductionFurnaceBlock(
-                inductionFurnaceSettings,
-                1.5,
-                2400,
-                4
-        );
+        var inductionFurnaceBlock = new InductionFurnaceBlock(inductionFurnaceSettings);
         INDUCTION_FURNACE = register(Identifiers.of("induction_furnace"), inductionFurnaceBlock);
     }
 }

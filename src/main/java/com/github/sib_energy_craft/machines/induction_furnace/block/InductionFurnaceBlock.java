@@ -1,5 +1,6 @@
 package com.github.sib_energy_craft.machines.induction_furnace.block;
 
+import com.github.sib_energy_craft.energy_api.Energy;
 import com.github.sib_energy_craft.energy_api.EnergyLevel;
 import com.github.sib_energy_craft.machines.energy_furnace.block.AbstractEnergyFurnaceBlock;
 import com.github.sib_energy_craft.machines.induction_furnace.block.entity.InductionFurnaceBlockEntity;
@@ -32,14 +33,14 @@ public class InductionFurnaceBlock extends AbstractEnergyFurnaceBlock {
     protected final int maxHeatTicks;
     @Getter
     protected final int heatCookSpeedMultiplier;
+    @Getter
+    protected final Energy energyPerTick;
 
-    public InductionFurnaceBlock(@NotNull AbstractBlock.Settings settings,
-                                 double cookingTotalTimeMultiplier,
-                                 int maxHeatTicks,
-                                 int heatCookSpeedMultiplier) {
-        super(settings, EnergyLevel.L2, cookingTotalTimeMultiplier, 1024);
-        this.maxHeatTicks = maxHeatTicks;
-        this.heatCookSpeedMultiplier = heatCookSpeedMultiplier;
+    public InductionFurnaceBlock(@NotNull AbstractBlock.Settings settings) {
+        super(settings, EnergyLevel.L2, 1.5, 1024);
+        this.maxHeatTicks = 2400;
+        this.heatCookSpeedMultiplier = 4;
+        this.energyPerTick = Energy.of(8);
     }
 
     @Override
