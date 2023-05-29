@@ -1,5 +1,6 @@
 package com.github.sib_energy_craft.machines.induction_furnace.block.entity;
 
+import com.github.sib_energy_craft.energy_api.Energy;
 import com.github.sib_energy_craft.machines.block.entity.EnergyMachineEvent;
 import com.github.sib_energy_craft.machines.energy_furnace.block.entity.AbstractEnergyFurnaceBlockEntity;
 import com.github.sib_energy_craft.machines.induction_furnace.block.InductionFurnaceBlock;
@@ -72,6 +73,11 @@ public class InductionFurnaceBlockEntity extends AbstractEnergyFurnaceBlockEntit
         float heatCookSpeedMultiplier = furnace.getHeatCookSpeedMultiplier();
         float maxHeatTicks = furnace.getMaxHeatTicks();
         return (int) Math.max(1, heatCookSpeedMultiplier * (heatTicks / maxHeatTicks));
+    }
+
+    @Override
+    public @NotNull Energy getEnergyUsagePerTick() {
+        return block.getEnergyPerTick();
     }
 }
 

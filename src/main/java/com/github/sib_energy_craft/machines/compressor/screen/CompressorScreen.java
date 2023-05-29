@@ -19,6 +19,7 @@ public class CompressorScreen extends HandledScreen<CompressorScreenHandler> {
     private static final Identifier TEXTURE = Identifiers.of("textures/gui/container/compressor.png");
 
     private static final ScreenSquareArea CHARGE = new ScreenSquareArea(60, 37, 7, 13);
+    private static final ScreenSquareArea COMPRESSING = new ScreenSquareArea(75, 25, 33, 23);
 
     public CompressorScreen(@NotNull CompressorScreenHandler handler,
                             @NotNull PlayerInventory inventory,
@@ -36,8 +37,8 @@ public class CompressorScreen extends HandledScreen<CompressorScreenHandler> {
         drawTexture(matrices, x, y, 0, 0, this.backgroundWidth, this.backgroundHeight);
         int progress = this.handler.getChargeProgress();
         drawTexture(matrices, x + CHARGE.x(), y + CHARGE.y(), 176, 0, CHARGE.width(), progress);
-        progress = this.handler.getCookProgress(22);
-        drawTexture(matrices, x + 80, y + 34, 176, 13, progress, 15);
+        progress = this.handler.getCookProgress(COMPRESSING.width());
+        drawTexture(matrices, x + COMPRESSING.x(), y + COMPRESSING.y(), 176, 13, progress, COMPRESSING.height());
         if(CHARGE.in(x, y, mouseX, mouseY)) {
             int charge = this.handler.getCharge();
             int maxCharge = this.handler.getMaxCharge();
