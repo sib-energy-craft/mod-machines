@@ -238,7 +238,7 @@ public abstract class AbstractEnergyGeneratorBlockEntity extends BlockEntity
     public void setStack(int slot,
                          @NotNull ItemStack stack) {
         var itemStack = this.inventory.get(slot);
-        var bl = !stack.isEmpty() && stack.isItemEqual(itemStack) && ItemStack.areNbtEqual(stack, itemStack);
+        var bl = !stack.isEmpty() && ItemStack.canCombine(stack, itemStack);
         this.inventory.set(slot, stack);
         if (stack.getCount() > this.getMaxCountPerStack()) {
             stack.setCount(this.getMaxCountPerStack());

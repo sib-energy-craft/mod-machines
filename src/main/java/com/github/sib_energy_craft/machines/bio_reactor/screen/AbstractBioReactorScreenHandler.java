@@ -74,7 +74,7 @@ public abstract class AbstractBioReactorScreenHandler extends SlotsScreenHandler
         this.maxCharge = maxCharge;
         this.maxFerments = maxFerments;
         this.energyPacketSize = energyPacketSize;
-        this.world = playerInventory.player.world;
+        this.world = playerInventory.player.getWorld();
         this.slotGroupsMeta = buildSlots(slotLayoutManager, playerInventory, inventory);
     }
 

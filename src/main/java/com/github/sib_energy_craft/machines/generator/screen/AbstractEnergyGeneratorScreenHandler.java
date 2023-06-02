@@ -56,7 +56,7 @@ public abstract class AbstractEnergyGeneratorScreenHandler extends ScreenHandler
         this.inventory = inventory;
         this.propertyDelegate = propertyDelegate;
         this.maxCharge = maxCharge;
-        this.world = playerInventory.player.world;
+        this.world = playerInventory.player.getWorld();
         var chargeSlot = new ChargeSlot(inventory, AbstractEnergyGeneratorBlockEntity.CHARGE_SLOT_INDEX, 56, 17, true);
         this.addSlot(chargeSlot);
         var fuelSlot = new EnergyGeneratorFuelSlot(inventory, AbstractEnergyGeneratorBlockEntity.FUEL_SLOT_INDEX, 56, 53);

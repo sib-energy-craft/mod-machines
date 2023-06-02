@@ -3,9 +3,9 @@ package com.github.sib_energy_craft.machines.generator.screen;
 import com.github.sib_energy_craft.energy_api.utils.Identifiers;
 import com.github.sib_energy_craft.sec_utils.screen.ScreenSquareArea;
 import com.mojang.blaze3d.systems.RenderSystem;
+import net.minecraft.client.gui.DrawContext;
 import net.minecraft.client.gui.screen.ingame.HandledScreen;
 import net.minecraft.client.render.GameRenderer;
-import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.text.Text;
 import net.minecraft.util.Identifier;
@@ -29,34 +29,34 @@ public class EnergyGeneratorScreen extends HandledScreen<EnergyGeneratorScreenHa
     }
 
     @Override
-    protected void drawBackground(@NotNull MatrixStack matrices, float delta, int mouseX, int mouseY) {
+    protected void drawBackground(@NotNull DrawContext drawContext, float delta, int mouseX, int mouseY) {
         RenderSystem.setShader(GameRenderer::getPositionTexProgram);
         RenderSystem.setShaderColor(1.0F, 1.0F, 1.0F, 1.0F);
         RenderSystem.setShaderTexture(0, TEXTURE);
         int x = this.x;
         int y = this.y;
-        drawTexture(matrices, x, y, 0, 0, backgroundWidth, backgroundHeight);
+        drawContext.drawTexture(TEXTURE, x, y, 0, 0, backgroundWidth, backgroundHeight);
         if (this.handler.isBurning()) {
             int fuelProgress = this.handler.getFuelProgress();
-            drawTexture(matrices, x + 56, y + 36 + 12 - fuelProgress, 176, 12 - fuelProgress, 14, fuelProgress + 1);
+            drawContext.drawTexture(TEXTURE, x + 56, y + 36 + 12 - fuelProgress, 176, 12 - fuelProgress, 14, fuelProgress + 1);
         }
         int chargeProgress = this.handler.getChargeProgress();
-        drawTexture(matrices, x + BATTERY.x(), y + BATTERY.y(), 176, 14, chargeProgress, BATTERY.height());
+        drawContext.drawTexture(TEXTURE, x + BATTERY.x(), y + BATTERY.y(), 176, 14, chargeProgress, BATTERY.height());
         if(BATTERY.in(x, y, mouseX, mouseY)) {
             int charge = this.handler.getCharge();
             int maxCharge = this.handler.getMaxCharge();
             Text charging = Text.translatable("energy.range.text", charge, maxCharge);
-            this.renderTooltip(matrices, charging, mouseX, mouseY);
+            drawContext.drawTooltip(textRenderer, charging, mouseX, mouseY);
         }
         var output = Text.translatable("energy.out.text", this.handler.getEnergyPacketSize());
-        this.textRenderer.draw(matrices, output, x + 81, y + 58, Color.GRAY.getRGB());
+        drawContext.drawText(textRenderer, output, x + 81, y + 58, Color.GRAY.getRGB(), false);
     }
 
     @Override
-    public void render(@NotNull MatrixStack matrices, int mouseX, int mouseY, float delta) {
-        renderBackground(matrices);
-        super.render(matrices, mouseX, mouseY, delta);
-        drawMouseoverTooltip(matrices, mouseX, mouseY);
+    public void render(@NotNull DrawContext drawContext, int mouseX, int mouseY, float delta) {
+        renderBackground(drawContext);
+        super.render(drawContext, mouseX, mouseY, delta);
+        drawMouseoverTooltip(drawContext, mouseX, mouseY);
     }
 
     @Override

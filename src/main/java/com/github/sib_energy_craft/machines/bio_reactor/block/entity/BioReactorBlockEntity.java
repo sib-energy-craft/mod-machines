@@ -37,7 +37,7 @@ public class BioReactorBlockEntity extends AbstractBioReactorBlockEntity<BioReac
                                     @NotNull PlayerEntity player) {
         var screenHandler = new BioReactorScreenHandler(syncId, playerInventory, this,
                 getMaxCharge(), block.getMaxFerments(), block.getEnergyPacketSize().intValue());
-        var world = player.world;
+        var world = player.getWorld();
         if(!world.isClient && player instanceof ServerPlayerEntity serverPlayerEntity) {
             var syncer = new PropertyUpdateSyncer(syncId, serverPlayerEntity, typedScreenProperties);
             screenHandler.setSyncer(syncer);

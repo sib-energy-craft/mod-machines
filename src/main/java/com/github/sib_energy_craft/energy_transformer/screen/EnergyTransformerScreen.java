@@ -5,6 +5,7 @@ import com.github.sib_energy_craft.energy_transformer.block.entity.AbstractEnerg
 import com.github.sib_energy_craft.sec_utils.screen.ScreenSquareArea;
 import com.mojang.blaze3d.systems.RenderSystem;
 import lombok.Getter;
+import net.minecraft.client.gui.DrawContext;
 import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.client.gui.screen.ingame.ScreenHandlerProvider;
 import net.minecraft.client.render.GameRenderer;
@@ -52,57 +53,58 @@ public class EnergyTransformerScreen extends Screen
         this.backgroundHeight = 88;
     }
 
-    protected void drawBackground(@NotNull MatrixStack matrices, int mouseX, int mouseY) {
+    protected void drawBackground(@NotNull DrawContext drawContext, int mouseX, int mouseY) {
         RenderSystem.setShader(GameRenderer::getPositionTexProgram);
         RenderSystem.setShaderColor(1.0F, 1.0F, 1.0F, 1.0F);
         RenderSystem.setShaderTexture(0, TEXTURE);
         int x = this.x;
         int y = this.y;
-        drawTexture(matrices, x, y, 0, 0, backgroundWidth, backgroundHeight);
+        drawContext.drawTexture(TEXTURE, x, y, 0, 0, backgroundWidth, backgroundHeight);
 
         var mode = this.screenHandler.getMode();
         if (mode == AbstractEnergyTransformerMode.DOWN) {
-            drawTexture(matrices, x + DOWN_BUTTON.x(), y + DOWN_BUTTON.y(), 24, 108, DOWN_BUTTON.width(), DOWN_BUTTON.height());
+            drawContext.drawTexture(TEXTURE, x + DOWN_BUTTON.x(), y + DOWN_BUTTON.y(), 24, 108, DOWN_BUTTON.width(), DOWN_BUTTON.height());
         }
         if (DOWN_BUTTON.in(x, y, mouseX, mouseY)) {
-            drawTexture(matrices, x + DOWN_BUTTON.x(), y + DOWN_BUTTON.y(), 24, 128, DOWN_BUTTON.width(), DOWN_BUTTON.height());
+            drawContext.drawTexture(TEXTURE, x + DOWN_BUTTON.x(), y + DOWN_BUTTON.y(), 24, 128, DOWN_BUTTON.width(), DOWN_BUTTON.height());
         }
 
         if (mode == AbstractEnergyTransformerMode.UP) {
-            drawTexture(matrices, x + UP_BUTTON.x(), y + UP_BUTTON.y(), 24, 108, UP_BUTTON.width(), UP_BUTTON.height());
+            drawContext.drawTexture(TEXTURE, x + UP_BUTTON.x(), y + UP_BUTTON.y(), 24, 108, UP_BUTTON.width(), UP_BUTTON.height());
         }
         if (UP_BUTTON.in(x, y, mouseX, mouseY)) {
-            drawTexture(matrices, x + UP_BUTTON.x(), y + UP_BUTTON.y(), 24, 128, UP_BUTTON.width(), UP_BUTTON.height());
+            drawContext.drawTexture(TEXTURE, x + UP_BUTTON.x(), y + UP_BUTTON.y(), 24, 128, UP_BUTTON.width(), UP_BUTTON.height());
         }
 
         var modeDown = Text.translatable("attribute.name.sib_energy_craft.transform",
                 this.screenHandler.getLowLevel(), this.screenHandler.getMaxLevel());
         int modeUpLeftOffset = (backgroundWidth - textRenderer.getWidth(modeDown)) / 2;
-        this.textRenderer.drawWithShadow(matrices, modeDown, x + modeUpLeftOffset, y + 30, Color.WHITE.getRGB());
+        drawContext.drawTextWithShadow(textRenderer, modeDown, x + modeUpLeftOffset, y + 30, Color.WHITE.getRGB());
 
         var modeUp = Text.translatable("attribute.name.sib_energy_craft.transform",
                 this.screenHandler.getMaxLevel(), this.screenHandler.getLowLevel());
         int modeDownLeftOffset = (backgroundWidth - textRenderer.getWidth(modeUp)) / 2;
-        this.textRenderer.drawWithShadow(matrices, modeUp, x + modeDownLeftOffset, y + 54, Color.WHITE.getRGB());
+        drawContext.drawTextWithShadow(textRenderer, modeUp, x + modeDownLeftOffset, y + 54, Color.WHITE.getRGB());
     }
 
     @Override
-    public void render(@NotNull MatrixStack matrices, int mouseX, int mouseY, float delta) {
+    public void render(@NotNull DrawContext drawContext, int mouseX, int mouseY, float delta) {
         int l;
         int i = this.x;
         int j = this.y;
-        this.drawBackground(matrices, mouseX, mouseY);
+        this.drawBackground(drawContext, mouseX, mouseY);
         RenderSystem.disableDepthTest();
-        super.render(matrices, mouseX, mouseY, delta);
+        super.render(drawContext, mouseX, mouseY, delta);
+        MatrixStack matrices = drawContext.getMatrices();
         matrices.push();
         matrices.translate(i, j, 0.0f);
-        drawForeground(matrices);
+        drawForeground(drawContext);
         matrices.pop();
         RenderSystem.enableDepthTest();
     }
 
-    protected void drawForeground(MatrixStack matrices) {
-        this.textRenderer.draw(matrices, this.title, this.titleX, this.titleY, Color.DARK_GRAY.getRGB());
+    protected void drawForeground(DrawContext drawContext) {
+        drawContext.drawText(textRenderer, this.title, this.titleX, this.titleY, Color.DARK_GRAY.getRGB(), false);
     }
 
     @Override

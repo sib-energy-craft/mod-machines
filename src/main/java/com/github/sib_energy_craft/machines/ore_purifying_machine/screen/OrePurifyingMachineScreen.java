@@ -3,9 +3,9 @@ package com.github.sib_energy_craft.machines.ore_purifying_machine.screen;
 import com.github.sib_energy_craft.energy_api.utils.Identifiers;
 import com.github.sib_energy_craft.sec_utils.screen.ScreenSquareArea;
 import com.mojang.blaze3d.systems.RenderSystem;
+import net.minecraft.client.gui.DrawContext;
 import net.minecraft.client.gui.screen.ingame.HandledScreen;
 import net.minecraft.client.render.GameRenderer;
-import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.text.Text;
 import net.minecraft.util.Identifier;
@@ -34,7 +34,7 @@ public class OrePurifyingMachineScreen extends HandledScreen<OrePurifyingMachine
     }
 
     @Override
-    protected void drawBackground(@NotNull MatrixStack matrices,
+    protected void drawBackground(@NotNull DrawContext drawContext,
                                   float delta,
                                   int mouseX,
                                   int mouseY) {
@@ -43,9 +43,9 @@ public class OrePurifyingMachineScreen extends HandledScreen<OrePurifyingMachine
         RenderSystem.setShaderTexture(0, TEXTURE);
         int x = this.x;
         int y = this.y;
-        drawTexture(matrices, x, y, 0, 0, backgroundWidth, backgroundHeight);
+        drawContext.drawTexture(TEXTURE, x, y, 0, 0, backgroundWidth, backgroundHeight);
         int progress = handler.getChargeProgress();
-        drawTexture(matrices, x + CHARGE.x(), y + CHARGE.y(), 176, 0, CHARGE.width(), progress);
+        drawContext.drawTexture(TEXTURE, x + CHARGE.x(), y + CHARGE.y(), 176, 0, CHARGE.width(), progress);
 
         int drumSpeed = handler.getDrumSpeed();
         if(drumSpeed > 0) {
@@ -60,30 +60,30 @@ public class OrePurifyingMachineScreen extends HandledScreen<OrePurifyingMachine
         }
         int sourceCount = handler.getSourceCount();
         if(sourceCount == 0) {
-            drawTexture(matrices, x + 84, y + 36, 183, 29 * drumIcon, 29, 29);
+            drawContext.drawTexture(TEXTURE, x + 84, y + 36, 183, 29 * drumIcon, 29, 29);
         } else {
-            drawTexture(matrices, x + 84, y + 36, 212, 29 * drumIcon, 29, 29);
+            drawContext.drawTexture(TEXTURE, x + 84, y + 36, 212, 29 * drumIcon, 29, 29);
         }
 
         if(CHARGE.in(x, y, mouseX, mouseY)) {
             var charge = handler.getCharge();
             var maxCharge = handler.getMaxCharge();
             var charging = Text.translatable("energy.range.text", charge, maxCharge);
-            renderTooltip(matrices, charging, mouseX, mouseY);
+            drawContext.drawTooltip(textRenderer, charging, mouseX, mouseY);
         } else if(DRUM.in(x, y, mouseX, mouseY)) {
             var speedText = Text.translatable("ore_purifying_machine.speed.text", drumSpeed);
-            renderTooltip(matrices, speedText, mouseX, mouseY);
+            drawContext.drawTooltip(textRenderer, speedText, mouseX, mouseY);
         }
     }
 
     @Override
-    public void render(@NotNull MatrixStack matrices,
+    public void render(@NotNull DrawContext drawContext,
                        int mouseX,
                        int mouseY,
                        float delta) {
-        renderBackground(matrices);
-        super.render(matrices, mouseX, mouseY, delta);
-        drawMouseoverTooltip(matrices, mouseX, mouseY);
+        renderBackground(drawContext);
+        super.render(drawContext, mouseX, mouseY, delta);
+        drawMouseoverTooltip(drawContext, mouseX, mouseY);
     }
 
     @Override

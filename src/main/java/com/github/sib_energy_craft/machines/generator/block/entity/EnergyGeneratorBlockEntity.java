@@ -37,7 +37,7 @@ public class EnergyGeneratorBlockEntity extends AbstractEnergyGeneratorBlockEnti
                                     @NotNull PlayerEntity player) {
         var screenHandler = new EnergyGeneratorScreenHandler(syncId, playerInventory, this, this.propertyMap,
                 getMaxCharge());
-        var world = player.world;
+        var world = player.getWorld();
         if(!world.isClient && player instanceof ServerPlayerEntity serverPlayerEntity) {
             var syncer = new PropertyUpdateSyncer(syncId, serverPlayerEntity, typedScreenProperties);
             screenHandler.setSyncer(syncer);

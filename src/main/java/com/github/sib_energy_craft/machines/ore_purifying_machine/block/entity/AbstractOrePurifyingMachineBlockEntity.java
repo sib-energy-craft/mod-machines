@@ -151,7 +151,7 @@ public abstract class AbstractOrePurifyingMachineBlockEntity<T extends AbstractO
         if (slotStack.isEmpty()) {
             return true;
         }
-        if (!slotStack.isItemEqual(outputStack)) {
+        if (!ItemStack.areItemsEqual(slotStack, outputStack)) {
             return false;
         }
         int outputSlotCount = slotStack.getCount();

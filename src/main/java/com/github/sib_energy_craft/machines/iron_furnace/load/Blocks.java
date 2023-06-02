@@ -4,9 +4,9 @@ import com.github.sib_energy_craft.energy_api.utils.Identifiers;
 import com.github.sib_energy_craft.machines.iron_furnace.block.IronFurnaceBlock;
 import com.github.sib_energy_craft.sec_utils.common.Identified;
 import com.github.sib_energy_craft.sec_utils.load.DefaultModInitializer;
-import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
+import net.minecraft.block.AbstractBlock;
 import net.minecraft.block.BlockState;
-import net.minecraft.block.Material;
+import net.minecraft.block.MapColor;
 import net.minecraft.sound.BlockSoundGroup;
 import net.minecraft.state.property.Properties;
 import org.jetbrains.annotations.NotNull;
@@ -23,7 +23,8 @@ public final class Blocks implements DefaultModInitializer {
     public static final Identified<IronFurnaceBlock> IRON_FURNACE;
 
     static {
-        var ironFurnaceBlockSettings = FabricBlockSettings.of(Material.METAL)
+        var ironFurnaceBlockSettings = AbstractBlock.Settings.create()
+                .mapColor(MapColor.IRON_GRAY)
                 .sounds(BlockSoundGroup.METAL)
                 .strength(5, 6)
                 .luminance(createLightLevelFromLitBlockState(13))

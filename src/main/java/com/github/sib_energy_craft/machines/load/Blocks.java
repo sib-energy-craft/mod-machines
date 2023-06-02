@@ -3,9 +3,9 @@ package com.github.sib_energy_craft.machines.load;
 import com.github.sib_energy_craft.energy_api.utils.Identifiers;
 import com.github.sib_energy_craft.sec_utils.common.Identified;
 import com.github.sib_energy_craft.sec_utils.load.DefaultModInitializer;
-import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
+import net.minecraft.block.AbstractBlock;
 import net.minecraft.block.Block;
-import net.minecraft.block.Material;
+import net.minecraft.block.MapColor;
 import net.minecraft.sound.BlockSoundGroup;
 
 import static com.github.sib_energy_craft.sec_utils.utils.BlockUtils.register;
@@ -20,13 +20,15 @@ public final class Blocks implements DefaultModInitializer {
     public static final Identified<Block> ADVANCED_MACHINE_BODY;
 
     static {
-        var baseMachineBodySettings = FabricBlockSettings.of(Material.METAL)
+        var baseMachineBodySettings = AbstractBlock.Settings.create()
+                .mapColor(MapColor.IRON_GRAY)
                 .sounds(BlockSoundGroup.METAL)
                 .strength(5, 6)
                 .requiresTool();
         BASE_MACHINE_BODY = register(Identifiers.of("base_machine_body"), baseMachineBodySettings);
 
-        var advancedMachineBodySettings = FabricBlockSettings.of(Material.METAL)
+        var advancedMachineBodySettings = AbstractBlock.Settings.create()
+                .mapColor(MapColor.IRON_GRAY)
                 .sounds(BlockSoundGroup.METAL)
                 .strength(50, 600)
                 .requiresTool();

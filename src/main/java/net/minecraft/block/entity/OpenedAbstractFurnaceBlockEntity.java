@@ -74,7 +74,7 @@ public abstract class OpenedAbstractFurnaceBlockEntity extends AbstractFurnaceBl
         if (outputSlotStack.isEmpty()) {
             return true;
         }
-        if (!outputSlotStack.isItemEqual(outputStack)) {
+        if (!ItemStack.areItemsEqual(outputSlotStack, outputStack)) {
             return false;
         }
         if (outputSlotStack.getCount() < count && outputSlotStack.getCount() < outputSlotStack.getMaxCount()) {
