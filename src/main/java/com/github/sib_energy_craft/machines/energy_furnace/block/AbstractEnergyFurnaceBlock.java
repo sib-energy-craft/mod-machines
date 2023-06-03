@@ -11,15 +11,11 @@ import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.block.entity.BlockEntityTicker;
 import net.minecraft.block.entity.BlockEntityType;
 import net.minecraft.item.ItemPlacementContext;
-import net.minecraft.server.world.ServerWorld;
 import net.minecraft.state.StateManager;
 import net.minecraft.state.property.DirectionProperty;
 import net.minecraft.util.BlockMirror;
 import net.minecraft.util.BlockRotation;
-import net.minecraft.util.ItemScatterer;
-import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
-import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -53,26 +49,6 @@ public abstract class AbstractEnergyFurnaceBlock extends AbstractEnergyMachineBl
         return this.getDefaultState().with(FACING, horizontalPlayerFacing.getOpposite());
     }
 
-    @Override
-    public void onStateReplaced(@NotNull BlockState state,
-                                @NotNull World world,
-                                @NotNull BlockPos pos,
-                                @NotNull BlockState newState,
-                                boolean moved) {
-        if (state.isOf(newState.getBlock())) {
-            return;
-        }
-        var blockEntity = world.getBlockEntity(pos);
-        if (blockEntity instanceof AbstractEnergyFurnaceBlockEntity energyFurnaceBlockEntity) {
-            if (world instanceof ServerWorld serverWorld) {
-                ItemScatterer.spawn(world, pos, energyFurnaceBlockEntity);
-                energyFurnaceBlockEntity.getRecipesUsedAndDropExperience(serverWorld, Vec3d.ofCenter(pos));
-            }
-            world.updateComparators(pos, this);
-        }
-        super.onStateReplaced(state, world, pos, newState, moved);
-    }
-
     @NotNull
     @Override
     public BlockState rotate(@NotNull BlockState state, @NotNull BlockRotation rotation) {
@@ -91,12 +67,14 @@ public abstract class AbstractEnergyFurnaceBlock extends AbstractEnergyMachineBl
     }
 
     @Nullable
-    protected static <T extends BlockEntity, E extends AbstractEnergyFurnaceBlockEntity> BlockEntityTicker<T> checkType(
+    protected static <
+            T extends BlockEntity,
+            E extends AbstractEnergyFurnaceBlockEntity<?>> BlockEntityTicker<T> checkType(
             @NotNull World world,
             @NotNull BlockEntityType<T> givenType,
             @NotNull BlockEntityType<E> expectedType) {
         return world.isClient ? null : AbstractEnergyFurnaceBlock.checkType(givenType, expectedType,
-                AbstractEnergyFurnaceBlockEntity::simpleCookingTick);
+                AbstractEnergyFurnaceBlockEntity::simpleProcessingTick);
     }
 
 }

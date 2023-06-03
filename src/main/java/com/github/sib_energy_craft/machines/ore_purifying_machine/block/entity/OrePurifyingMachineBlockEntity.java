@@ -33,7 +33,7 @@ public class OrePurifyingMachineBlockEntity extends AbstractOrePurifyingMachineB
     }
 
     @Override
-    protected AbstractEnergyMachineScreenHandler createScreenHandler(int syncId,
+    protected AbstractEnergyMachineScreenHandler<?> createScreenHandler(int syncId,
                                                                      @NotNull PlayerInventory playerInventory,
                                                                      @NotNull PlayerEntity player) {
         return new OrePurifyingMachineScreenHandler(syncId, playerInventory, this, block.getMaxDrumSpeed());

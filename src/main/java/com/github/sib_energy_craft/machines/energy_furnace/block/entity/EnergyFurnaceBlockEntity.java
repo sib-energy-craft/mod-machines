@@ -7,8 +7,6 @@ import com.github.sib_energy_craft.machines.screen.AbstractEnergyMachineScreenHa
 import net.minecraft.block.BlockState;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
-import net.minecraft.network.PacketByteBuf;
-import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.text.Text;
 import net.minecraft.util.math.BlockPos;
 import org.jetbrains.annotations.NotNull;
@@ -29,15 +27,11 @@ public class EnergyFurnaceBlockEntity extends AbstractEnergyFurnaceBlockEntity<E
     }
 
     @Override
-    protected AbstractEnergyMachineScreenHandler createScreenHandler(int syncId,
+    protected AbstractEnergyMachineScreenHandler<?> createScreenHandler(int syncId,
                                                                      @NotNull PlayerInventory playerInventory,
                                                                      @NotNull PlayerEntity player) {
         return new EnergyFurnaceScreenHandler(syncId, playerInventory, this);
     }
 
-    @Override
-    public void writeScreenOpeningData(ServerPlayerEntity player, PacketByteBuf buf) {
-        buf.writeBlockPos(pos);
-    }
 }
 

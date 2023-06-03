@@ -47,7 +47,8 @@ public class OrePurifyingMachineScreen extends HandledScreen<OrePurifyingMachine
         int progress = handler.getChargeProgress();
         drawContext.drawTexture(TEXTURE, x + CHARGE.x(), y + CHARGE.y(), 176, 0, CHARGE.width(), progress);
 
-        int drumSpeed = handler.getDrumSpeed();
+        var state = handler.getEnergyMachineState();
+        int drumSpeed = state.getDrumSpeed();
         if(drumSpeed > 0) {
             var slower = 1;
             int maxDrumSpeed = handler.getMaxDrumSpeed();
@@ -58,7 +59,7 @@ public class OrePurifyingMachineScreen extends HandledScreen<OrePurifyingMachine
             }
             drumIcon = (int) (deltaSum / slower);
         }
-        int sourceCount = handler.getSourceCount();
+        int sourceCount = state.getSourceCount();
         if(sourceCount == 0) {
             drawContext.drawTexture(TEXTURE, x + 84, y + 36, 183, 29 * drumIcon, 29, 29);
         } else {

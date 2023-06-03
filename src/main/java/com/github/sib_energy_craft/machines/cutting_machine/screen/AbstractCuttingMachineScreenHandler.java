@@ -1,7 +1,8 @@
 package com.github.sib_energy_craft.machines.cutting_machine.screen;
 
+import com.github.sib_energy_craft.machines.cooking.screen.CookingEnergyMachineScreenHandler;
+import com.github.sib_energy_craft.machines.cooking.screen.CookingEnergyMachineState;
 import com.github.sib_energy_craft.machines.cutting_machine.utils.CuttingMachineUtils;
-import com.github.sib_energy_craft.machines.screen.AbstractEnergyMachineScreenHandler;
 import com.github.sib_energy_craft.machines.screen.layout.SlotLayoutManager;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.inventory.Inventory;
@@ -13,13 +14,14 @@ import org.jetbrains.annotations.NotNull;
  * @since 0.0.17
  * @author sibmaks
  */
-public abstract class AbstractCuttingMachineScreenHandler extends AbstractEnergyMachineScreenHandler {
+public abstract class AbstractCuttingMachineScreenHandler
+        extends CookingEnergyMachineScreenHandler<CookingEnergyMachineState> {
 
     protected AbstractCuttingMachineScreenHandler(@NotNull ScreenHandlerType<?> type,
                                                 int syncId,
                                                 @NotNull PlayerInventory playerInventory,
                                                 @NotNull SlotLayoutManager slotLayoutManager) {
-        super(type, syncId, playerInventory, slotLayoutManager);
+        super(type, syncId, playerInventory, new CookingEnergyMachineState(), slotLayoutManager);
     }
 
     protected AbstractCuttingMachineScreenHandler(@NotNull ScreenHandlerType<?> type,
@@ -27,7 +29,7 @@ public abstract class AbstractCuttingMachineScreenHandler extends AbstractEnergy
                                                 @NotNull PlayerInventory playerInventory,
                                                 @NotNull Inventory inventory,
                                                 @NotNull SlotLayoutManager slotLayoutManager) {
-        super(type, syncId, playerInventory, inventory, slotLayoutManager);
+        super(type, syncId, playerInventory, inventory, new CookingEnergyMachineState(), slotLayoutManager);
     }
 
     @Override

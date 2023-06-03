@@ -43,7 +43,8 @@ public class InductionFurnaceScreen extends HandledScreen<InductionFurnaceScreen
         drawContext.drawTexture(TEXTURE, x + CHARGE.x(), y + CHARGE.y(), 176, 0, CHARGE.width(), progress);
         progress = this.handler.getCookProgress(22);
         drawContext.drawTexture(TEXTURE, x + 80, y + 35, 176, 13, progress, 16);
-        int heat = this.handler.getHeatPercent();
+        var state = this.handler.getEnergyMachineState();
+        int heat = state.getHeatPercent();
         var heatText = Text.translatable("induction_furnace.heat.text", heat);
         var heatTextX = 5 + (52 - textRenderer.getWidth(heatText)) / 2;
         drawContext.drawTextWithShadow(textRenderer, heatText, x + heatTextX, y + 38, Color.WHITE.getRGB());

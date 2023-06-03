@@ -32,7 +32,7 @@ public class InductionFurnaceBlockEntity extends AbstractEnergyFurnaceBlockEntit
                                        @NotNull InductionFurnaceBlock block) {
         super(Entities.INDUCTION_FURNACE, pos, state, block, 2);
         this.addListener(EnergyMachineEvent.ENERGY_USED, () -> heatTicks = Math.min(heatTicks + 1, block.getMaxHeatTicks()));
-        this.addListener(EnergyMachineEvent.CAN_NOT_COOK, () -> heatTicks = Math.max(heatTicks - 1, 0));
+        this.addListener(EnergyMachineEvent.CAN_NOT_PROCESS, () -> heatTicks = Math.max(heatTicks - 1, 0));
         this.addListener(EnergyMachineEvent.ENERGY_NOT_ENOUGH, () -> heatTicks = Math.max(heatTicks - 1, 0));
         this.energyMachinePropertyMap.add(InductionFurnaceProperties.HEAT, () -> 100 * heatTicks / block.getMaxHeatTicks());
     }
