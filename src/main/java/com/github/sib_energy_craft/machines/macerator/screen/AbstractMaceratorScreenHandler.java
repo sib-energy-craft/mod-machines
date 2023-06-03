@@ -1,7 +1,8 @@
 package com.github.sib_energy_craft.machines.macerator.screen;
 
+import com.github.sib_energy_craft.machines.cooking.screen.CookingEnergyMachineScreenHandler;
+import com.github.sib_energy_craft.machines.cooking.screen.CookingEnergyMachineState;
 import com.github.sib_energy_craft.machines.macerator.tag.MaceratorTags;
-import com.github.sib_energy_craft.machines.screen.AbstractEnergyMachineScreenHandler;
 import com.github.sib_energy_craft.machines.screen.layout.SlotLayoutManager;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.inventory.Inventory;
@@ -13,14 +14,16 @@ import org.jetbrains.annotations.NotNull;
  * @since 0.0.1
  * @author sibmaks
  */
-public abstract class AbstractMaceratorScreenHandler extends AbstractEnergyMachineScreenHandler {
+public abstract class AbstractMaceratorScreenHandler
+        extends CookingEnergyMachineScreenHandler<CookingEnergyMachineState> {
 
     protected AbstractMaceratorScreenHandler(@NotNull ScreenHandlerType<?> type,
                                                  int syncId,
                                                  @NotNull PlayerInventory playerInventory,
                                                  int parallelProcess,
                                                  @NotNull SlotLayoutManager slotLayoutManager) {
-        super(type, syncId, playerInventory, parallelProcess, parallelProcess, slotLayoutManager);
+        super(type, syncId, playerInventory, parallelProcess, parallelProcess, new CookingEnergyMachineState(),
+                slotLayoutManager);
     }
 
     protected AbstractMaceratorScreenHandler(@NotNull ScreenHandlerType<?> type,
@@ -29,7 +32,8 @@ public abstract class AbstractMaceratorScreenHandler extends AbstractEnergyMachi
                                                  @NotNull Inventory inventory,
                                                  int parallelProcess,
                                                  @NotNull SlotLayoutManager slotLayoutManager) {
-        super(type, syncId, playerInventory, inventory, parallelProcess, parallelProcess, slotLayoutManager);
+        super(type, syncId, playerInventory, inventory, parallelProcess, parallelProcess, new CookingEnergyMachineState(),
+                slotLayoutManager);
     }
 
     @Override

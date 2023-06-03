@@ -1,7 +1,7 @@
 package com.github.sib_energy_craft.machines.macerator.block.entity;
 
 import com.github.sib_energy_craft.machines.block.entity.EnergyMachineInventoryType;
-import com.github.sib_energy_craft.machines.block.entity.OneToOneEnergyMachineBlockEntity;
+import com.github.sib_energy_craft.machines.cooking.block.entity.OneToOneEnergyMachineBlockEntity;
 import com.github.sib_energy_craft.machines.macerator.block.AbstractMaceratorBlock;
 import com.github.sib_energy_craft.machines.macerator.tag.MaceratorTags;
 import com.github.sib_energy_craft.machines.utils.EnergyMachineUtils;

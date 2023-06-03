@@ -1,9 +1,9 @@
 package com.github.sib_energy_craft.machines.ore_purifying_machine.block.entity;
 
 import com.github.sib_energy_craft.energy_api.Energy;
-import com.github.sib_energy_craft.machines.block.entity.AbstractEnergyMachineBlockEntity;
 import com.github.sib_energy_craft.machines.block.entity.EnergyMachineEvent;
 import com.github.sib_energy_craft.machines.block.entity.EnergyMachineInventoryType;
+import com.github.sib_energy_craft.machines.cooking.block.entity.CookingEnergyMachineBlockEntity;
 import com.github.sib_energy_craft.machines.ore_purifying_machine.block.AbstractOrePurifyingMachineBlock;
 import com.github.sib_energy_craft.machines.ore_purifying_machine.tag.OrePurifyingMachineTags;
 import com.github.sib_energy_craft.recipes.recipe.PurifyingRecipe;
@@ -27,7 +27,7 @@ import org.jetbrains.annotations.Nullable;
  * @author sibmaks
  */
 public abstract class AbstractOrePurifyingMachineBlockEntity<T extends AbstractOrePurifyingMachineBlock>
-        extends AbstractEnergyMachineBlockEntity<T>
+        extends CookingEnergyMachineBlockEntity<T>
         implements ExtendedScreenHandlerFactory {
     protected final RecipeType<PurifyingRecipe> recipeType;
 
@@ -41,7 +41,7 @@ public abstract class AbstractOrePurifyingMachineBlockEntity<T extends AbstractO
         super(blockEntityType, pos, state, block, parallelProcess, 3 * parallelProcess, parallelProcess);
         this.recipeType = PurifyingRecipeType.INSTANCE;
         this.addListener(EnergyMachineEvent.ENERGY_USED, () -> drumSpeed = Math.min(drumSpeed + 1, block.getMaxDrumSpeed()));
-        this.addListener(EnergyMachineEvent.CAN_NOT_COOK, () -> drumSpeed = Math.max(drumSpeed - 1, 0));
+        this.addListener(EnergyMachineEvent.CAN_NOT_PROCESS, () -> drumSpeed = Math.max(drumSpeed - 1, 0));
         this.addListener(EnergyMachineEvent.ENERGY_NOT_ENOUGH, () -> drumSpeed = Math.max(drumSpeed - 1, 0));
         this.energyMachinePropertyMap.add(OrePurifyingMachineProperties.DRUM_SPEED, () -> drumSpeed);
         this.energyMachinePropertyMap.add(OrePurifyingMachineProperties.SOURCE_COUNT, this::getSourceAmount);

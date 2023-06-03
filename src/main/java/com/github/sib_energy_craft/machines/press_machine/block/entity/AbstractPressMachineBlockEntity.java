@@ -1,7 +1,7 @@
 package com.github.sib_energy_craft.machines.press_machine.block.entity;
 
 import com.github.sib_energy_craft.machines.block.entity.EnergyMachineInventoryType;
-import com.github.sib_energy_craft.machines.block.entity.OneToOneEnergyMachineBlockEntity;
+import com.github.sib_energy_craft.machines.cooking.block.entity.OneToOneEnergyMachineBlockEntity;
 import com.github.sib_energy_craft.machines.press_machine.block.AbstractPressMachineBlock;
 import com.github.sib_energy_craft.machines.press_machine.utils.PressMachineUtils;
 import com.github.sib_energy_craft.metallurgy.iron_craft_table.load.Items;

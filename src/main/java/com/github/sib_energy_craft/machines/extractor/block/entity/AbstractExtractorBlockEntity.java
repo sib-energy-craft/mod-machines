@@ -1,7 +1,7 @@
 package com.github.sib_energy_craft.machines.extractor.block.entity;
 
 import com.github.sib_energy_craft.machines.block.entity.EnergyMachineInventoryType;
-import com.github.sib_energy_craft.machines.block.entity.OneToOneEnergyMachineBlockEntity;
+import com.github.sib_energy_craft.machines.cooking.block.entity.OneToOneEnergyMachineBlockEntity;
 import com.github.sib_energy_craft.machines.extractor.block.AbstractExtractorBlock;
 import com.github.sib_energy_craft.machines.extractor.tag.ExtractorTags;
 import com.github.sib_energy_craft.machines.utils.EnergyMachineUtils;

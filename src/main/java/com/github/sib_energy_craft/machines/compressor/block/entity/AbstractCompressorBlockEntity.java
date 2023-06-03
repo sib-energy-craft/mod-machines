@@ -1,9 +1,9 @@
 package com.github.sib_energy_craft.machines.compressor.block.entity;
 
 import com.github.sib_energy_craft.machines.block.entity.EnergyMachineInventoryType;
-import com.github.sib_energy_craft.machines.block.entity.OneToOneEnergyMachineBlockEntity;
 import com.github.sib_energy_craft.machines.compressor.block.AbstractCompressorBlock;
 import com.github.sib_energy_craft.machines.compressor.tag.CompressorTags;
+import com.github.sib_energy_craft.machines.cooking.block.entity.OneToOneEnergyMachineBlockEntity;
 import com.github.sib_energy_craft.machines.utils.ExperienceUtils;
 import com.github.sib_energy_craft.recipes.recipe.CompressingRecipe;
 import net.fabricmc.fabric.api.screenhandler.v1.ExtendedScreenHandlerFactory;
