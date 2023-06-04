@@ -21,7 +21,7 @@ public final class Blocks implements DefaultModInitializer {
         var orePurifyingMachineSettings = AbstractBlock.Settings.create()
                 .mapColor(MapColor.IRON_GRAY)
                 .sounds(BlockSoundGroup.METAL)
-                .strength(50, 600)
+                .strength(5, 6)
                 .requiresTool();
 
         var orePurifyingMachineBlock = new OrePurifyingMachineBlock(orePurifyingMachineSettings);
