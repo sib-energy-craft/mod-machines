@@ -20,7 +20,7 @@ public final class Blocks implements DefaultModInitializer {
     static {
         var orePurifyingMachineSettings = FabricBlockSettings.of(Material.METAL)
                 .sounds(BlockSoundGroup.METAL)
-                .strength(50, 600)
+                .strength(5, 6)
                 .requiresTool();
 
         var orePurifyingMachineBlock = new OrePurifyingMachineBlock(orePurifyingMachineSettings);
