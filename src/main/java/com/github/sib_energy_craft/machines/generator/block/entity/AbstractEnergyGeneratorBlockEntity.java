@@ -26,6 +26,7 @@ import net.minecraft.item.Items;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.network.PacketByteBuf;
 import net.minecraft.server.network.ServerPlayerEntity;
+import net.minecraft.server.world.ServerWorld;
 import net.minecraft.util.collection.DefaultedList;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
@@ -112,6 +113,9 @@ public abstract class AbstractEnergyGeneratorBlockEntity extends BlockEntity
                             @NotNull BlockPos pos,
                             @NotNull BlockState state,
                             @NotNull AbstractEnergyGeneratorBlockEntity blockEntity) {
+        if(world.isClient || !(world instanceof ServerWorld serverWorld)) {
+            return;
+        }
         var burning = blockEntity.isBurning();
         var stateChanged = false;
         if (blockEntity.isBurning()) {
@@ -135,7 +139,7 @@ public abstract class AbstractEnergyGeneratorBlockEntity extends BlockEntity
                     blockEntity.energyContainer.add(notUsed);
                 }
             }
-            blockEntity.tick(blockEntity);
+            blockEntity.tick(serverWorld, blockEntity);
         }
 
         var fuelStack = blockEntity.inventory.get(FUEL_SLOT_INDEX);
