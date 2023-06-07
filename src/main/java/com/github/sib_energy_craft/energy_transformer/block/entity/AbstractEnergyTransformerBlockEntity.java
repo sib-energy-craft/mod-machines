@@ -89,7 +89,7 @@ public abstract class AbstractEnergyTransformerBlockEntity extends BlockEntity
                             @NotNull BlockPos pos,
                             @NotNull BlockState state,
                             @NotNull AbstractEnergyTransformerBlockEntity blockEntity) {
-        if (world.isClient) {
+        if(world.isClient || !(world instanceof ServerWorld serverWorld)) {
             return;
         }
         if(blockEntity.dirty) {
@@ -98,7 +98,7 @@ public abstract class AbstractEnergyTransformerBlockEntity extends BlockEntity
             blockEntity.dirty = false;
         }
         if (blockEntity.energyContainer.hasEnergy()) {
-            blockEntity.tick(blockEntity);
+            blockEntity.tick(serverWorld, blockEntity);
         }
         AbstractEnergyTransformerBlockEntity.markDirty(world, pos, state);
     }
