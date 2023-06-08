@@ -217,5 +217,10 @@ public abstract class AbstractEnergyTransformerBlockEntity extends BlockEntity
     public boolean supplyEnergy(@NotNull Energy energy) {
         return this.energyContainer.subtract(energy);
     }
+
+    @Override
+    public boolean isSupplierDead() {
+        return isRemoved();
+    }
 }
 
