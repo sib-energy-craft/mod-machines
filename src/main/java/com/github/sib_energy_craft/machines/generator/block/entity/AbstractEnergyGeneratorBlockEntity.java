@@ -360,5 +360,10 @@ public abstract class AbstractEnergyGeneratorBlockEntity extends BlockEntity
     public int getMaxCharge() {
         return energyContainer.getMaxCharge().intValue();
     }
+
+    @Override
+    public boolean isSupplierDead() {
+        return isRemoved();
+    }
 }
 

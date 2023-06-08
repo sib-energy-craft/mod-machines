@@ -401,5 +401,10 @@ public abstract class AbstractBioReactorBlockEntity<T extends AbstractBioReactor
     public int getMaxCharge() {
         return energyContainer.getMaxCharge().intValue();
     }
+
+    @Override
+    public boolean isSupplierDead() {
+        return isRemoved();
+    }
 }
 
