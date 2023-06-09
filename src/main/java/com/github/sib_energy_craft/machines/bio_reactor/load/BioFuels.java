@@ -82,7 +82,25 @@ public final class BioFuels implements DefaultModInitializer {
         BioFuelRegistry.registry(Items.GOLDEN_CARROT, 10 * hungryToEnergy);
 
         // # other
+        BioFuelRegistry.registry(Items.BAMBOO, hungryToEnergy / 2);
         BioFuelRegistry.registry(Items.SUGAR_CANE, hungryToEnergy / 2);
+
+        // # flowers
+        BioFuelRegistry.registry(Items.DANDELION, hungryToEnergy / 2);
+        BioFuelRegistry.registry(Items.POPPY, hungryToEnergy / 2);
+        BioFuelRegistry.registry(Items.BLUE_ORCHID, hungryToEnergy / 2);
+        BioFuelRegistry.registry(Items.ALLIUM, hungryToEnergy / 2);
+        BioFuelRegistry.registry(Items.AZURE_BLUET, hungryToEnergy / 2);
+        BioFuelRegistry.registry(Items.ORANGE_TULIP, hungryToEnergy / 2);
+        BioFuelRegistry.registry(Items.PINK_TULIP, hungryToEnergy / 2);
+        BioFuelRegistry.registry(Items.RED_TULIP, hungryToEnergy / 2);
+        BioFuelRegistry.registry(Items.WHITE_TULIP, hungryToEnergy / 2);
+        BioFuelRegistry.registry(Items.OXEYE_DAISY, hungryToEnergy / 2);
+        BioFuelRegistry.registry(Items.CORNFLOWER, hungryToEnergy / 2);
+        BioFuelRegistry.registry(Items.LILY_OF_THE_VALLEY, hungryToEnergy / 2);
+        BioFuelRegistry.registry(Items.TORCHFLOWER, hungryToEnergy / 2);
+
+        // # seeds
         BioFuelRegistry.registry(Items.WHEAT_SEEDS, hungryToEnergy / 2);
         BioFuelRegistry.registry(Items.PUMPKIN_SEEDS, hungryToEnergy / 2);
         BioFuelRegistry.registry(Items.MELON_SEEDS, hungryToEnergy / 2);
